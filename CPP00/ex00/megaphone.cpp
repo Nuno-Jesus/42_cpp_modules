@@ -32,10 +32,6 @@ int main(int argc, char **argv)
 		return 0;
 	}
 	for (int i = 1; i < argc; i++)
-	{		 
 		output += megaphone(argv[i]);
-		if (i < argc - 1)
-			output += " ";
-	}
 	std::cout << output << std::endl;
 }
