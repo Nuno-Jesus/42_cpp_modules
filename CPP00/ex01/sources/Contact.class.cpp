@@ -22,7 +22,7 @@ Contact :: ~Contact()
 
 }
 
-Contact :: Contact(string fn, string ln, string nn, string pn, string ds)
+Contact :: Contact(std::string fn, std::string ln, std::string nn, std::string pn, std::string ds)
 {
 	this->_firstName = fn;
 	this->_lastName = ln;
@@ -31,7 +31,9 @@ Contact :: Contact(string fn, string ln, string nn, string pn, string ds)
 	this->_darkestSecret = ds;
 }
 
-string Contact::to_string()
+std::string Contact::formatField(std::string field)
 {
-	return (_firstName + " " + _lastName); 
+	if (field.length() > 10)
+		return (field.substr(0, 9) + ".");
+	return (field);
 }

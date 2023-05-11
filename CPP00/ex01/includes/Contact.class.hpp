@@ -14,27 +14,23 @@
 # define CONTACT_CLASS_HPP
 
 # include <iostream>
-
-using std::string;
-using std::cout;
-using std::cin;
-using std::endl;
+# include <iomanip>
 
 class Contact
 {
 	public:
 		Contact();
 		~Contact();
-		Contact(string fn, string ln, string nn, string pn, string ds);
+		Contact(std::string fn, std::string ln, std::string nn, std::string pn, std::string ds);
 
-		string	to_string();
+		static std::string formatField(std::string field);
 
 	private:
-		string _firstName;
-		string _lastName;
-		string _nickName;
-		string _phoneNumber;
-		string _darkestSecret;
+		std::string _firstName;
+		std::string _lastName;
+		std::string _nickName;
+		std::string _phoneNumber;
+		std::string _darkestSecret;
 };
 
 #endif

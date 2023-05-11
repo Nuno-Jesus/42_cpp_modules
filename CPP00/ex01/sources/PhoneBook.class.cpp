@@ -22,21 +22,29 @@ PhoneBook::~PhoneBook()
 
 }
 
-void PhoneBook::addContact()
+void PhoneBook::add()
 {
-	string fn, ln, nn, pn, ds;
+	std::string fn, ln, nn, pn, ds;
 
-	cout << "First Name: "; cin >> fn;
-	cout << "Last Name: "; cin >> ln;
-	cout << "Nickname: "; cin >> nn;
-	cout << "Phone number: "; cin >> pn;
-	cout << "Darkest Secret: "; cin >> ds;
+	std::cout << "First Name: "; 
+	std::cin >> fn;
+	std::cout << "Last Name: "; 
+	std::cin >> ln;
+	std::cout << "Nickname: "; 
+	std::cin >> nn;
+	std::cout << "Phone number: "; 
+	std::cin >> pn;
+	std::cout << "Darkest Secret: "; 
+	std::cin >> ds;
 	
-	this->_contacts[(this->_i++) % MAX_CONTACTS] = Contact(fn, ln, nn, pn, ds);
+	this->_contacts[this->_i++ % MAX_CONTACTS] = Contact(fn, ln, nn, pn, ds);
 }
 
-void PhoneBook::displayContacts(void)
+void PhoneBook::display(void)
 {
+	std::cout << "Index    |First Name|Last Name |Nickname  |" << std::endl;
 	for (int i = 0; i < MAX_CONTACTS; i++)
-		cout << i << " " + _contacts[i].to_string() << endl;
+	{
+		std::cout << std::setw(10) << Contact::formatField(this->_contacts[i])
+	}
 }

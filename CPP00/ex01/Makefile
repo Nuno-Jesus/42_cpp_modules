@@ -11,7 +11,7 @@ WHITE 	= \033[1;37m
 
 #_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_ COMMANDS _/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_
 CC = c++
-RM = rm -f
+RM = rm -rf
 AR = ar -rcs
 
 #_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_ FLAGS _/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_
@@ -19,34 +19,43 @@ CFLAGS		= -Wall -Wextra -Werror -std=c++98
 MKFLAGS		= --no-print-directory
 
 #_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_ FOLDERS _/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_
-DEPS		= .
-SRCS		= .
+DEPS			= includes
+SRCS			= sources
+_SUBFOLDERS		= commands debug executor parser signals utils 
+VPATH			= $(SRCS) $(addprefix $(SRCS)/, $(_SUBFOLDERS))
+BINS			= bin
 
 #_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_ FILES _/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_
-OBJS			= main.o Contact.class.o PhoneBook.class.o
 NAME			= phonebook
-TARGET			= $(addprefix $(SRCS)/, $(OBJS))
+_FILES			= Contact.class PhoneBook.class main
+OBJS			= $(_FILES:%=%.o)
+TARGET			= $(addprefix $(BINS)/, $(OBJS))
 
 #_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_ RULES _/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_
 all: $(NAME)
 
-$(NAME): $(TARGET)
+$(NAME): $(BINS) $(TARGET)
 	echo "[$(CYAN) Linking $(RESET)] $(GREEN)*$(RESET)"
 	$(CC) $(CFLAGS) $(TARGET) -o $(NAME) -I $(DEPS)
-	
+
 	echo "$(GREEN)Done.$(RESET)"
-	
-%.o : %.cpp 
+
+$(BINS)/%.o : %.cpp
 	echo "[$(CYAN)Compiling$(RESET)] $(CFLAGS) $(GREEN)$<$(RESET)"
 	$(CC) $(CFLAGS) -c $< -o $@ -I $(DEPS)
 
+$(BINS):
+	mkdir -p $(BINS)
+
 clean:
-	echo "[$(RED) Deleted $(RESET)] $(GREEN)*/*.o$(RESET)"
-	$(RM) $(TARGET) $(TARGET_BONUS)
+	echo "[$(RED) Deleted $(RESET)] $(GREEN)$(BINS)$(RESET)"
+	$(RM) $(BINS)
 
 fclean: clean
 	echo "[$(RED) Deleted $(RESET)] $(GREEN)$(NAME)$(RESET)"
-	$(RM) $(NAME) 
+	$(RM) $(NAME)
+
+re: fclean all
 
 .SILENT:
-re: fclean all
+

@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   PhoneBook.class.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/26 23:23:00 by marvin            #+#    #+#             */
-/*   Updated: 2023/01/26 23:23:00 by marvin           ###   ########.fr       */
+/*   Created: 2023/01/26 23:55:47 by marvin            #+#    #+#             */
+/*   Updated: 2023/01/26 23:55:47 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "PhoneBook.class.hpp"
+#ifndef PHONEBOOK_CLASS_HPP
+# define PHONEBOOK_CLASS_HPP
 
-int main(void)
+# include "Contact.class.hpp"
+
+class PhoneBook
 {
-	PhoneBook pb = PhoneBook();
-	string input;
-	
-	while (input != "EXIT")
-	{
-		cin >> input;
-		
-		if (input == "ADD")
-			pb.addContact();
-		else if (input == "SEARCH")
-			pb.displayContacts();
-		cout << "Your input was: " << input << endl;
-	}
-}
+	public:
+		PhoneBook();
+		~PhoneBook();
+
+		void add();
+		void display(void);
+
+	private:
+		int _i;
+		static const int MAX_CONTACTS = 8;
+		Contact _contacts[MAX_CONTACTS];
+};
+
+#endif
