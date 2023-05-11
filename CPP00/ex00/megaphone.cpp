@@ -13,13 +13,9 @@
 #include <iostream>
 #include <cctype>
 
-using std::cout;
-using std::string;
-using std::endl;
-
-string megaphone(char *str)
+std::string megaphone(char *str)
 {
-	string res;
+	std::string res;
 
 	for (int i = 0; str[i]; i++)
 		res += toupper(str[i]);
@@ -28,15 +24,18 @@ string megaphone(char *str)
 
 int main(int argc, char **argv)
 {
-	string output;
+	std::string output;
 
 	if (argc == 1)
 	{
-		cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << endl;
+		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
 		return 0;
 	}
-	
 	for (int i = 1; i < argc; i++)
+	{		 
 		output += megaphone(argv[i]);
-	cout << output << endl;
+		if (i < argc - 1)
+			output += " ";
+	}
+	std::cout << output << std::endl;
 }
