@@ -14,19 +14,20 @@
 
 int main(void)
 {
-	PhoneBook pb;
-	std::string input;
+	PhoneBook	pb;
+	std::string	input;
 	
 	pb = PhoneBook();
-	while (input != "EXIT")
+	while (1)
 	{
 		std::cout << "Phonebook > ";
-		std::cin >> input;
+		std::getline(std::cin, input);
 		
 		if (input == "ADD")
 			pb.add();
 		else if (input == "SEARCH")
-			pb.display();
-		std::cout << "Your input was: " << input << std::endl;
+			pb.search();
+		else if (input == "EXIT")
+			break;
 	}
 }

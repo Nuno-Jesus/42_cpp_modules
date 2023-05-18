@@ -12,12 +12,12 @@
 
 #include "Contact.class.hpp"
 
-Contact :: Contact()
+Contact :: Contact(void)
 {
 
 }
 
-Contact :: ~Contact()
+Contact :: ~Contact(void)
 {
 
 }
@@ -31,9 +31,35 @@ Contact :: Contact(std::string fn, std::string ln, std::string nn, std::string p
 	this->_darkestSecret = ds;
 }
 
+void Contact::display(void)
+{
+	std::cout << std::endl;
+	std::cout << "First name: \"" << this->_firstName << "\"" << std::endl;
+	std::cout << "Last name: \"" << this->_lastName << "\"" << std::endl;
+	std::cout << "Nickname: \"" << this->_nickName << "\"" << std::endl;
+	std::cout << "Phone Number: \"" << this->_phoneNumber << "\"" << std::endl;
+	std::cout << "Darkest Secret: \"" << this->_darkestSecret << "\"" << std::endl;
+	std::cout << std::endl;
+}
+
 std::string Contact::formatField(std::string field)
 {
 	if (field.length() > 10)
 		return (field.substr(0, 9) + ".");
 	return (field);
+}
+
+std::string Contact::getFirstName(void)
+{
+	return (this->_firstName);
+}
+
+std::string Contact::getLastName(void)
+{
+	return (this->_lastName);
+}
+
+std::string Contact::getNickName(void)
+{
+	return (this->_nickName);
 }

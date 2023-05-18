@@ -18,16 +18,19 @@
 class PhoneBook
 {
 	public:
-		PhoneBook();
-		~PhoneBook();
+		PhoneBook(void);
+		~PhoneBook(void);
 
-		void add();
-		void display(void);
+		void add(void);
+		void search(void);
 
 	private:
 		int _i;
 		static const int MAX_CONTACTS = 8;
 		Contact _contacts[MAX_CONTACTS];
+
+	private:
+		void _display(void);
 };
 
 #endif

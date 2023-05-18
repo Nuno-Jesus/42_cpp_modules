@@ -16,12 +16,19 @@
 # include <iostream>
 # include <iomanip>
 
+# define CLEAR_SCREEN "\033[2J\033[H"
+
 class Contact
 {
 	public:
-		Contact();
-		~Contact();
+		Contact(void);
+		~Contact(void);
 		Contact(std::string fn, std::string ln, std::string nn, std::string pn, std::string ds);
+		void display(void);
+		
+		std::string getFirstName(void);
+		std::string getLastName(void);
+		std::string getNickName(void);
 
 		static std::string formatField(std::string field);
 
