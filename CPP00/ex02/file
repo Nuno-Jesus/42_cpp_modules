@@ -1,0 +1,41 @@
+[[1;31m Deleted [0m] [1;32mbin[0m
+[[1;31m Deleted [0m] [1;32maccount[0m
+[[1;36mCompiling[0m] -Wall -Wextra -Werror -pedantic -std=c++98 [1;32mAccount.cpp[0m
+[[1;36mCompiling[0m] -Wall -Wextra -Werror -pedantic -std=c++98 [1;32mtests.cpp[0m
+[[1;36m Linking [0m] [1;32m*[0m
+[1;32mDone.[0m
+[20230418_221409] accounts:8;total:20049;deposits:8;withdrawals:0
+[20230418_221409] index:0;amount:42;deposits:1;withdrawals:0
+[20230418_221409] index:1;amount:54;deposits:1;withdrawals:0
+[20230418_221409] index:2;amount:957;deposits:1;withdrawals:0
+[20230418_221409] index:3;amount:432;deposits:1;withdrawals:0
+[20230418_221409] index:4;amount:1234;deposits:1;withdrawals:0
+[20230418_221409] index:5;amount:0;deposits:1;withdrawals:0
+[20230418_221409] index:6;amount:754;deposits:1;withdrawals:0
+[20230418_221409] index:7;amount:16576;deposits:1;withdrawals:0
+[20230418_221409] accounts:8;total:21524;deposits:16;withdrawals:0
+[20230418_221409] index:0;amount:47;deposits:2;withdrawals:0
+[20230418_221409] index:1;amount:819;deposits:2;withdrawals:0
+[20230418_221409] index:2;amount:1521;deposits:2;withdrawals:0
+[20230418_221409] index:3;amount:434;deposits:2;withdrawals:0
+[20230418_221409] index:4;amount:1321;deposits:2;withdrawals:0
+[20230418_221409] index:5;amount:23;deposits:2;withdrawals:0
+[20230418_221409] index:6;amount:763;deposits:2;withdrawals:0
+[20230418_221409] index:7;amount:16596;deposits:2;withdrawals:0
+[20230418_221409] accounts:8;total:12442;deposits:16;withdrawals:6
+[20230418_221409] index:0;amount:47;deposits:2;withdrawals:0
+[20230418_221409] index:1;amount:785;deposits:2;withdrawals:1
+[20230418_221409] index:2;amount:864;deposits:2;withdrawals:1
+[20230418_221409] index:3;amount:430;deposits:2;withdrawals:1
+[20230418_221409] index:4;amount:1245;deposits:2;withdrawals:1
+[20230418_221409] index:5;amount:23;deposits:2;withdrawals:0
+[20230418_221409] index:6;amount:106;deposits:2;withdrawals:1
+[20230418_221409] index:7;amount:8942;deposits:2;withdrawals:1
+[20230418_221409] index:0;amount:47;closed
+[20230418_221409] index:1;amount:785;closed
+[20230418_221409] index:2;amount:864;closed
+[20230418_221409] index:3;amount:430;closed
+[20230418_221409] index:4;amount:1245;closed
+[20230418_221409] index:5;amount:23;closed
+[20230418_221409] index:6;amount:106;closed
+[20230418_221409] index:7;amount:8942;closed

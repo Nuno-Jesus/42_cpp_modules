@@ -19,15 +19,15 @@ CFLAGS		= -Wall -Wextra -Werror -pedantic -std=c++98
 MKFLAGS		= --no-print-directory
 
 #_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_ FOLDERS _/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_
-DEPS			= includes
-SRCS			= sources
-_SUBFOLDERS		=
+DEPS			= .
+SRCS			= .
+_SUBFOLDERS		= 
 VPATH			= $(SRCS) $(addprefix $(SRCS)/, $(_SUBFOLDERS))
 BINS			= bin
 
 #_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_ FILES _/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_
-NAME			= phonebook
-_FILES			= Contact.class PhoneBook.class main
+NAME			= account
+_FILES			= Account tests
 OBJS			= $(_FILES:%=%.o)
 TARGET			= $(addprefix $(BINS)/, $(OBJS))
 
