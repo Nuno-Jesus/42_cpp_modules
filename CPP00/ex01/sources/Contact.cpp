@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Contact.class.hpp"
+#include "Contact.hpp"
 
 Contact :: Contact(void)
 {

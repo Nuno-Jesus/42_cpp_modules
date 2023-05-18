@@ -27,7 +27,7 @@ BINS			= bin
 
 #_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_ FILES _/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_
 NAME			= phonebook
-_FILES			= Contact.class PhoneBook.class main
+_FILES			= Contact PhoneBook main
 OBJS			= $(_FILES:%=%.o)
 TARGET			= $(addprefix $(BINS)/, $(OBJS))
 
