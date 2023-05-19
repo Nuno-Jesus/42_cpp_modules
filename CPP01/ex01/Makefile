@@ -27,7 +27,7 @@ BINS			= bin
 
 #_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_ FILES _/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_
 NAME			= zombie
-_FILES			= main newZombie randomChump Zombie
+_FILES			= main newZombie randomChump Zombie zombieHorde
 OBJS			= $(_FILES:%=%.o)
 TARGET			= $(addprefix $(BINS)/, $(OBJS))
 
