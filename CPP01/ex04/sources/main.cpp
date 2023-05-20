@@ -6,7 +6,7 @@
 /*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 14:18:20 by ncarvalh          #+#    #+#             */
-/*   Updated: 2023/05/20 16:02:42 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/05/20 16:03:28 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,6 @@ void writeContents(char *filename, const std::string &contents)
 	outfile << contents;
 	outfile.close();
 }
-
-
 
 int main(int argc, char **argv)
 {
