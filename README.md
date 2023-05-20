@@ -31,7 +31,7 @@ At 42, the C projects are built following a bunch of rules that enforce good cod
 		</tr>
 		<tr>
 			<td><strong>CPP01</strong> </td>
-			<td>???</td>
+			<td>Dynamic allocation, member function pointers and switch statement</td>
 			<td>???/100</td>
 		</tr>
 		<tr>
