@@ -6,6 +6,7 @@ Harl :: Harl()
 
 void Harl :: complain (std::string level)
 {
+	//Array of member function pointers to functions of Harl class
 	void (Harl::*funcs[4])() = 
 	{
 		&Harl::debug,
@@ -13,6 +14,8 @@ void Harl :: complain (std::string level)
 		&Harl::warning,
 		&Harl::error,
 	};
+	
+	//Array of available levels
 	std::string levels[4] = 
 	{
 		"DEBUG",
@@ -20,6 +23,7 @@ void Harl :: complain (std::string level)
 		"WARNING",
 		"ERROR"
 	};
+	
 	for (int i = 0; i < 4; i++)
 		if (levels[i] == level)
 			(this->*funcs[i])();

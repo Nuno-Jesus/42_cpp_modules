@@ -26,7 +26,7 @@ VPATH			= $(SRCS) $(addprefix $(SRCS)/, $(_SUBFOLDERS))
 BINS			= bin
 
 #_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_ FILES _/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_
-NAME			= a.out
+NAME			= human
 _FILES			= main  Weapon HumanA HumanB
 OBJS			= $(_FILES:%=%.o)
 TARGET			= $(addprefix $(BINS)/, $(OBJS))

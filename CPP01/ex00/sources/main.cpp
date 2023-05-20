@@ -6,7 +6,7 @@
 /*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 10:07:12 by ncarvalh          #+#    #+#             */
-/*   Updated: 2023/05/19 10:25:43 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/05/20 17:13:13 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 void	usage(void)
 {
-	std::cout << "Usage: name_of_random_chump name_of_new_zombie" << std::endl;
-	exit(-1);
+	std::cout << "Usage: ./zombie name_of_random_chump name_of_new_zombie" << std::endl;
+	exit(1);
 }
 
 int main(int argc, char **argv)
 {
-	if (argc < 2)
-		usage();
-
 	std::string randomName;
 	std::string newZombieName;
+
+	if (argc < 2)
+		usage();
 
 	randomName = argv[1];
 	newZombieName = argv[2];
