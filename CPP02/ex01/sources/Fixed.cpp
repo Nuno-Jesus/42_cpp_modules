@@ -6,7 +6,7 @@
 /*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 08:30:08 by ncarvalh          #+#    #+#             */
-/*   Updated: 2023/05/21 09:33:02 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/05/21 11:51:45 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,37 +20,22 @@ Fixed :: Fixed()
 
 Fixed :: Fixed(const int num)
 {
-	std::cout << "Int constructor called." << std::endl;
-	this->value = num << FRACTION_BITS;
+	this->value = num << BITS;
 }
 
 Fixed :: Fixed(const float num)
 {
-	float tmp;
-
-	tmp = num;
-	std::cout << "Float constructor called." << std::endl;
-	for (int i = 0; i < FRACTION_BITS; i++)
-		tmp *= 2;
-	this->value = tmp;
+	this->value = (num * (1 << Fixed::BITS));
 }
 
 Fixed :: Fixed(const Fixed& num)
 {
-	std::cout << "Copy constructor called." << std::endl;
 	*this = num;
 }
 
 Fixed :: ~Fixed()
 {
-	std::cout << "Destructor called." << std::endl;
-}
-
-Fixed& Fixed :: operator=(const Fixed& right)
-{
-	std::cout << "Copy assignment operator called." << std::endl;
-	this->value = right.getRawBits();
-	return (*this);
+	
 }
  
 int Fixed :: getRawBits(void) const
@@ -65,20 +50,18 @@ void Fixed :: setRawBits(int const raw)
 
 float Fixed :: toFloat(void) const
 {
-	float tmp;
-	
-	tmp = this->value;
-	for (int i = 0; i < FRACTION_BITS; i++)
-		tmp /= 2;
-	return (tmp);
+	return ((float)this->value / (float)(1 << Fixed::BITS));
 }
 
 int Fixed :: toInt(void) const
 {
-	float tmp;
+	return (this->value >> Fixed::BITS);
+}
 
-	tmp = this->toFloat();
-	return (roundf(tmp));
+Fixed& Fixed :: operator=(const Fixed& right)
+{
+	this->value = right.getRawBits();
+	return (*this);
 }
 
 std::ostream& operator<<(std::ostream& out, const Fixed& right)

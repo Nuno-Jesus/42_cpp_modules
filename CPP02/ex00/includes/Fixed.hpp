@@ -6,7 +6,7 @@
 /*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 08:01:25 by ncarvalh          #+#    #+#             */
-/*   Updated: 2023/05/21 08:40:37 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/05/21 10:47:30 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ class Fixed
 {
 	private:
 		int value;
-		static const int FRACTION_BITS = 8;
+		static const int BITS = 8;
 		
 	public:
 		Fixed();

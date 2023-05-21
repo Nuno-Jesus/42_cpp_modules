@@ -6,7 +6,7 @@
 /*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 08:01:25 by ncarvalh          #+#    #+#             */
-/*   Updated: 2023/05/21 11:47:44 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/05/21 10:57:34 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,29 @@ class Fixed
 		float toFloat(void) const;
 		int toInt(void) const;
 
-		Fixed& operator=(const Fixed& right);
+		//! Operators overloading
+		Fixed& operator=(const Fixed &right);
+		bool operator>(const Fixed& right);
+		bool operator<(const Fixed& right);
+		bool operator>=(const Fixed& right);
+		bool operator<=(const Fixed& right);
+		bool operator==(const Fixed& right);
+		bool operator!=(const Fixed& right);
+		Fixed operator+(const Fixed& right);
+		Fixed operator-(const Fixed& right);
+		Fixed operator*(const Fixed& right);
+		Fixed operator/(const Fixed& right);
+		Fixed operator++(void);
+		Fixed operator--(void);
+		Fixed operator++(int dummy);
+		Fixed operator--(int dummy);
+
+		//! Min and max functions
+		static Fixed& min(Fixed& f1, Fixed& f2);
+		static Fixed& max(Fixed& f1, Fixed& f2);
+		static const Fixed& min(const Fixed& f1, const Fixed& f2);
+		static const Fixed& max(const Fixed& f1, const Fixed& f2);
+
 };
 
 std::ostream& operator<<(std::ostream& out, const Fixed& right);
