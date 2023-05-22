@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 08:30:08 by ncarvalh          #+#    #+#             */
-/*   Updated: 2023/05/21 11:51:45 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/05/22 13:02:01 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ Fixed :: Fixed()
 
 Fixed :: Fixed(const int num)
 {
-	this->value = num << BITS;
+	this->value = num * (1 << Fixed::BITS);
 }
 
 Fixed :: Fixed(const float num)
 {
-	this->value = (num * (1 << Fixed::BITS));
+	this->value = num * (1 << Fixed::BITS);
 }
 
 Fixed :: Fixed(const Fixed& num)
@@ -60,6 +60,9 @@ int Fixed :: toInt(void) const
 
 Fixed& Fixed :: operator=(const Fixed& right)
 {
+	// std::cout << "Copy assignment operator called." << std::endl;
+	if (this == &right)
+		return (*this);
 	this->value = right.getRawBits();
 	return (*this);
 }

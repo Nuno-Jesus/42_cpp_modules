@@ -26,7 +26,7 @@ VPATH			= $(SRCS) $(addprefix $(SRCS)/, $(_SUBFOLDERS))
 BINS			= bin
 
 #_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_ FILES _/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_
-NAME			= a.out
+NAME			= bsp
 _FILES			= Fixed main Point bsp
 OBJS			= $(_FILES:%=%.o)
 TARGET			= $(addprefix $(BINS)/, $(OBJS))

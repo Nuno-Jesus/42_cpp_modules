@@ -24,9 +24,8 @@ bool inSegment(const Point p1, const Point p2, const Point p)
 {
 	Fixed m((p1.getY() - p2.getY()) / (p1.getX() - p2.getX()));
 	Fixed b(p1.getY() - m * p1.getX());
-	Fixed equation(m * p.getX() + b);
 
-	return (p.getY() == equation);
+	return (p.getY() == m * p.getX() + b);
 }
 
 float abs(float x)
@@ -47,12 +46,8 @@ float area(const Point p1, const Point p2, const Point p3)
 
 //! Dividing the triangle in 3 triangles, the sum of the inners should equal the total
 bool bsp(const Point a, const Point b, const Point c, const Point point)
-{
-	//! If the point is one of the vertex return
-	if ((Point)point == a || (Point)point == b || (Point)point == c)
-		return (false);
-	
-	//! Or if the point belongs to one of the sides of the triangle
+{	
+	//! If the point belongs to one of the sides of the triangle
 	if (inSegment(a, b, point) || inSegment(b, c, point) || inSegment(c, a, point))
 		return (false);
 

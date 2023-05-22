@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 08:30:08 by ncarvalh          #+#    #+#             */
-/*   Updated: 2023/05/21 23:44:29 by marvin           ###   ########.fr       */
+/*   Updated: 2023/05/22 13:02:26 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,9 @@ int Fixed :: toInt(void) const
 
 Fixed& Fixed :: operator=(const Fixed& right)
 {
+	// std::cout << "Copy assignment operator called." << std::endl;
+	if (this == &right)
+		return (*this);
 	this->value = right.getRawBits();
 	return (*this);
 }

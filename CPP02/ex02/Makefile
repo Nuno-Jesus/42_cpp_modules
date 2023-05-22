@@ -19,14 +19,14 @@ CFLAGS		= -Wall -Wextra -Werror -pedantic -std=c++98
 MKFLAGS		= --no-print-directory
 
 #_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_ FOLDERS _/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_
-DEPS			= includes
-SRCS			= sources
+DEPS			= ./includes
+SRCS			= ./sources
 _SUBFOLDERS		= 
 VPATH			= $(SRCS) $(addprefix $(SRCS)/, $(_SUBFOLDERS))
 BINS			= bin
 
 #_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_ FILES _/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_
-NAME			= a.out
+NAME			= fixed
 _FILES			= Fixed main
 OBJS			= $(_FILES:%=%.o)
 TARGET			= $(addprefix $(BINS)/, $(OBJS))
