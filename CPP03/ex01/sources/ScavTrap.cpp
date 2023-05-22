@@ -1,0 +1,60 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/22 23:00:31 by marvin            #+#    #+#             */
+/*   Updated: 2023/05/22 23:00:31 by marvin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ScavTrap.hpp"
+
+ScavTrap::ScavTrap(void)
+{
+	LOG("ScavTrap constructor called.");
+	this->setHealth(100);
+	this->setEnergy(50);
+	this->setDamage(20);
+}
+
+ScavTrap::ScavTrap(const ScavTrap& trap) : ClapTrap(trap)
+{
+	LOG("ScavTrap copy constructor called.");
+	this->setName(trap.getName());
+	this->setHealth(trap.getHealth());
+	this->setEnergy(trap.getEnergy());
+	this->setDamage(trap.getDamage());
+}
+
+ScavTrap::ScavTrap(const std::string name)
+{
+	LOG("ScavTrap parameter constructor called.");
+	this->setName(name);
+	this->setHealth(100);
+	this->setEnergy(50);
+	this->setDamage(20);
+}
+
+ScavTrap& ScavTrap::operator=(const ScavTrap& trap)
+{
+	if (this == &trap)
+		return (*this);
+	this->setName(trap.getName());
+	this->setHealth(trap.getHealth());
+	this->setEnergy(trap.getEnergy());
+	this->setDamage(trap.getDamage());
+	return (*this);
+}
+
+ScavTrap::~ScavTrap(void)
+{
+	LOG("ScavTrap destructor called.");
+}
+
+void ScavTrap::guardGate()
+{
+	std::cout << "\n\tScavTrap " << this->getName() << " is in Gate Keeper mode.\n" << std::endl;
+}
