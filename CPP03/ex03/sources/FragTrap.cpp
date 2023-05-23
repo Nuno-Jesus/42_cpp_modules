@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 10:17:54 by crypto            #+#    #+#             */
-/*   Updated: 2023/05/23 19:18:09 by marvin           ###   ########.fr       */
+/*   Updated: 2023/05/23 20:49:20 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 FragTrap::FragTrap(void)
 {
-	LOG("FragTrap constructor called.");
+	LOG("FragTrap default constructor called.");
 	this->setHealth(100);
 	this->setEnergy(100);
 	this->setDamage(30);

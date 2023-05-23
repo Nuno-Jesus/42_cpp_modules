@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 11:50:26 by crypto            #+#    #+#             */
-/*   Updated: 2023/05/23 19:50:00 by marvin           ###   ########.fr       */
+/*   Updated: 2023/05/23 20:49:34 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 DiamondTrap::DiamondTrap(void)
 {
-	LOG("DiamondTrap constructor called.");
+	LOG("DiamondTrap default constructor called.");
 }
 
 DiamondTrap::DiamondTrap(const std::string& name)
@@ -43,6 +43,7 @@ DiamondTrap& DiamondTrap::operator=(const DiamondTrap& right)
 	if (this == &right)
 		return (*this);
 	this->name = right.name;
+	this->ClapTrap::setName(right.ClapTrap::getName());
 	this->setHealth(right.FragTrap::getHealth());
 	this->setEnergy(right.ScavTrap::getEnergy());
 	this->setDamage(right.FragTrap::getDamage());
