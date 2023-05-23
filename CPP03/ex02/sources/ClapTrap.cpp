@@ -23,10 +23,7 @@ ClapTrap::ClapTrap()
 ClapTrap::ClapTrap(const ClapTrap& trap)
 {
 	LOG("ClapTrap copy constructor called.");
-	this->name = trap.getName();
-	this->health = trap.getHealth();
-	this->energy = trap.getEnergy();
-	this->damage = trap.getDamage();
+	*this = trap;
 }
 
 ClapTrap::ClapTrap(const std::string& name)
@@ -47,11 +44,10 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& right)
 {
 	if (this == &right)
 		return (*this);
-
-	this->name = right.name;
-	this->health = right.health;
-	this->energy = right.energy;
-	this->damage = right.damage;
+	this->name = right.getName();
+	this->health = right.getHealth();
+	this->energy = right.getEnergy();
+	this->damage = right.getDamage();
 	return (*this);
 }
 
@@ -62,9 +58,9 @@ void ClapTrap::attack(const std::string& target)
 		std::cout << "\n\tClapTrap is depleted.\n" << std::endl; 
 		return ;
 	}
-
 	std::cout << "\n\tClapTrap " << this->name << " attacks " << target;
-	std::cout << ", causing " << this->damage << " points of damage!\n" << std::endl;
+	std::cout << ", causing " << this->damage << " points of damage!\n";
+	std::cout << std::endl;
 	this->energy--;
 }
 
@@ -74,7 +70,8 @@ void ClapTrap::takeDamage(unsigned int amount)
 	if (this->health < 0)
 		this->health = 0;
 	std::cout << "\n\tClapTrap " << this->name << " received " << amount;
-	std::cout << " damage, dropping the HP to " << this->health << "!\n" << std::endl;
+	std::cout << " damage, dropping the HP to " << this->health << "!\n";
+	std::cout << std::endl;
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
@@ -84,10 +81,10 @@ void ClapTrap::beRepaired(unsigned int amount)
 		std::cout << "\n\tClapTrap is depleted.\n" << std::endl; 
 		return ;
 	}
-
 	this->health = this->health + amount;	
 	std::cout << "\n\tClapTrap " << this->name << " healed " << amount;
-	std::cout << " HP, increasing the HP to " << this->health << "!\n" << std::endl;
+	std::cout << " HP, increasing the HP to " << this->health << "!\n";
+	std::cout << std::endl;
 	this->energy--;
 }
 
@@ -133,11 +130,9 @@ void ClapTrap::setDamage(int damage)
 
 std::ostream& operator<<(std::ostream& out, const ClapTrap& right)
 {
-	out << "------------------------------------------" << std::endl;
-	out << right.getName() << std::endl;
+	out << "ClapTrap Name (" << right.getName() << "): " << std::endl;
 	out << " - Health: " << right.getHealth() << std::endl;
 	out << " - Energy: " << right.getEnergy() << std::endl;
 	out << " - Damage: " << right.getDamage() << std::endl;
-	out << "------------------------------------------" << std::endl;
 	return (out);
 }

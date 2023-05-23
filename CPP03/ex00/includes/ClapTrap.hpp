@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 22:09:08 by marvin            #+#    #+#             */
-/*   Updated: 2023/05/22 22:09:08 by marvin           ###   ########.fr       */
+/*   Created: 2023/05/23 20:11:13 by marvin            #+#    #+#             */
+/*   Updated: 2023/05/23 20:11:13 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,29 @@ class ClapTrap
 		int damage;
 		
 	public:
-		ClapTrap();
+		//! Constructors
+		ClapTrap(void);
 		ClapTrap(const ClapTrap& trap);
 		ClapTrap(const std::string& name);
-		~ClapTrap();
+		virtual ~ClapTrap(void);
+
+		//! Others
 		ClapTrap& operator=(const ClapTrap& right);
 		void attack(const std::string& target);
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
+
+		//! Getters
 		std::string getName(void) const;
 		int getHealth(void) const;
 		int getEnergy(void) const;
 		int getDamage(void) const;
+
+		//! Setters
+		void setName(std::string name);
+		void setHealth(int health);
+		void setEnergy(int energy);
+		void setDamage(int damage);
 };
 
 std::ostream& operator<<(std::ostream& out, const ClapTrap& right);
