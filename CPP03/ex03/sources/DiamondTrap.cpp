@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 11:50:26 by crypto            #+#    #+#             */
-/*   Updated: 2023/05/23 19:18:55 by marvin           ###   ########.fr       */
+/*   Updated: 2023/05/23 19:50:00 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,20 @@ DiamondTrap::DiamondTrap(void)
 	LOG("DiamondTrap constructor called.");
 }
 
-DiamondTrap::DiamondTrap(const std::string& name, const std::string& name_clap_trap)
+DiamondTrap::DiamondTrap(const std::string& name)
 {
 	LOG("DiamondTrap parameter constructor called.");
 	this->name = name;
 	this->setHealth(FragTrap::getHealth());
 	this->setEnergy(ScavTrap::getEnergy());
 	this->setDamage(FragTrap::getDamage());
-	this->setName(name_clap_trap);
+	this->setName(name + "_clap_name");
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap& trap) : ClapTrap(trap), ScavTrap(trap), FragTrap(trap) 
 {
 	LOG("DiamondTrap copy constructor called.");
+	this->name = trap.name;
 }
 
 DiamondTrap::~DiamondTrap(void)

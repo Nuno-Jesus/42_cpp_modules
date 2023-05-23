@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 11:40:37 by crypto            #+#    #+#             */
-/*   Updated: 2023/05/23 19:05:38 by marvin           ###   ########.fr       */
+/*   Updated: 2023/05/23 19:43:45 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class DiamondTrap : public ScavTrap, public FragTrap
 	public:
 		//! Constructors and destructors
 		DiamondTrap(void);
-		DiamondTrap(const std::string& name, const std::string& name_clap_trap);
+		DiamondTrap(const std::string& name);
 		DiamondTrap(const DiamondTrap& trap);
 		~DiamondTrap(void);
 

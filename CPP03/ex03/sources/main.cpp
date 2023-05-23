@@ -14,7 +14,7 @@
 
 void usage(void)
 {
-	std::cout << "Usage: ./DiamondTrap trap_name inherited_trap_name" << std::endl;
+	std::cout << "Usage: ./DiamondTrap trap_name" << std::endl;
 	exit(1);
 }
 
@@ -40,10 +40,11 @@ int menu(const DiamondTrap &trap)
 
 int main(int argc, char **argv)
 {
-	if (argc < 3)
+	if (argc < 2)
 		usage();
 
-	DiamondTrap trap(argv[1], argv[2]);
+	DiamondTrap t(argv[1]);
+	DiamondTrap trap(t);
 	std::string target;
 	int tmp;
 
