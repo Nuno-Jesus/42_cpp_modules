@@ -10,15 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 void usage(void)
 {
-	std::cout << "Usage: ./scavtrap trap_name" << std::endl;
+	std::cout << "Usage: ./fragtrap trap_name" << std::endl;
 	exit(1);
 }
 
-int menu(const ScavTrap &trap)
+int menu(const FragTrap &trap)
 {
 	int option;
 
@@ -27,7 +27,7 @@ int menu(const ScavTrap &trap)
 	std::cout << "1 -> Attack" << std::endl;
 	std::cout << "2 -> Repair" << std::endl;
 	std::cout << "3 -> Take damage" << std::endl;
-	std::cout << "4 -> Guard mode" << std::endl;
+	std::cout << "4 -> High Five" << std::endl;
 	std::cout << "5 -> Exit" << std::endl;
 	std::cout << "Option: ";
 	std::cin >> option;
@@ -40,7 +40,7 @@ int main(int argc, char **argv)
 	if (argc < 2)
 		usage();
 
-	ScavTrap trap(argv[1]);
+	FragTrap trap(argv[1]);
 	std::string target;
 	int tmp;
 
@@ -67,10 +67,11 @@ int main(int argc, char **argv)
 				trap.takeDamage(tmp);
 				break;
 			case 4:
-				trap.guardGate();
+				trap.highFiveGuys();
 				break;
 			case 5:
 				return (0);
+				break;
 			default:
 				break;
 		}
