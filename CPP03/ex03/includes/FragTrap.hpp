@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 10:15:53 by crypto            #+#    #+#             */
-/*   Updated: 2023/05/23 19:26:51 by marvin           ###   ########.fr       */
+/*   Updated: 2023/05/23 20:58:06 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,17 @@
 class FragTrap : virtual public ClapTrap
 {
 	public:
+		//! Constructors and destructor
 		FragTrap(void);
 		FragTrap(const FragTrap& trap);
 		FragTrap(const std::string name);
-		FragTrap& operator=(const FragTrap& trap);
 		virtual ~FragTrap(void);
+		
+		//! Operator overloading
+		FragTrap& operator=(const FragTrap& trap);
+
+		//! Others
 		void attack(const std::string &target);		
 		void highFiveGuys(void);
 };
-
 #endif

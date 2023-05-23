@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 10:17:54 by crypto            #+#    #+#             */
-/*   Updated: 2023/05/23 20:49:20 by marvin           ###   ########.fr       */
+/*   Updated: 2023/05/23 20:58:58 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ void FragTrap::attack(const std::string &target)
 		std::cout << "\n\tFragTrap is depleted.\n" << std::endl; 
 		return ;
 	}
-
 	std::cout << "\n\tFragTrap " << this->getName() << " attacks " << target;
 	std::cout << ", causing " << this->getDamage() << " points of damage!\n" << std::endl;
 	this->setEnergy(this->getEnergy() - 1);

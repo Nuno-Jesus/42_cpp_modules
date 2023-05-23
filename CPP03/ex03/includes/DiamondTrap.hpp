@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 11:40:37 by crypto            #+#    #+#             */
-/*   Updated: 2023/05/23 19:43:45 by marvin           ###   ########.fr       */
+/*   Updated: 2023/05/23 20:58:26 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "ScavTrap.hpp"
 # include "FragTrap.hpp"
-
 
 class DiamondTrap : public ScavTrap, public FragTrap
 {
@@ -33,8 +32,8 @@ class DiamondTrap : public ScavTrap, public FragTrap
 		DiamondTrap& operator=(const DiamondTrap& right);
 
 		//!Others
-		void whoAmI(void);
 		void attack(const std::string& target);
+		void whoAmI(void);
 };
 
 #endif
