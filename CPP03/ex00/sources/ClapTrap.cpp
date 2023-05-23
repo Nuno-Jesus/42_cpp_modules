@@ -14,7 +14,7 @@
 
 ClapTrap::ClapTrap()
 {
-	LOG("Default constructor called.");
+	LOG("ClapTrap default constructor called.");
 	this->health = 10;
 	this->energy = 10;
 	this->damage = 0;
@@ -22,6 +22,7 @@ ClapTrap::ClapTrap()
 
 ClapTrap::ClapTrap(const ClapTrap& trap)
 {
+	LOG("ClapTrap parameter constructor called.");
 	this->name = trap.getName();
 	this->health = trap.getHealth();
 	this->energy = trap.getEnergy();
@@ -30,7 +31,7 @@ ClapTrap::ClapTrap(const ClapTrap& trap)
 
 ClapTrap::ClapTrap(const std::string& name)
 {
-	LOG("Parameter constructor called.");
+	LOG("ClapTrap copy constructor called.");
 	this->name = name;
 	this->health = 10;
 	this->energy = 10;
@@ -39,7 +40,7 @@ ClapTrap::ClapTrap(const std::string& name)
 
 ClapTrap::~ClapTrap()
 {
-	LOG("Trap destroyed.");
+	LOG("ClapTrap destroyed.");
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& right)
@@ -104,7 +105,7 @@ int ClapTrap::getDamage(void) const
 
 std::ostream& operator<<(std::ostream& out, const ClapTrap& right)
 {
-	out << "Trap Name (" << right.getName() << "): " << std::endl;
+	out << "ClapTrap Name (" << right.getName() << "): " << std::endl;
 	out << " - Health: " << right.getHealth() << std::endl;
 	out << " - Energy: " << right.getEnergy() << std::endl;
 	out << " - Damage: " << right.getDamage() << std::endl;

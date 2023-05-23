@@ -18,57 +18,21 @@ void usage(void)
 	exit(1);
 }
 
-int menu(const ClapTrap &trap)
-{
-	int option;
-
-	std::cout << trap << std::endl;
-	std::cout << "Available options:" << std::endl;
-	std::cout << "1 -> Attack" << std::endl;
-	std::cout << "2 -> Repair" << std::endl;
-	std::cout << "3 -> Take damage" << std::endl;
-	std::cout << "4 -> Exit" << std::endl;
-	std::cout << "Option: ";
-	std::cin >> option;
-	std::cin.ignore(1000, '\n');
-	return (option);
-}
-
 int main(int argc, char **argv)
 {
 	if (argc < 2)
 		usage();
+	ClapTrap t1;
+	ClapTrap t2(argv[1]);
+	ClapTrap t3(t2);
 
-	ClapTrap trap(argv[1]);
-	std::string target;
-	int tmp;
+	std::cout << "-------- Testing t3(t2) --------" << std::endl;
+	t3.attack("something");
+	t3.takeDamage(9);
+	t3.beRepaired(5);
+	std::cout << t3 << std::endl;
 
-	while (1)
-	{
-		tmp = menu(trap);
-		switch(tmp)
-		{
-			case 1:
-				std::cout << "Pick a target: ";
-				std::getline(std::cin, target);
-				trap.attack(target);
-				break;
-			case 2:
-				std::cout << "Points to heal: ";
-				std::cin >> tmp;
-				std::cin.ignore(1000, '\n');
-				trap.beRepaired(tmp);
-				break;
-			case 3:
-				std::cout << "Amount of damage: ";
-				std::cin >> tmp;
-				std::cin.ignore(1000, '\n');
-				trap.takeDamage(tmp);
-				break;
-			case 4:
-				return (0);
-			default:
-				break;
-		}
-	}
+	std::cout << "-------- Testing t1 = t3 --------" << std::endl;
+	t1 = t3;
+	std::cout << t1 << std::endl;
 }
