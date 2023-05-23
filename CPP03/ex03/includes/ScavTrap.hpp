@@ -16,15 +16,20 @@
 # include <iostream>
 # include "ClapTrap.hpp"
 
-class ScavTrap : virtual public ClapTrap
+class ScavTrap : public ClapTrap
 {
 	public:
+		//! Constructors and destructor
 		ScavTrap(void);
 		ScavTrap(const ScavTrap& trap);
 		ScavTrap(const std::string name);
-		ScavTrap& operator=(const ScavTrap& trap);
 		virtual ~ScavTrap(void);
-		virtual void attack(const std::string &target);		
+
+		//! Operator overloading
+		ScavTrap& operator=(const ScavTrap& trap);
+
+		//! Others
+		void attack(const std::string &target);		
 		void guardGate(void);
 };
 
