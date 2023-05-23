@@ -58,7 +58,10 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& right)
 void ClapTrap::attack(const std::string& target)
 {
 	if (!this->energy || !this->health)
+	{
+		std::cout << "\n\tClapTrap is depleted.\n" << std::endl; 
 		return ;
+	}
 
 	std::cout << "\n\tClapTrap " << this->name << " attacks " << target;
 	std::cout << ", causing " << this->damage << " points of damage!\n" << std::endl;
@@ -67,7 +70,9 @@ void ClapTrap::attack(const std::string& target)
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
-	this->health = this->health - amount > 0 ? this->health - amount : 0;
+	this->health = this->health - amount;
+	if (this->health < 0)
+		this->health = 0;
 	std::cout << "\n\tClapTrap " << this->name << " received " << amount;
 	std::cout << " damage, dropping the HP to " << this->health << "!\n" << std::endl;
 }
@@ -75,9 +80,12 @@ void ClapTrap::takeDamage(unsigned int amount)
 void ClapTrap::beRepaired(unsigned int amount)
 {
 	if (!this->energy || !this->health)
+	{
+		std::cout << "\n\tClapTrap is depleted.\n" << std::endl; 
 		return ;
+	}
 
-	this->health = this->health + amount < 10 ? this->health + amount : 10;
+	this->health = this->health + amount;	
 	std::cout << "\n\tClapTrap " << this->name << " healed " << amount;
 	std::cout << " HP, increasing the HP to " << this->health << "!\n" << std::endl;
 	this->energy--;
@@ -125,9 +133,11 @@ void ClapTrap::setDamage(int damage)
 
 std::ostream& operator<<(std::ostream& out, const ClapTrap& right)
 {
-	out << "Trap Name (" << right.getName() << "): " << std::endl;
+	out << "------------------------------------------" << std::endl;
+	out << right.getName() << std::endl;
 	out << " - Health: " << right.getHealth() << std::endl;
 	out << " - Energy: " << right.getEnergy() << std::endl;
 	out << " - Damage: " << right.getDamage() << std::endl;
+	out << "------------------------------------------" << std::endl;
 	return (out);
 }
