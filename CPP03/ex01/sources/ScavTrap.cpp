@@ -14,7 +14,7 @@
 
 ScavTrap::ScavTrap(void)
 {
-	LOG("ScavTrap constructor called.");
+	LOG("ScavTrap default constructor called.");
 	this->setHealth(100);
 	this->setEnergy(50);
 	this->setDamage(20);
