@@ -37,7 +37,7 @@ class ClapTrap
 		ClapTrap(void);
 		ClapTrap(const ClapTrap& trap);
 		ClapTrap(const std::string& name);
-		virtual ~ClapTrap(void);
+		~ClapTrap(void);
 
 		//! Others
 		ClapTrap& operator=(const ClapTrap& right);

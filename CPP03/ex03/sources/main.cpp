@@ -10,15 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 void usage(void)
 {
-	std::cout << "Usage: ./fragtrap trap_name" << std::endl;
+	std::cout << "Usage: ./DiamondTrap trap_name inherited_trap_name" << std::endl;
 	exit(1);
 }
 
-int menu(const FragTrap &trap)
+int menu(const DiamondTrap &trap)
 {
 	int option;
 
@@ -27,8 +27,10 @@ int menu(const FragTrap &trap)
 	std::cout << "1 -> Attack" << std::endl;
 	std::cout << "2 -> Repair" << std::endl;
 	std::cout << "3 -> Take damage" << std::endl;
-	std::cout << "4 -> High Five" << std::endl;
-	std::cout << "5 -> Exit" << std::endl;
+	std::cout << "4 -> Guard gate" << std::endl;
+	std::cout << "5 -> High five" << std::endl;
+	std::cout << "6 -> Who am I" << std::endl;
+	std::cout << "7 -> Exit" << std::endl;
 	std::cout << "Option: ";
 	std::cin >> option;
 	std::cin.ignore(1000, '\n');
@@ -38,10 +40,10 @@ int menu(const FragTrap &trap)
 
 int main(int argc, char **argv)
 {
-	if (argc < 2)
+	if (argc < 3)
 		usage();
 
-	FragTrap trap(argv[1]);
+	DiamondTrap trap(argv[1], argv[2]);
 	std::string target;
 	int tmp;
 
@@ -68,9 +70,15 @@ int main(int argc, char **argv)
 				trap.takeDamage(tmp);
 				break;
 			case 4:
-				trap.highFiveGuys();
+				trap.guardGate();
 				break;
 			case 5:
+				trap.highFiveGuys();
+				break;
+			case 6:
+				trap.whoAmI();
+				break;
+			case 7:
 				return (0);
 				break;
 			default:

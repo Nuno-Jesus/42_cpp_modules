@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crypto <crypto@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 10:17:54 by crypto            #+#    #+#             */
-/*   Updated: 2023/05/23 10:33:03 by crypto           ###   ########.fr       */
+/*   Updated: 2023/05/23 19:18:09 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,5 @@ void FragTrap::attack(const std::string &target)
 
 void FragTrap::highFiveGuys(void)
 {
-	std::cout << "\n\tGood job y'all! High five!\n" << std::endl;
+	std::cout << "\n\tFragTrap " << this->getName() << " requested high five!\n" << std::endl;
 }	
