@@ -14,7 +14,6 @@
 # define CHARACTER_HPP
 
 # include "ICharacter.hpp"
-# include <cstring>
 
 # define SLOTS 4
 

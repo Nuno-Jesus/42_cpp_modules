@@ -16,8 +16,11 @@ Character::Character(void)
 {
 	LOG("Character default constructor called.");
 	this->inventorySize = 0;
-	memset(this->inventory, 0, SLOTS * sizeof(AMateria *));
-	memset(this->unequiped, 0, SLOTS * sizeof(AMateria *));
+	for (int i = 0; i < SLOTS; i++)
+	{
+		this->inventory[i] = NULL;
+		this->unequiped[i] = NULL;
+	}
 }
 
 Character::Character(const std::string& name)
@@ -25,8 +28,11 @@ Character::Character(const std::string& name)
 	LOG("Character parameter constructor called.");
 	this->name = name;
 	this->inventorySize = 0;
-	memset(this->inventory, 0, SLOTS * sizeof(AMateria *));
-	memset(this->unequiped, 0, SLOTS * sizeof(AMateria *));
+	for (int i = 0; i < SLOTS; i++)
+	{
+		this->inventory[i] = NULL;
+		this->unequiped[i] = NULL;
+	}
 }
 
 Character::Character(const Character& character)
@@ -34,8 +40,11 @@ Character::Character(const Character& character)
 	LOG("Character copy constructor called.");
 	this->name = character.name;
 	this->inventorySize = character.inventorySize;
-	memcpy(this->inventory, character.inventory, SLOTS * sizeof(AMateria *));
-	memcpy(this->unequiped, character.unequiped, SLOTS * sizeof(AMateria *));
+	for (int i = 0; i < SLOTS; i++)
+	{
+		this->inventory[i] = NULL;
+		this->unequiped[i] = NULL;
+	}
 }
 
 Character::~Character(void)
@@ -83,10 +92,13 @@ void Character::unequip(int idx)
 	// Out of bounds exception
 	if (idx < 0 || idx > 3)
 		return ;
+	
 	// Unexisting materia to unequip or full address list
 	if (!this->inventory[idx] || this->unequiped[idx] != NULL)
+	{
+		LOG(this->name + " dropped NULL...");
 		return ;
-
+	}
 	LOG(this->name + " dropped " + this->inventory[idx]->getType());
 	this->unequiped[idx] = this->inventory[idx];
 	this->inventory[idx] = NULL;
