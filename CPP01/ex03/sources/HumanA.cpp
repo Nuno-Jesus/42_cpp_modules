@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   HumanA.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crypto <crypto@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 12:21:26 by crypto            #+#    #+#             */
-/*   Updated: 2023/05/19 12:33:16 by crypto           ###   ########.fr       */
+/*   Updated: 2023/05/25 09:35:23 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 HumanA::HumanA()
 {
-	
+	this->weapon = Weapon();
 }
 
-HumanA::HumanA(std::string name, Weapon weapon)
+HumanA::HumanA(const std::string& name, const Weapon& weapon)
 {
 	this->name = name;
 	this->weapon = weapon;

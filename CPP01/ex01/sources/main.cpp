@@ -6,7 +6,7 @@
 /*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 10:07:12 by ncarvalh          #+#    #+#             */
-/*   Updated: 2023/05/20 17:17:37 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/05/25 09:22:10 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,5 @@ int main(int argc, char **argv)
 	
 	for (int i = 0; i < hordeSize; i++)
 		horde[i].announce();
-	delete [] horde;
+	delete[] horde;
 }
