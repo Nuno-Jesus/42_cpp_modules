@@ -41,12 +41,12 @@ At 42, the C projects are built following a bunch of rules that enforce good cod
 		</tr>
 		<tr>
 			<td><strong>CPP03</strong> </td>
-			<td>OOP principles: Inheritance</td>
+			<td>OOP: Inheritance</td>
 			<td>???/100</td>
 		</tr>
 		<tr>
 			<td><strong>CPP04</strong> </td>
-			<td>???</td>
+			<td>OOP: Polymorphism, Abstract Classes and Interfaces</td>
 			<td>???/100</td>
 		</tr>
 		<tr>
