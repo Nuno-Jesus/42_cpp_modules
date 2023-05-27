@@ -6,7 +6,7 @@
 /*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 14:18:20 by ncarvalh          #+#    #+#             */
-/*   Updated: 2023/05/20 16:03:28 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/05/27 13:33:27 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ std::string readContents(char *filename)
 	return (content);
 }
 
-std::string replace(const std::string &contents, 
+std::string replace(const std::string &input, 
 	const std::string &oldString, const std::string &newString)
 {
 	size_t		newStart;
@@ -53,21 +53,17 @@ std::string replace(const std::string &contents,
 	oldStart = 0;
 	while (1)
 	{
-		newStart = contents.find(oldString, oldStart);
-		std::cout << "Old Start: " << oldStart << std::endl;
-		std::cout << "New Start: " << newStart << std::endl;
-		result += contents.substr(oldStart, newStart - oldStart);
-		std::cout << "String so far " << result << std::endl;
+		newStart = input.find(oldString, oldStart);
+		result += input.substr(oldStart, newStart - oldStart);
 		if (newStart == std::string::npos)
 			break;
 		result += newString;
-		std::cout << "String so far " << result << std::endl;
 		oldStart = newStart + oldString.length();
 	}
 	return (result);
 }
 
-void writeContents(char *filename, const std::string &contents)
+void writeContents(char *filename, const std::string &result)
 {
 	std::ofstream outfile;
 
@@ -77,7 +73,7 @@ void writeContents(char *filename, const std::string &contents)
 		std::cout << "Failed to open '" << filename << "'" << std::endl;
 		exit(2);
 	}
-	outfile << contents;
+	outfile << result;
 	outfile.close();
 }
 
@@ -85,14 +81,19 @@ int main(int argc, char **argv)
 {
 	if (argc < 4)
 		usage();
-	std::string contents;
+	std::string input;
 	std::string oldString;
 	std::string newString;
+	std::string output;
 	
 	oldString = argv[2];
 	newString = argv[3];
 
-	contents = readContents(argv[1]);
-	contents = replace(contents, oldString, newString);
-	writeContents(argv[1], contents);
+	input = readContents(argv[1]);
+	if (oldString != "")
+		output = replace(input, oldString, newString);
+	else
+		for (std::size_t i = 0; i < input.length(); i++)
+			output += newString;
+	writeContents(argv[1], output);
 }
