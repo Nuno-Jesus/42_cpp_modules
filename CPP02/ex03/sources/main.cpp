@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 08:29:16 by ncarvalh          #+#    #+#             */
-/*   Updated: 2023/05/22 00:03:48 by marvin           ###   ########.fr       */
+/*   Updated: 2023/05/27 17:21:21 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@ int main(void)
 
 	std::cout << "Input x and y (x y): ";
 	std::cin >> x >> y;
+	if (std::cin.fail())
+	{
+		std::cout << "\n\tBad input\n" << std::endl;
+		return (EXIT_FAILURE);
+	}
 	
 	if (bsp(a, b, c, Point(x, y)))
 		std::cout << "(" << x << "," << y << ") is inside the triangle" << std::endl;
@@ -32,24 +37,3 @@ int main(void)
 		std::cout << "(" << x << "," << y << ") is outside the triangle" << std::endl;
 	return 0;
 }
-
-/*
-If P(30, 15):
-			  B(10,30)
-                / \
-               /   \
-              /     \
-             /       \      P
-            /         \
-     A(0,0) ----------- C(20,0) 
-
-If P(10, 15):
-			  B(10,30)
-                / \
-               /   \
-              /     \
-             /   P   \      
-            /         \
-     A(0,0) ----------- C(20,0) 
-
- */
