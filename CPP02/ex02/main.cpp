@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 08:29:16 by ncarvalh          #+#    #+#             */
-/*   Updated: 2023/05/22 12:58:26 by marvin           ###   ########.fr       */
+/*   Updated: 2023/05/27 18:12:26 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 void	test_increments(void)
 {
 	Fixed a;
-	Fixed const b(Fixed(5.05f) * Fixed(2));
-	Fixed c(Fixed(5.05f) + Fixed(2));
+	const Fixed b(Fixed(5.05f) * Fixed(2));
+	const Fixed c(Fixed(5.05f) + Fixed(2));
 	
 	std::cout << "\n\t--- Testing increments ---\n" << std::endl;
 	std::cout << "The value of a is: " << a << std::endl;
@@ -25,7 +25,6 @@ void	test_increments(void)
 	std::cout << "The value of a is: " << a << std::endl;
 	std::cout << "The value of a++ is: " << a++ << std::endl;
 	std::cout << "The value of a is: " << a << std::endl;
-	
 	std::cout << "The value of c is: " << c << std::endl;
 	std::cout << "The maximum between a and b is: " << Fixed::max(a, b) << std::endl;	
 }
@@ -33,35 +32,38 @@ void	test_increments(void)
 void	test_decrements(void)
 {
 	Fixed a;
-	Fixed b(Fixed(5.05f) / Fixed(2));
-	Fixed c(Fixed(5.05f) - Fixed(2));
+	const Fixed b(Fixed(5.05f) / Fixed(2));
+	const Fixed c(Fixed(5.05f) - Fixed(2));
 	
 	std::cout << "\n\t--- Testing decrements ---\n" << std::endl;
-	std::cout << "The value of b is: " << b << std::endl;
-	std::cout << "The value of --b is: " << --b << std::endl;
-	std::cout << "The value of b is: " << b << std::endl;
-	std::cout << "The value of b-- is: " << b-- << std::endl;
-	std::cout << "The value of b is: " << b << std::endl;
+	std::cout << "The value of b is: " << a << std::endl;
+	std::cout << "The value of --b is: " << --a << std::endl;
+	std::cout << "The value of b is: " << a << std::endl;
+	std::cout << "The value of b-- is: " << a-- << std::endl;
+	std::cout << "The value of b is: " << a << std::endl;
 	std::cout << "The value of c is: " << c << std::endl;
-	
 	std::cout << "The minimum between a and b is: " << Fixed::min(a, b) << std::endl;	
 }
 
 void test_comparisons(void)
 {
 	Fixed a(5.5f);	
-	Fixed b(5.7f);	
+	Fixed b(5.2f);	
 
 	std::cout << "\n\t--- Testing comparison ---\n" << std::endl;
+	
 	if (a != b)
-	{
-		if (a > b)
-			std::cout << "A(" << a << ") is greater than B(" << b << ")" << std::endl;
-		if (a < b)
-			std::cout << "A(" << a << ") is less than B(" << b << ")" << std::endl;
-	}
+		std::cout << "A(" << a << ") != B(" << b << ")" << std::endl;
 	else	
-		std::cout << "A(" << a << ") is equal to B(" << b << ")" << std::endl;
+		std::cout << "A(" << a << ") == B(" << b << ")" << std::endl;
+	if (a > b)
+		std::cout << "A(" << a << ") > B(" << b << ")" << std::endl;
+	if (a < b)
+		std::cout << "A(" << a << ") < B(" << b << ")" << std::endl;
+	if (a >= b)
+		std::cout << "A(" << a << ") >= B(" << b << ")" << std::endl;
+	if (a <= b)
+		std::cout << "A(" << a << ") <= B(" << b << ")" << std::endl;
 }
 
 int main(void)
