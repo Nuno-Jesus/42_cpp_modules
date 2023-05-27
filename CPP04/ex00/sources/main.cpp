@@ -38,7 +38,18 @@ void test_animal_copy(void)
 	std::cout << copy->getType() << std::endl;
 	copy->makeSound();
 
+	const Dog *first = new Dog();
+	const Dog *second = new Dog(*first);
+
+	std::cout << first->getType() << std::endl;
+	first->makeSound();
+
+	std::cout << second->getType() << std::endl;
+	second->makeSound();
+
 	delete dog;
+	delete first;
+	delete second;
 }
 
 void test_inheritance(void)
@@ -68,7 +79,7 @@ void test_animal_instance(void)
 	delete meta;
 }
 
-int main()
+int main(void)
 {
 	test_animal_instance();
 	test_inheritance();
