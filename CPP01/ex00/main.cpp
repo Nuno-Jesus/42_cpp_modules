@@ -6,7 +6,7 @@
 /*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 10:07:12 by ncarvalh          #+#    #+#             */
-/*   Updated: 2023/05/20 17:13:13 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/05/27 15:39:49 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int main(int argc, char **argv)
 	std::string randomName;
 	std::string newZombieName;
 
-	if (argc < 2)
+	if (argc < 3)
 		usage();
 
 	randomName = argv[1];
