@@ -6,7 +6,7 @@
 /*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 14:18:20 by ncarvalh          #+#    #+#             */
-/*   Updated: 2023/05/27 13:33:27 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/05/27 13:37:06 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void usage(void)
 
 std::string readContents(char *filename)
 {
-	char next;
+	std::string tmp;
 	std::string content;
 	std::ifstream infile;
 	
@@ -34,10 +34,10 @@ std::string readContents(char *filename)
 	}
 	while (1)
 	{
-		infile.get(next);
+		std::getline(infile, tmp);
+		content += tmp;
 		if (infile.eof())
 			break;
-		content += next;
 	}
 	infile.close();
 	return (content);
