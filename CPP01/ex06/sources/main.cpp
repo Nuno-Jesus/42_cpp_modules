@@ -6,7 +6,7 @@
 /*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 16:50:11 by ncarvalh          #+#    #+#             */
-/*   Updated: 2023/05/27 13:48:12 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/05/27 13:53:33 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void usage(void)
 	exit(1);
 }
 
-void harlFilter(Harl harl, std::string level)
+void harlFilter(Harl &harl, const std::string& level)
 {	
 	int index;
 	std::string levels[4] = 
@@ -54,12 +54,10 @@ void harlFilter(Harl harl, std::string level)
 
 int main(int argc, char **argv)
 {
-	Harl 		harl;
-	std::string level;
+	Harl harl;
 	
 	if (argc < 2)
 		usage();
-	level = argv[1];
-	harlFilter(harl, level);
+	harlFilter(harl, argv[1]);
 	return (0);
 }

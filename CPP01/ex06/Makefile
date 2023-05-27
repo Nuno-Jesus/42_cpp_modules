@@ -30,6 +30,7 @@ NAME			= harlFilter
 _FILES			= Harl main
 OBJS			= $(_FILES:%=%.o)
 TARGET			= $(addprefix $(BINS)/, $(OBJS))
+DEBUG			= .debug
 
 #_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_ RULES _/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_
 all: $(NAME)
@@ -49,7 +50,7 @@ $(BINS):
 
 clean:
 	echo "[$(RED) Deleted $(RESET)] $(GREEN)$(BINS)$(RESET)"
-	$(RM) $(BINS)
+	$(RM) $(BINS) $(DEBUG)
 
 fclean: clean
 	echo "[$(RED) Deleted $(RESET)] $(GREEN)$(NAME)$(RESET)"
@@ -59,6 +60,6 @@ re: fclean all
 
 run: re
 	./$(NAME)
-
+	
 .SILENT:
 
