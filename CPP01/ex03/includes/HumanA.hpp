@@ -6,7 +6,7 @@
 /*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 12:21:31 by crypto            #+#    #+#             */
-/*   Updated: 2023/05/25 09:34:08 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/05/27 13:01:22 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,9 @@
 class HumanA
 {
 	public:
-		HumanA();
-		HumanA(const std::string& name, const Weapon& weapon);
+		HumanA(const std::string& name, Weapon& weapon);
 		void attack(void);
-		void setWeapon(Weapon& weapon);
+		void setWeapon(const Weapon& weapon);
 		
 	private:
 		std::string name;
