@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 10:17:54 by crypto            #+#    #+#             */
-/*   Updated: 2023/05/23 20:58:58 by marvin           ###   ########.fr       */
+/*   Updated: 2023/05/27 19:05:34 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 FragTrap::FragTrap(void)
 {
 	LOG("FragTrap default constructor called.");
-	this->setHealth(100);
-	this->setEnergy(100);
-	this->setDamage(30);
+	this->health = 100;
+	this->energy = 100;
+	this->damage = 30;
 }
 
 FragTrap::FragTrap(const FragTrap& trap) : ClapTrap(trap)
@@ -28,37 +28,37 @@ FragTrap::FragTrap(const FragTrap& trap) : ClapTrap(trap)
 FragTrap::FragTrap(const std::string name) : ClapTrap(name)
 {
 	LOG("FragTrap parameter constructor called.");
-	this->setHealth(100);
-	this->setEnergy(100);
-	this->setDamage(30);
+	this->health = 100;
+	this->energy = 100;
+	this->damage = 30;
 }
 
 FragTrap& FragTrap::operator=(const FragTrap& trap)
 {
 	if (this == &trap)
 		return (*this);
-	this->setName(trap.getName());
-	this->setHealth(trap.getHealth());
-	this->setEnergy(trap.getEnergy());
-	this->setDamage(trap.getDamage());	
+	this->name = trap.getName();
+	this->health = trap.getHealth();
+	this->energy = trap.getEnergy();
+	this->damage = trap.getDamage();
 	return (*this);
 }
 
 FragTrap::~FragTrap(void)
 {
-	LOG("FragTrap destroyed.");	
+	LOG("FragTrap destroyed.");
 }
 
 void FragTrap::attack(const std::string &target)
 {
-	if (!this->getEnergy() || !this->getHealth())
+	if (!this->energy || !this->health)
 	{
 		std::cout << "\n\tFragTrap is depleted.\n" << std::endl; 
 		return ;
 	}
 	std::cout << "\n\tFragTrap " << this->getName() << " attacks " << target;
 	std::cout << ", causing " << this->getDamage() << " points of damage!\n" << std::endl;
-	this->setEnergy(this->getEnergy() - 1);
+	this->energy--;
 }		
 
 void FragTrap::highFiveGuys(void)

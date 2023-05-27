@@ -28,14 +28,19 @@ int main(int argc, char **argv)
 
 	std::cout << "-------- Testing t3(t2) --------" << std::endl;
 	t3.attack("something");
+	std::cout << t3;
 	t3.takeDamage(9);
+	std::cout << t3;
 	t3.beRepaired(5);
+	std::cout << t3;
 	t3.guardGate();
+	std::cout << t3;
 	t3.highFiveGuys();
+	std::cout << t3;
 	t3.whoAmI();
-	std::cout << t3 << std::endl;
+	std::cout << t3;
 
 	std::cout << "-------- Testing t1 = t3 --------" << std::endl;
 	t1 = t3;
-	std::cout << t1 << std::endl;
+	std::cout << t1;
 }
