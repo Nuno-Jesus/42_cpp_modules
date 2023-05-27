@@ -15,6 +15,7 @@
 Character::Character(void)
 {
 	LOG("Character default constructor called.");
+	this->name = "";
 	this->inventorySize = 0;
 	for (int i = 0; i < SLOTS; i++)
 	{
@@ -38,13 +39,7 @@ Character::Character(const std::string& name)
 Character::Character(const Character& character)
 {
 	LOG("Character copy constructor called.");
-	this->name = character.name;
-	this->inventorySize = character.inventorySize;
-	for (int i = 0; i < SLOTS; i++)
-	{
-		this->inventory[i] = NULL;
-		this->unequiped[i] = NULL;
-	}
+	*this = character;
 }
 
 Character::~Character(void)

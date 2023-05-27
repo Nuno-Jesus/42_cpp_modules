@@ -15,9 +15,9 @@
 #include "Ice.hpp"
 #include "MateriaSource.hpp"
 
-void	test_copy_operators(void)
+void	test_copy_constructors(void)
 {
-	std::cout << "\n\t======= Testing copy operators =======\n" << std::endl;
+	std::cout << "\n\t======= Testing copy constructors =======\n" << std::endl;
 	IMateriaSource *source = new MateriaSource();
 
 	source->learnMateria(new Ice());
@@ -67,7 +67,7 @@ void	test_all_together(void)
 
 int main()
 {
-	test_copy_operators();
+	test_copy_constructors();
 	test_all_together();
 	return 0;
 }
