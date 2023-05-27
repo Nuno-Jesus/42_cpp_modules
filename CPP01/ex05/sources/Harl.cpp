@@ -1,7 +1,13 @@
 #include "Harl.hpp"
 
-Harl :: Harl()
+Harl :: Harl(void)
 {
+	LOG("Harl default constructor called.");
+}
+
+Harl :: ~Harl(void)
+{
+	LOG("Harl died.");
 }
 
 void Harl :: complain (std::string level)

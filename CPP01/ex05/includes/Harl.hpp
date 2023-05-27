@@ -6,7 +6,7 @@
 /*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 16:10:34 by ncarvalh          #+#    #+#             */
-/*   Updated: 2023/05/20 16:52:03 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/05/27 13:46:55 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,26 @@
 # include <iostream>
 # include <cstdlib>
 
+// # define DEBUG
+
+# ifdef DEBUG
+#	define LOG(str) std::cout << str << std::endl;
+# else
+#	define LOG(str)
+# endif
+
 class Harl
 {
 	public:
-		Harl();
+		//! Constructor
+		Harl(void);
+		~Harl(void);
+
+		//! Others
 		void complain (std::string level);
+		
 	private:
+		//! Others
 		void debug( void );
 		void info( void );
 		void warning( void );
