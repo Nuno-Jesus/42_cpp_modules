@@ -51,3 +51,9 @@ Brain& Brain::operator=(const Brain& right)
 		this->ideas[i] = right.ideas[i];
 	return (*this);
 }
+
+void Brain::use(void) const
+{
+	for (int i = 0; i < 10; i++)
+		std::cout << i << ":" + this->ideas[i] << std::endl;
+}

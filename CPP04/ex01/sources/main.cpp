@@ -15,8 +15,8 @@
 
 void test_animal_copies(void)
 {
-	std::cout << "\n\t=== Testing shallow/deep copies ===\n" << std::endl
-	;
+	std::cout << "\n\t=== Testing shallow/deep copies ===\n" << std::endl;
+	
 	Cat *cat = new Cat();
 	Cat *clone = new Cat(*cat);
 
@@ -31,6 +31,7 @@ void test_animal_copies(void)
 void test_destructors(void)
 {
 	std::cout << "\n\t=== Testing destructors ===\n" << std::endl;
+	
 	Animal *animals[4] = 
 	{
 		new Dog(),

@@ -35,6 +35,9 @@ class Brain
 		Brain(const Brain& brain);
 		~Brain(void);
 
+		//! Others
+		void use(void) const;
+
 		//! Operator overloading
 		Brain& operator=(const Brain& right);
 };
