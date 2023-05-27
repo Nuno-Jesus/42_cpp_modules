@@ -6,7 +6,7 @@
 /*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 14:18:20 by ncarvalh          #+#    #+#             */
-/*   Updated: 2023/05/27 13:37:06 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/05/27 15:37:52 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,11 @@ std::string replace(const std::string &input,
 	return (result);
 }
 
-void writeContents(char *filename, const std::string &result)
+void writeContents(const std::string& filename, const std::string &result)
 {
 	std::ofstream outfile;
 
-	outfile.open(filename, std::ios::out);
+	outfile.open((filename + ".replace").c_str(), std::ios::out);
 	if (outfile.fail())
 	{
 		std::cout << "Failed to open '" << filename << "'" << std::endl;

@@ -19,8 +19,8 @@ CFLAGS		= -Wall -Wextra -Werror -pedantic -std=c++98
 MKFLAGS		= --no-print-directory
 
 #_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_ FOLDERS _/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_
-DEPS			= includes
-SRCS			= sources
+DEPS			= .
+SRCS			= .
 _SUBFOLDERS		= 
 VPATH			= $(SRCS) $(addprefix $(SRCS)/, $(_SUBFOLDERS))
 BINS			= bin
@@ -30,7 +30,6 @@ NAME			= harlFilter
 _FILES			= Harl main
 OBJS			= $(_FILES:%=%.o)
 TARGET			= $(addprefix $(BINS)/, $(OBJS))
-DEBUG			= .debug
 
 #_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_ RULES _/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_
 all: $(NAME)
