@@ -15,9 +15,9 @@
 ScavTrap::ScavTrap(void)
 {
 	LOG("ScavTrap default constructor called.");
-	this->setHealth(100);
-	this->setEnergy(50);
-	this->setDamage(20);
+	this->health = 100;
+	this->energy = 50;
+	this->damage = 20;
 }
 
 ScavTrap::ScavTrap(const ScavTrap& trap) : ClapTrap(trap)
@@ -28,19 +28,19 @@ ScavTrap::ScavTrap(const ScavTrap& trap) : ClapTrap(trap)
 ScavTrap::ScavTrap(const std::string name) : ClapTrap(name)
 {
 	LOG("ScavTrap parameter constructor called.");
-	this->setHealth(100);
-	this->setEnergy(50);
-	this->setDamage(20);
+	this->health = 100;
+	this->energy = 50;
+	this->damage = 20;
 }
 
 ScavTrap& ScavTrap::operator=(const ScavTrap& trap)
 {
 	if (this == &trap)
 		return (*this);
-	this->setName(trap.getName());
-	this->setHealth(trap.getHealth());
-	this->setEnergy(trap.getEnergy());
-	this->setDamage(trap.getDamage());
+	this->name = trap.getName();
+	this->health = trap.getHealth();
+	this->energy = trap.getEnergy();
+	this->damage = trap.getDamage();
 	return (*this);
 }
 
@@ -57,9 +57,9 @@ void ScavTrap::attack(const std::string &target)
 		return ;
 	}
 
-	std::cout << "\n\tScavTrap " << this->getName() << " attacks " << target;
-	std::cout << ", causing " << this->getDamage() << " points of damage!\n" << std::endl;
-	this->setEnergy(this->getEnergy() - 1);
+	std::cout << "\n\tScavTrap " << this->name << " attacks " << target;
+	std::cout << ", causing " << this->damage << " points of damage!\n" << std::endl;
+	this->energy--;
 }
 
 void ScavTrap::guardGate(void)
