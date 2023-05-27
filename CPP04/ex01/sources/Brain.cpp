@@ -14,7 +14,7 @@
 
 Brain::Brain(void)
 {
-	LOG("Brain default constructor called.");
+	std::cout << "Brain default constructor called." << std::endl;
 
 	const std::string ideas[] = 
 	{
@@ -32,18 +32,18 @@ Brain::Brain(void)
 
 Brain::Brain(const Brain& brain)
 {
-	LOG("Brain copy constructor called.");
+	std::cout << "Brain copy constructor called." << std::endl;
 	*this = brain;
 }
 
 Brain::~Brain(void)
 {
-	LOG("Brain died.");
+	std::cout << "Brain died." << std::endl;
 }
 
 Brain& Brain::operator=(const Brain& right)
 {
-	LOG("Brain assigment operator called.");
+	std::cout << "Brain assigment operator called." << std::endl;
 
 	if (this == &right)
 		return (*this);

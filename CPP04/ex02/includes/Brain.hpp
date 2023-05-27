@@ -13,11 +13,9 @@
 #ifndef BRAIN_HPP
 # define BRAIN_HPP
 
-# ifdef DEBUG
-# 	define LOG(str) std::cout << str << std::endl;
-# else
-#	define LOG(str)
-# endif
+# define DEBUG
+
+# define LOG(str) std::cout << str << std::endl;
 
 # include <iostream>
 # include <cstdlib>

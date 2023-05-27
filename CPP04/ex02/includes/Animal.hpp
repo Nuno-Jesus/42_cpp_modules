@@ -13,10 +13,11 @@
 #ifndef ANIMAL_HPP
 # define ANIMAL_HPP
 
-# define DEBUG
 
 # include <iostream>
 # include "Brain.hpp"
+
+# define DEBUG
 
 # ifdef DEBUG
 # 	define LOG(str) std::cout << str << std::endl;
