@@ -6,14 +6,14 @@
 /*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 08:29:16 by ncarvalh          #+#    #+#             */
-/*   Updated: 2023/05/27 17:21:21 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/05/27 18:28:50 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Point.hpp"
 
-bool bsp(const Point a, const Point b, const Point c, const Point point);
+bool bsp(Point const a, Point const b, Point const c, Point const point);
 
 int main(void)
 {

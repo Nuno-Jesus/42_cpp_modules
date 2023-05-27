@@ -6,7 +6,7 @@
 /*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 08:01:25 by ncarvalh          #+#    #+#             */
-/*   Updated: 2023/05/21 10:57:34 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/05/27 18:16:40 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,18 @@ class Fixed
 		static const int BITS = 8;
 		
 	public:
-		//! Constructors overloading
+		//! Constructors and destructor
 		Fixed();
 		Fixed(const Fixed &num);
 		Fixed(const int num);
 		Fixed(const float num);
 		~Fixed();
 
-		//! Number representation functions
+		//! Getters and setters
 		int getRawBits(void) const;
 		void setRawBits(int const raw);
+
+		//! Conversions
 		float toFloat(void) const;
 		int toInt(void) const;
 

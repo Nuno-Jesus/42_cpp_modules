@@ -45,7 +45,7 @@ float area(const Point p1, const Point p2, const Point p3)
 }
 
 //! Dividing the triangle in 3 triangles, the sum of the inners should equal the total
-bool bsp(const Point a, const Point b, const Point c, const Point point)
+bool bsp(Point const a, Point const b, Point const c, Point const point)
 {	
 	//! If the point belongs to one of the sides of the triangle
 	if (inSegment(a, b, point) || inSegment(b, c, point) || inSegment(c, a, point))

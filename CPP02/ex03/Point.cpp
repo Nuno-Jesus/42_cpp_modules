@@ -14,22 +14,22 @@
 
 Point :: Point() : x(0), y(0)
 {
-	// std::cout << "Default constructor called." << std::endl;
+	LOG("Default constructor called.");
 }
 
 Point :: Point(const float x, const float y) : x(x), y(y)
 {
-	// std::cout << "Parameter constructor called." << std::endl;
+	LOG("Parameter constructor called.");
 }
 
 Point::Point( const Point &p ) : x(p.x), y(p.y) 
 {
-    // std::cout << "Point created" << std::endl;
+    LOG("Point created");
 }
 
 Point :: ~Point()
 {
-	// std::cout << "Point (" << this->x << ", " << this->y << ") deleted." << std::endl; 
+	LOG("Point (" << this->x << ", " << this->y << ") deleted.");
 }
 
 Point& Point :: operator=(const Point& p)
@@ -43,7 +43,7 @@ Point& Point :: operator=(const Point& p)
 
 bool Point :: operator==(const Point& p)
 {
-	return((Fixed)this->x == p.getX() && (Fixed)this->y == p.getY());
+	return(this->getX() == p.getX() && this->getY() == p.getY());
 }
 
 Fixed Point :: getX() const
