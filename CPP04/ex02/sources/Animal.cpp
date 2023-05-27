@@ -37,11 +37,6 @@ Animal& Animal::operator=(const Animal& right)
 	return (*this);
 }
 
-void Animal::makeSound() const
-{
-	std::cout << "Animal: ..." << std::endl;
-}
-
 std::string Animal::getType(void) const
 {
 	return (this->type);	

@@ -28,8 +28,8 @@ Dog::Dog(const Dog& dog) : Animal(dog)
 
 Dog::~Dog(void)
 {
-	LOG("Dog died.");
 	delete this->brain;
+	LOG("Dog died.");
 }
 
 Dog& Dog::operator=(const Dog& right)
