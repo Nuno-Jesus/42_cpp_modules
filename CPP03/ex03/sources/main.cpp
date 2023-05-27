@@ -26,7 +26,7 @@ int main(int argc, char **argv)
 	DiamondTrap t2(argv[1]);
 	DiamondTrap t3(t2);
 
-	std::cout << "-------- Testing t3(t2) --------" << std::endl;
+	std::cout << "\n-------- Testing t3(t2) --------" << std::endl;
 	t3.attack("something");
 	std::cout << t3;
 	t3.takeDamage(9);
@@ -40,7 +40,7 @@ int main(int argc, char **argv)
 	t3.whoAmI();
 	std::cout << t3;
 
-	std::cout << "-------- Testing t1 = t3 --------" << std::endl;
+	std::cout << "\n-------- Testing t1 = t3 --------\n" << std::endl;
 	t1 = t3;
 	std::cout << t1;
 }

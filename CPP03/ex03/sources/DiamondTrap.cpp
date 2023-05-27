@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   DiamondTrap.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 11:50:26 by crypto            #+#    #+#             */
-/*   Updated: 2023/05/23 20:49:34 by marvin           ###   ########.fr       */
+/*   Updated: 2023/05/27 19:11:02 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,3 +61,4 @@ void DiamondTrap::attack(const std::string& target)
 {
 	ScavTrap::attack(target);
 }
+

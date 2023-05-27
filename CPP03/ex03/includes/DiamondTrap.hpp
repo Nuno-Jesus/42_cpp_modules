@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 11:40:37 by crypto            #+#    #+#             */
-/*   Updated: 2023/05/23 20:58:26 by marvin           ###   ########.fr       */
+/*   Updated: 2023/05/27 19:11:21 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DIAMONDTRAP_HPP
-# define DIAMONTRAP_HPP
+#ifndef DIAMOND_TRAP_HPP
+# define DIAMOND_TRAP_HPP
 
 # include "ScavTrap.hpp"
 # include "FragTrap.hpp"

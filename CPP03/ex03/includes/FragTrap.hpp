@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 10:15:53 by crypto            #+#    #+#             */
-/*   Updated: 2023/05/23 20:58:06 by marvin           ###   ########.fr       */
+/*   Updated: 2023/05/27 19:10:53 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,5 @@ class FragTrap : virtual public ClapTrap
 		void attack(const std::string &target);		
 		void highFiveGuys(void);
 };
+
 #endif
