@@ -27,12 +27,12 @@ At 42, the C projects are built following a bunch of rules that enforce good cod
 		<tr>
 			<td><strong>CPP00</strong> </td>
 			<td>The principles of OOP, static and const modifiers</td>
-			<td>???/100</td>
+			<td>100/100</td>
 		</tr>
 		<tr>
 			<td><strong>CPP01</strong> </td>
 			<td>Dynamic allocation, member function pointers and switch statement</td>
-			<td>???/100</td>
+			<td>100/100</td>
 		</tr>
 		<tr>
 			<td><strong>CPP02</strong> </td>
