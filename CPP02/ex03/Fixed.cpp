@@ -6,7 +6,7 @@
 /*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 08:30:08 by ncarvalh          #+#    #+#             */
-/*   Updated: 2023/05/29 18:48:02 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/05/27 17:19:56 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,52 +72,52 @@ Fixed& Fixed :: operator=(const Fixed& right)
 
 bool Fixed :: operator>(const Fixed& right)
 {
-	return (this->value > right.value);
+	return (this->toFloat() > right.toFloat());
 }
 
 bool Fixed :: operator<(const Fixed& right)
 {
-	return (this->value < right.value);
+	return (this->toFloat() < right.toFloat());
 }
 
 bool Fixed :: operator>=(const Fixed& right)
 {
-	return (this->value >= right.value);
+	return (this->toFloat() >= right.toFloat());
 }
 
 bool Fixed :: operator<=(const Fixed& right)
 {
-	return (this->value <= right.value);
+	return (this->toFloat() <= right.toFloat());
 }
 
 bool Fixed :: operator==(const Fixed& right)
 {
-	return (this->value == right.value);
+	return (this->toFloat() == right.toFloat());
 }
 
 bool Fixed :: operator!=(const Fixed& right)
 {
-	return (this->value != right.value);
+	return (this->toFloat() != right.toFloat());
 }
 
 Fixed Fixed :: operator+(const Fixed& right)
 {
-	return Fixed(this->value + right.value);
+	return Fixed(this->toFloat() + right.toFloat());
 }
 
 Fixed Fixed :: operator-(const Fixed& right)
 {
-	return Fixed(this->value - right.value);
+	return Fixed(this->toFloat() - right.toFloat());
 }
 
 Fixed Fixed :: operator*(const Fixed& right)
 {
-	return Fixed(this->value * right.value);
+	return Fixed(this->toFloat() * right.toFloat());
 }
 
 Fixed Fixed :: operator/(const Fixed& right)
 {
-	return Fixed(this->value / right.value);
+	return Fixed(this->toFloat() / right.toFloat());
 }
 
 Fixed Fixed :: operator++(void)
