@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 08:30:08 by ncarvalh          #+#    #+#             */
-/*   Updated: 2023/05/22 13:02:09 by marvin           ###   ########.fr       */
+/*   Updated: 2023/05/29 18:47:26 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,52 +72,52 @@ Fixed& Fixed :: operator=(const Fixed& right)
 
 bool Fixed :: operator>(const Fixed& right)
 {
-	return (this->toFloat() > right.toFloat());
+	return (this->value > right.value);
 }
 
 bool Fixed :: operator<(const Fixed& right)
 {
-	return (this->toFloat() < right.toFloat());
+	return (this->value < right.value);
 }
 
 bool Fixed :: operator>=(const Fixed& right)
 {
-	return (this->toFloat() >= right.toFloat());
+	return (this->value >= right.value);
 }
 
 bool Fixed :: operator<=(const Fixed& right)
 {
-	return (this->toFloat() <= right.toFloat());
+	return (this->value <= right.value);
 }
 
 bool Fixed :: operator==(const Fixed& right)
 {
-	return (this->toFloat() == right.toFloat());
+	return (this->value == right.value);
 }
 
 bool Fixed :: operator!=(const Fixed& right)
 {
-	return (this->toFloat() != right.toFloat());
+	return (this->value != right.value);
 }
 
 Fixed Fixed :: operator+(const Fixed& right)
 {
-	return Fixed(this->toFloat() + right.toFloat());
+	return Fixed(this->value + right.value);
 }
 
 Fixed Fixed :: operator-(const Fixed& right)
 {
-	return Fixed(this->toFloat() - right.toFloat());
+	return Fixed(this->value - right.value);
 }
 
 Fixed Fixed :: operator*(const Fixed& right)
 {
-	return Fixed(this->toFloat() * right.toFloat());
+	return Fixed(this->value * right.value);
 }
 
 Fixed Fixed :: operator/(const Fixed& right)
 {
-	return Fixed(this->toFloat() / right.toFloat());
+	return Fixed(this->value / right.value);
 }
 
 Fixed Fixed :: operator++(void)
