@@ -26,7 +26,7 @@ VPATH			= $(SRCS) $(addprefix $(SRCS)/, $(_SUBFOLDERS))
 BINS			= bin
 
 #_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_ FILES _/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_
-NAME			= diamondtrap
+NAME			= ex03
 _FILES			= main ClapTrap ScavTrap FragTrap DiamondTrap
 OBJS			= $(_FILES:%=%.o)
 TARGET			= $(addprefix $(BINS)/, $(OBJS))
@@ -59,6 +59,9 @@ re: fclean all
 
 run: re
 	./$(NAME)
+
+leaks: re
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) $(FOO)
 
 .SILENT:
 

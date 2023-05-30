@@ -15,6 +15,7 @@
 ClapTrap::ClapTrap()
 {
 	LOG("ClapTrap default constructor called.");
+	this->name = "";
 	this->health = 10;
 	this->energy = 10;
 	this->damage = 0;
@@ -106,26 +107,6 @@ int ClapTrap::getEnergy(void) const
 int ClapTrap::getDamage(void) const
 {
 	return (this->damage);
-}
-
-void ClapTrap::setName(std::string name)
-{
-	this->name = name;
-}
-
-void ClapTrap::setHealth(int health)
-{
-	this->health = health;
-}
-
-void ClapTrap::setEnergy(int energy)
-{
-	this->energy = energy;
-}
-
-void ClapTrap::setDamage(int damage)
-{
-	this->damage = damage;
 }
 
 std::ostream& operator<<(std::ostream& out, const ClapTrap& right)

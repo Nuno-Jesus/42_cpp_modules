@@ -50,12 +50,6 @@ class ClapTrap
 		int getHealth(void) const;
 		int getEnergy(void) const;
 		int getDamage(void) const;
-
-		//! Setters
-		void setName(std::string name);
-		void setHealth(int health);
-		void setEnergy(int energy);
-		void setDamage(int damage);
 };
 
 std::ostream& operator<<(std::ostream& out, const ClapTrap& right);

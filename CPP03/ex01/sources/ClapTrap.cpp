@@ -15,6 +15,7 @@
 ClapTrap::ClapTrap()
 {
 	LOG("ClapTrap default constructor called.");
+	this->name = "";
 	this->health = 10;
 	this->energy = 10;
 	this->damage = 0;
