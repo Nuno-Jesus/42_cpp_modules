@@ -56,7 +56,7 @@ void ClapTrap::attack(const std::string& target)
 {
 	if (!this->energy || !this->health)
 	{
-		std::cout << "\n\tClapTrap is depleted.\n" << std::endl; 
+		std::cout << "\n\t💀 ClapTrap is depleted. 💀\n" << std::endl; 
 		return ;
 	}
 	std::cout << "\n\tClapTrap " << this->name << " attacks " << target;
@@ -79,7 +79,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 {
 	if (!this->energy || !this->health)
 	{
-		std::cout << "\n\tClapTrap is depleted.\n" << std::endl; 
+		std::cout << "\n\t💀 ClapTrap is depleted. 💀\n" << std::endl; 
 		return ;
 	}
 	this->health = this->health + amount;	
