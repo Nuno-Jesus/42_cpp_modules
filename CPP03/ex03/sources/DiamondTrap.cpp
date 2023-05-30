@@ -6,7 +6,7 @@
 /*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 11:50:26 by crypto            #+#    #+#             */
-/*   Updated: 2023/05/27 19:11:02 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/05/30 13:47:34 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,21 @@
 DiamondTrap::DiamondTrap(void)
 {
 	LOG("DiamondTrap default constructor called.");
+	this->name = "Nameless";
+	this->health = 100;
+	this->energy = 50;
+	this->damage = 30;
+	this->ClapTrap::name = name + "_clap_name";
 }
 
-DiamondTrap::DiamondTrap(const std::string& name)
+DiamondTrap::DiamondTrap(const std::string& name) : ClapTrap(name), ScavTrap(name), FragTrap(name)
 {
 	LOG("DiamondTrap parameter constructor called.");
 	this->name = name;
-	this->setHealth(FragTrap::getHealth());
-	this->setEnergy(ScavTrap::getEnergy());
-	this->setDamage(FragTrap::getDamage());
-	this->setName(name + "_clap_name");
+	this->health = 100;
+	this->energy = 50;
+	this->damage = 30;
+	this->ClapTrap::name = name + "_clap_name";
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap& trap) : ClapTrap(trap), ScavTrap(trap), FragTrap(trap) 
@@ -43,22 +48,16 @@ DiamondTrap& DiamondTrap::operator=(const DiamondTrap& right)
 	if (this == &right)
 		return (*this);
 	this->name = right.name;
-	this->ClapTrap::setName(right.ClapTrap::getName());
-	this->setHealth(right.FragTrap::getHealth());
-	this->setEnergy(right.ScavTrap::getEnergy());
-	this->setDamage(right.FragTrap::getDamage());
+	this->health = right.health;
+	this->energy = right.energy;
+	this->damage = right.damage;
+	this->ClapTrap::name = right.ClapTrap::name;
 	return (*this);
 }
 
 void DiamondTrap::whoAmI(void)
 {
 	std::cout << "\n\tDiamondTrap " << this->name;
-	std::cout << " is also known as ClapTrap " << ClapTrap::getName();
+	std::cout << " is also known as ClapTrap " << ClapTrap::name;
 	std::cout << std::endl << std::endl;
 }
-
-void DiamondTrap::attack(const std::string& target)
-{
-	ScavTrap::attack(target);
-}
-

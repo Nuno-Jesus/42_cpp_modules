@@ -61,7 +61,7 @@ run: re
 	./$(NAME)
 
 leaks: re
-	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) $(FOO)
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) $(ARG1)
 
 .SILENT:
 

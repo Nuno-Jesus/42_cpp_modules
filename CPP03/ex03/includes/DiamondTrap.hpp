@@ -6,7 +6,7 @@
 /*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 11:40:37 by crypto            #+#    #+#             */
-/*   Updated: 2023/05/27 19:11:21 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/05/30 13:46:16 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ class DiamondTrap : public ScavTrap, public FragTrap
 		DiamondTrap& operator=(const DiamondTrap& right);
 
 		//!Others
-		void attack(const std::string& target);
+		using ScavTrap::attack;
 		void whoAmI(void);
 };
 

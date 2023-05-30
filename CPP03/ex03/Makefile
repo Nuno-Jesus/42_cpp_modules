@@ -60,8 +60,8 @@ re: fclean all
 run: re
 	./$(NAME)
 
-leaks: re
-	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) $(FOO)
+leaks: re	
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) $(ARG1)
 
 .SILENT:
 
