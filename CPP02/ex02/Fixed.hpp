@@ -6,7 +6,7 @@
 /*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 08:01:25 by ncarvalh          #+#    #+#             */
-/*   Updated: 2023/05/27 18:16:40 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/05/30 12:50:31 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ class Fixed
 
 		//! Operators overloading
 		Fixed& operator=(const Fixed &right);
-		bool operator>(const Fixed& right);
-		bool operator<(const Fixed& right);
-		bool operator>=(const Fixed& right);
-		bool operator<=(const Fixed& right);
-		bool operator==(const Fixed& right);
-		bool operator!=(const Fixed& right);
+		bool operator>(const Fixed& right) const;
+		bool operator<(const Fixed& right) const;
+		bool operator>=(const Fixed& right) const;
+		bool operator<=(const Fixed& right) const;
+		bool operator==(const Fixed& right) const;
+		bool operator!=(const Fixed& right) const;
 		Fixed operator+(const Fixed& right);
 		Fixed operator-(const Fixed& right);
 		Fixed operator*(const Fixed& right);

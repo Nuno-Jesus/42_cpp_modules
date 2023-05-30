@@ -6,7 +6,7 @@
 /*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 08:30:08 by ncarvalh          #+#    #+#             */
-/*   Updated: 2023/05/27 17:19:56 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/05/30 12:56:14 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Fixed :: Fixed()
 {
-	// std::cout << "Fixed default constructor called." << std::endl;
+	// std::cout << "Default constructor called." << std::endl;
 	this->value = 0;
 }
 
@@ -25,18 +25,18 @@ Fixed :: Fixed(const int num)
 
 Fixed :: Fixed(const float num)
 {
-	// std::cout << "Fixed parameter constructor called." << std::endl;
 	this->value = (num * (1 << Fixed::BITS));
 }
 
 Fixed :: Fixed(const Fixed& num)
 {
+	// std::cout << "Copy constructor called." << std::endl;
 	*this = num;
 }
 
 Fixed :: ~Fixed()
 {
-	
+	// std::cout << "Destructor called." << std::endl;
 }
  
 int Fixed :: getRawBits(void) const
@@ -62,7 +62,7 @@ int Fixed :: toInt(void) const
 //_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\ OPERATORS /=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_
 
 Fixed& Fixed :: operator=(const Fixed& right)
-{
+{	
 	// std::cout << "Copy assignment operator called." << std::endl;
 	if (this == &right)
 		return (*this);
@@ -70,34 +70,34 @@ Fixed& Fixed :: operator=(const Fixed& right)
 	return (*this);
 }
 
-bool Fixed :: operator>(const Fixed& right)
+bool Fixed :: operator>(const Fixed& right) const
 {
-	return (this->toFloat() > right.toFloat());
+	return (this->getRawBits() > right.getRawBits());
 }
 
-bool Fixed :: operator<(const Fixed& right)
+bool Fixed :: operator<(const Fixed& right) const
 {
-	return (this->toFloat() < right.toFloat());
+	return (this->getRawBits() < right.getRawBits());
 }
 
-bool Fixed :: operator>=(const Fixed& right)
+bool Fixed :: operator>=(const Fixed& right) const
 {
-	return (this->toFloat() >= right.toFloat());
+	return (this->getRawBits() >= right.getRawBits());
 }
 
-bool Fixed :: operator<=(const Fixed& right)
+bool Fixed :: operator<=(const Fixed& right) const
 {
-	return (this->toFloat() <= right.toFloat());
+	return (this->getRawBits() <= right.getRawBits());
 }
 
-bool Fixed :: operator==(const Fixed& right)
+bool Fixed :: operator==(const Fixed& right) const
 {
-	return (this->toFloat() == right.toFloat());
+	return (this->getRawBits() == right.getRawBits());
 }
 
-bool Fixed :: operator!=(const Fixed& right)
+bool Fixed :: operator!=(const Fixed& right) const
 {
-	return (this->toFloat() != right.toFloat());
+	return (this->getRawBits() != right.getRawBits());
 }
 
 Fixed Fixed :: operator+(const Fixed& right)
@@ -166,7 +166,7 @@ Fixed& Fixed :: min(Fixed& f1, Fixed& f2)
 
 const Fixed& Fixed :: min(const Fixed& f1, const Fixed& f2)
 {
-	return (f1.toFloat() < f2.toFloat() ? f1 : f2); 
+	return (f1 < f2 ? f1 : f2); 
 }
 
 Fixed& Fixed :: max(Fixed& f1, Fixed& f2)
@@ -176,5 +176,5 @@ Fixed& Fixed :: max(Fixed& f1, Fixed& f2)
 
 const Fixed& Fixed :: max(const Fixed& f1, const Fixed& f2)
 {
-	return (f1.toFloat() > f2.toFloat() ? f1 : f2); 
+	return (f1 > f2 ? f1 : f2); 
 }
