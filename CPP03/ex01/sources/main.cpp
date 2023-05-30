@@ -35,6 +35,10 @@ int main(int argc, char **argv)
 	std::cout << t3;
 	t3.guardGate();
 	std::cout << t3;
+	t3.takeDamage(100);
+	std::cout << t3;
+	t3.beRepaired(50);
+	std::cout << t3;
 	
 	std::cout << "\n-------- Testing t1 = t3 --------\n" << std::endl;
 	t1 = t3;

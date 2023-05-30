@@ -109,26 +109,6 @@ int ClapTrap::getDamage(void) const
 	return (this->damage);
 }
 
-void ClapTrap::setName(std::string name)
-{
-	this->name = name;
-}
-
-void ClapTrap::setHealth(int health)
-{
-	this->health = health;
-}
-
-void ClapTrap::setEnergy(int energy)
-{
-	this->energy = energy;
-}
-
-void ClapTrap::setDamage(int damage)
-{
-	this->damage = damage;
-}
-
 std::ostream& operator<<(std::ostream& out, const ClapTrap& right)
 {
 	out << "ClapTrap Name (" << right.getName() << "): " << std::endl;
