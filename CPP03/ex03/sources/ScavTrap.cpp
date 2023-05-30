@@ -56,7 +56,6 @@ void ScavTrap::attack(const std::string &target)
 		std::cout << "\n\tScavTrap is depleted.\n" << std::endl; 
 		return ;
 	}
-
 	std::cout << "\n\tScavTrap " << this->name << " attacks " << target;
 	std::cout << ", causing " << this->damage << " points of damage!\n" << std::endl;
 	this->energy--;

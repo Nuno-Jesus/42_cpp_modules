@@ -14,7 +14,7 @@
 
 void usage(void)
 {
-	std::cout << "Usage: ./fragptrap trap_name" << std::endl;
+	std::cout << "Usage: ./ex02 trap_name" << std::endl;
 	exit(1);
 }
 

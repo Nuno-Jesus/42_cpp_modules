@@ -14,7 +14,7 @@
 
 void usage(void)
 {
-	std::cout << "Usage: ./claptrap trap_name" << std::endl;
+	std::cout << "Usage: ./ex00 trap_name" << std::endl;
 	exit(1);
 }
 

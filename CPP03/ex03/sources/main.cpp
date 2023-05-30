@@ -14,7 +14,7 @@
 
 void usage(void)
 {
-	std::cout << "Usage: ./diamondtrap trap_name" << std::endl;
+	std::cout << "Usage: ./ex03 trap_name" << std::endl;
 	exit(1);
 }
 
