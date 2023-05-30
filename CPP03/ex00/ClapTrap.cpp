@@ -60,7 +60,7 @@ void ClapTrap::attack(const std::string& target)
 		return ;
 	}
 	std::cout << "\n\tClapTrap " << this->name << " attacks " << target;
-	std::cout << ", causing " << this->damage << " points of damage!\n";
+	std::cout << ", causing " << this->damage << " points of damage !\n";
 	std::cout << std::endl;
 	this->energy--;
 }

@@ -6,7 +6,7 @@
 /*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 10:17:54 by crypto            #+#    #+#             */
-/*   Updated: 2023/05/27 19:08:02 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/05/30 14:22:12 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,5 @@ void FragTrap::attack(const std::string &target)
 
 void FragTrap::highFiveGuys(void)
 {
-	std::cout << "\n\tFragTrap " << this->getName() << " requested high five!\n" << std::endl;
+	std::cout << "\n\tFragTrap " << this->getName() << " high fives everyone ✋!\n" << std::endl;
 }	
