@@ -12,6 +12,7 @@
 
 #include "Cat.hpp"
 #include "Dog.hpp"
+#include <ctime>
 
 void test_animal_copies(void)
 {
@@ -21,11 +22,14 @@ void test_animal_copies(void)
 	Cat *clone = new Cat(*cat);
 
 	std::cout << "\n\tCats brain: " << cat->getBrain() << std::endl;
-	std::cout << "\tClone brain: " << clone->getBrain() << std::endl;
-	std::cout << std::endl;
-
+	// cat->getBrain()->use();
 	delete cat;
+
+	std::cout << "\tClone cat brain: " << clone->getBrain() << std::endl;
+	// clone->getBrain()->use();
 	delete clone;
+
+	std::cout << std::endl;
 }
 
 void test_destructors(void)
@@ -46,7 +50,7 @@ void test_destructors(void)
 
 int main()
 {
-	srand(time(NULL));
+	std::srand(std::time(NULL));
 	test_animal_copies();
 	test_destructors();	
 }
