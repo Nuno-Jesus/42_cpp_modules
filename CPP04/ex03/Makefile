@@ -26,7 +26,7 @@ VPATH			= $(SRCS) $(addprefix $(SRCS)/, $(_SUBFOLDERS))
 BINS			= bin
 
 #_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_ FILES _/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_
-NAME			= materia
+NAME			= ex03
 _FILES			= main AMateria Character Cure Ice MateriaSource
 OBJS			= $(_FILES:%=%.o)
 TARGET			= $(addprefix $(BINS)/, $(OBJS))
@@ -59,6 +59,9 @@ re: fclean all
 
 run: re
 	./$(NAME)
+
+leaks: re
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME)
 
 .SILENT:
 

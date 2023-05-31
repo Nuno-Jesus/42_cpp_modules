@@ -26,7 +26,7 @@ VPATH			= $(SRCS) $(addprefix $(SRCS)/, $(_SUBFOLDERS))
 BINS			= bin
 
 #_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_ FILES _/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_
-NAME			= animal
+NAME			= ex01
 _FILES			= main Animal Brain Dog Cat WrongAnimal WrongCat
 OBJS			= $(_FILES:%=%.o)
 TARGET			= $(addprefix $(BINS)/, $(OBJS))
@@ -59,6 +59,9 @@ re: fclean all
 
 run: re
 	./$(NAME)
+
+leaks: re
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME)
 
 .SILENT:
 
