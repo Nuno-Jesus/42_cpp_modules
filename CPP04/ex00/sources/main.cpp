@@ -18,14 +18,10 @@ void test_wrong_inheritance(void)
 {
 	std::cout << "\n\t=== Testing wrong inheritance of an animal ===\n" << std::endl;
 	
-	const WrongAnimal *animal = new WrongAnimal();
 	const WrongAnimal *cat = new WrongCat();
 
-	animal->makeSound();
 	cat->makeSound();
-
 	delete cat;
-	delete animal;
 }
 
 void test_animal_copy(void)
