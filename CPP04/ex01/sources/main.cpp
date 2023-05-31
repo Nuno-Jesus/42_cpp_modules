@@ -21,11 +21,11 @@ void test_animal_copies(void)
 	Cat *cat = new Cat();
 	Cat *clone = new Cat(*cat);
 
-	std::cout << "\n\tCats brain: " << cat->getBrain() << std::endl;
+	std::cout << "\n\tCats brain: " << cat->getBrain() << std::endl << std::endl;
 	// cat->getBrain()->use();
 	delete cat;
 
-	std::cout << "\tClone cat brain: " << clone->getBrain() << std::endl;
+	std::cout << "\tClone cat brain: " << clone->getBrain() << std::endl << std::endl;
 	// clone->getBrain()->use();
 	delete clone;
 

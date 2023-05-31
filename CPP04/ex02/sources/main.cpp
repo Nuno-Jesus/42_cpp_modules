@@ -58,20 +58,10 @@ void test_inheritance(void)
 	delete cat;
 }
 
-// void test_animal_instance(void)
-// {
-// 	std::cout << "\n\t=== Testing default animal types ===\n" << std::endl;
-	
-// 	const Animal *meta = new Animal();
-
-// 	meta->makeSound();
-// 	delete meta;
-// }
-
 int main()
 {
 	//! This will give a compilation error
-	// test_animal_instance();
+	// Animal test;
 	test_inheritance();
 	test_animal_copy();
 	test_wrong_inheritance();
