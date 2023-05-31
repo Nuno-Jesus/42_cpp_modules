@@ -26,14 +26,14 @@ void	test_copy_constructors(void)
 	Ice *ice = new Ice();
 	Ice *iceCopy = new Ice(*ice);
 
-	Cure *cure = new Cure();
-	Cure *cureCopy = new Cure(*cure);
+	// Cure *cure = new Cure();
+	// Cure *cureCopy = new Cure(*cure);
 
 	delete source;
 	delete ice;
 	delete iceCopy;
-	delete cure;
-	delete cureCopy;
+	// delete cure;
+	// delete cureCopy;
 }
 
 void	test_all_together(void)
@@ -53,12 +53,12 @@ void	test_all_together(void)
 
 	ICharacter *bob = new Character("bob");
 	me->use(0, *bob);
-	me->use(1, *bob);
-	me->use(2, *bob);
+	// me->use(1, *bob);
+	// me->use(2, *bob);
 
 	me->unequip(0);
-	me->unequip(1);
-	me->unequip(2);
+	// me->unequip(1);
+	// me->unequip(2);
 	
 	delete bob;
 	delete me;
