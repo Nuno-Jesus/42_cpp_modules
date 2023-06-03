@@ -37,17 +37,17 @@ At 42, the C projects are built following a bunch of rules that enforce good cod
 		<tr>
 			<td><strong>CPP02</strong> </td>
 			<td>Operator overloading and Orthodox Canonical Form</td>
-			<td>???/100</td>
+			<td>100/100</td>
 		</tr>
 		<tr>
 			<td><strong>CPP03</strong> </td>
 			<td>OOP: Inheritance</td>
-			<td>???/100</td>
+			<td>100/100</td>
 		</tr>
 		<tr>
 			<td><strong>CPP04</strong> </td>
 			<td>OOP: Polymorphism, Abstract Classes and Interfaces</td>
-			<td>???/100</td>
+			<td>100/100</td>
 		</tr>
 		<tr>
 			<td><strong>CPP05</strong> </td>
