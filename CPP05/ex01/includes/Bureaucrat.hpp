@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 21:44:22 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/04 01:09:52 by marvin           ###   ########.fr       */
+/*   Updated: 2023/06/08 18:48:09 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ class Bureaucrat
 		//! Others
 		void incrementGrade(void);
 		void decrementGrade(void);
-		void signForm(const Form& f);
+		void signForm(Form& f);
 			
 		//! Operator overloading
 		Bureaucrat& operator=(const Bureaucrat& right);

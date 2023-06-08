@@ -12,62 +12,82 @@
 
 #include "Bureaucrat.hpp"
 
-void test_edge_cases(void)
+void test_form_sign(void)
 {
+	std::cout << GREEN << "\n\t\t\tTesting form signing\n" << RESET << std::endl;
+
+	Bureaucrat president("President", 1);
+	Bureaucrat vicePresident("Vice-President", 2);
+	Form nuclearForm("Nuclear Explosion Form", 1, 1);
 	try
 	{
-		Bureaucrat b("HighestBureaucrat", 1);
-		std::cout << b;
-		b.incrementGrade();
-		std::cout << b;
+		president.signForm(nuclearForm);
+		vicePresident.signForm(nuclearForm);
 	}
-	catch (const Bureaucrat::GradeTooHighException &e)
+	catch(const std::exception& e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cout << RED << e.what() << RESET << std::endl;
+	}
+
+	std::cout << nuclearForm;
+	
+	Bureaucrat citizen("Citizen", 150);
+	Form allowanceForm("Allowance", 149, 149);
+	try
+	{
+		citizen.signForm(allowanceForm);
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << RED << e.what() << RESET << std::endl;
 	}
 	
-	try
-	{
-		Bureaucrat b("LowestBureaucrat", 150);
-		std::cout << b;
-		b.decrementGrade();
-		std::cout << b;
-	}
-	catch (const Bureaucrat::GradeTooLowException &e)
-	{
-		std::cout << e.what() << std::endl;
-	}
+	std::cout << allowanceForm;
 }
 
-void test_edge_cases_2(void)
+void test_invalid_forms(void)
 {
+	std::cout << GREEN << "\n\t\t\tTesting creating forms\n" << RESET << std::endl;
+
 	try
 	{
-		Bureaucrat b("SecondHighestBureaucrat", 2);
-		std::cout << b;
-		b.incrementGrade();
-		std::cout << b;
+		Form allowance("Allowance", 1, 1);
 	}
-	catch (const Bureaucrat::GradeTooHighException &e)
+	catch(const std::exception& e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cout << RED << e.what() << RESET << std::endl;
 	}
 	
 	try
 	{
-		Bureaucrat b("SecondLowestBureaucrat", 149);
-		std::cout << b;
-		b.decrementGrade();
-		std::cout << b;
+		Form allowance("Allowance", 0, 0);
 	}
-	catch (const Bureaucrat::GradeTooLowException &e)
+	catch(const std::exception& e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cout << RED << e.what() << RESET << std::endl;
+	}
+	
+	try
+	{
+		Form allowance("Allowance", 150, 150);
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << RED << e.what() << RESET << std::endl;
+	}
+
+	try
+	{
+		Form allowance("Allowance", 151, 151);
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << RED << e.what() << RESET << std::endl;
 	}
 }
 
 int main(void)
 {
-	test_edge_cases();
-	test_edge_cases_2();
+	test_invalid_forms();
+	test_form_sign();
 }

@@ -12,7 +12,7 @@
 
 #include "Bureaucrat.hpp"
 
-void test_edge_cases(void)
+void test_form_sing(void)
 {
 	try
 	{
@@ -39,7 +39,7 @@ void test_edge_cases(void)
 	}
 }
 
-void test_edge_cases_2(void)
+void test_invalid_forms(void)
 {
 	try
 	{
@@ -68,6 +68,6 @@ void test_edge_cases_2(void)
 
 int main(void)
 {
-	test_edge_cases();
-	test_edge_cases_2();
+	test_form_sing();
+	test_invalid_forms();
 }

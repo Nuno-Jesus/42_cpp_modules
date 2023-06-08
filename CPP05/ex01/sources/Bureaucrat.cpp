@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 21:44:25 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/04 01:09:03 by marvin           ###   ########.fr       */
+/*   Updated: 2023/06/08 18:55:53 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,22 @@ void Bureaucrat::decrementGrade(void)
 	this->grade++;
 }
 
+void Bureaucrat::signForm(Form& f)
+{
+	if (this->grade <= f.getExecutionGrade())
+		std::cout << this->name + " signed " + f.getName() << std::endl;
+	else
+		std::cout << this->name + " couldn't sign " + f.getName() \
+			+ "(" << f.getSignGrade() << ") because their grade(" \
+			<< this->grade << ") was too low" << std::endl;	
+	f.beSigned(*this);
+}
+
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& right)
 {
 	if (this == &right)
 		return (*this);
-	this->grade = grade;
+	this->grade = right.grade;
 	return (*this);
 }
 
@@ -79,6 +90,7 @@ const char *Bureaucrat::GradeTooHighException::what() const throw()
 {
 	return ("\n\tThe grade cannot go higher than 1.\n");
 }
+
 const char *Bureaucrat::GradeTooLowException::what() const throw()
 {
 	return ("\n\tThe grade cannot go lower than 150.\n");
