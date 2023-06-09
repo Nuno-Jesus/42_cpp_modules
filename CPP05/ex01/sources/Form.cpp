@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 01:02:19 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/08 19:07:26 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/06/09 14:53:35 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ Form::Form(const Form& copy) : name(copy.name), signGrade(copy.signGrade), \
 }
 
 Form::Form(const std::string& name, int signGrade, int execGrade) : name(name), \
-	signGrade(signGrade), execGrade(signGrade)
+	signGrade(signGrade), execGrade(execGrade)
 {
 	if (signGrade < Form::MAX_GRADE || execGrade < Form::MAX_GRADE)
 		throw Form::GradeTooHighException();
