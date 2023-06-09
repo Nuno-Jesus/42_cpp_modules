@@ -13,34 +13,36 @@
 #include "../includes/Bureaucrat.hpp"
 #include "PresedentialPardonForm.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+
+void test_form(AForm& form, Bureaucrat& bureaucrat)
+{
+	std::cout << GREEN << "\n\tTesting " + form.getName() + "\n\n" << RESET;
+	bureaucrat.signForm(form);
+	bureaucrat.executeForm(form);
+}
 
 int main(void)
 {
-	try
-	{
-		Bureaucrat b("President", 1);
-		PresedentialPardonForm form("Barack Obama");
-
-		b.signForm(form);
-		form.execute(b);
-	}
-	catch(const std::exception& e)
-	{
-		std::cout << RED << e.what() << RESET << std::endl;
-	}
+	std::srand(time(NULL));
 
 	try
 	{
-		Bureaucrat b("Artist", 137);
-		ShrubberyCreationForm form("Picasso");
+		PresedentialPardonForm form1("Donald Trump");
+		Bureaucrat b1("Zaphod Beeblebrox", 1);
+		test_form(form1, b1);
 
-		b.signForm(form);
-		form.execute(b);
+		ShrubberyCreationForm form2("tree");
+		Bureaucrat b2("Picasso", 130);
+		test_form(form2, b2);
+
+		RobotomyRequestForm form3("Left Human Arm");
+		Bureaucrat b3("Neuro-cientist", 40);
+		test_form(form3, b3);
 	}
 	catch(const std::exception& e)
 	{
-		std::cout << RED << e.what() << RESET << std::endl;
+		std::cout << RED << e.what() << RESET << "\n";
 	}
-
-
+	
 }
