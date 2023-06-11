@@ -51,7 +51,7 @@ At 42, the C projects are built following a bunch of rules that enforce good cod
 		</tr>
 		<tr>
 			<td><strong>CPP05</strong> </td>
-			<td>???</td>
+			<td>Exceptions</td>
 			<td>???/100</td>
 		</tr>
 		<tr>
