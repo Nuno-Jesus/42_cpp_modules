@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 01:02:19 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/09 14:53:35 by marvin           ###   ########.fr       */
+/*   Updated: 2023/06/11 20:02:16 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ std::ostream& operator<<(std::ostream& out, const Form& form)
 
 const char *Form::GradeTooHighException::what() const throw()
 {
-	return ("\n\tForm Exception: using grades above 150\n");
+	return ("\n\tForm Exception: using grades above 1\n");
 }
 
 const char *Form::GradeTooLowException::what() const throw()

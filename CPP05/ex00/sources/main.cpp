@@ -12,62 +12,62 @@
 
 #include "Bureaucrat.hpp"
 
-void test_form_sing(void)
+void test_edge_cases(void)
 {
 	try
 	{
-		Bureaucrat b("HighestBureaucrat", 1);
+		Bureaucrat b("President", 1);
 		std::cout << b;
 		b.incrementGrade();
 		std::cout << b;
 	}
 	catch (const Bureaucrat::GradeTooHighException &e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cout << RED << e.what() << RESET << "\n";
 	}
 	
 	try
 	{
-		Bureaucrat b("LowestBureaucrat", 150);
+		Bureaucrat b("Citizen", 150);
 		std::cout << b;
 		b.decrementGrade();
 		std::cout << b;
 	}
 	catch (const Bureaucrat::GradeTooLowException &e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cout << RED << e.what() << RESET << "\n";
 	}
 }
 
-void test_invalid_forms(void)
+void test_increments(void)
 {
 	try
 	{
-		Bureaucrat b("SecondHighestBureaucrat", 2);
+		Bureaucrat b("Vice-President", 2);
 		std::cout << b;
 		b.incrementGrade();
 		std::cout << b;
 	}
 	catch (const Bureaucrat::GradeTooHighException &e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cout << RED << e.what() << RESET << "\n";
 	}
 	
 	try
 	{
-		Bureaucrat b("SecondLowestBureaucrat", 149);
+		Bureaucrat b("Worker", 149);
 		std::cout << b;
 		b.decrementGrade();
 		std::cout << b;
 	}
 	catch (const Bureaucrat::GradeTooLowException &e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cout << RED << e.what() << RESET << "\n";
 	}
 }
 
 int main(void)
 {
-	test_form_sing();
-	test_invalid_forms();
+	test_edge_cases();
+	test_increments();
 }

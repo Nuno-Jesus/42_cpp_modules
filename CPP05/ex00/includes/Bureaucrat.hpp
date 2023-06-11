@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 21:44:22 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/08 18:48:09 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/06/11 19:56:30 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@
 # else
 #  define LOG(str)
 # endif
+
+# define RED	"\033[1;31m"
+# define GREEN	"\033[1;32m"
+# define RESET	"\033[0m"
 
 class Bureaucrat
 {
