@@ -10,7 +10,7 @@ CYAN 	= \033[1;36m
 WHITE 	= \033[1;37m
 
 #_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_ COMMANDS _/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_
-CC = c++
+CXX = c++
 RM = rm -rf
 AR = ar -rcs
 
@@ -37,12 +37,12 @@ all: $(NAME)
 $(NAME): $(BINS) $(TARGET)
 	echo "[$(CYAN) Linking $(RESET)] $(GREEN)*$(RESET)"
 
-	$(CC) $(CPPFLAGS) $(TARGET) -o $(NAME) -I $(DEPS)
+	$(CXX) $(CPPFLAGS) $(TARGET) -o $(NAME) -I $(DEPS)
 	echo "$(GREEN)Done.$(RESET)"
 
 $(BINS)/%.o : %.cpp
 	echo "[$(CYAN)Compiling$(RESET)] $(CPPFLAGS) $(GREEN)$<$(RESET)"
-	$(CC) $(CPPFLAGS) -c $< -o $@ -I $(DEPS)
+	$(CXX) $(CPPFLAGS) -c $< -o $@ -I $(DEPS)
 
 $(BINS):
 	mkdir -p $(BINS)
