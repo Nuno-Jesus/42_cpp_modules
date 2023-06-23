@@ -17,16 +17,28 @@
 # include <string>
 # include <cstdlib>
 
+# define DIGITS "0123456789"
+
 class ScalarConverter
 {
-	private:
-		// void toDouble(const std::string &str) const;
-		// void toFloat(const std::string &str) const;
-		// void toInt(const std::string &str) const;
-		// void toChar(const std::string &str) const;
-
 	public:
 		static void convert(const std::string &str);
+		
+	private:
+		static void parse(const std::string &str);
+		
+		//! Parser helpers
+		static bool isChar(const std::string &str);
+		static bool isInt(const std::string &str);
+		static bool isFloat(const std::string &str);
+		static bool isDouble(const std::string &str);
+		static bool isPseudo(const std::string &str);
+
+		//! Conversions
+		// static void toDouble(const std::string &str);
+		// static void toFloat(const std::string &str);
+		// static void toInt(const std::string &str);
+		// static void toChar(const std::string &str);
 };
 
 #endif
