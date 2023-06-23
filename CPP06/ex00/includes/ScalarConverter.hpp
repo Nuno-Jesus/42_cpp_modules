@@ -21,6 +21,9 @@
 
 class ScalarConverter
 {
+	//Typedef a pointer for a member function that returns a bool
+	typedef bool (ScalarConverter::*func)(const std::string&);
+	
 	public:
 		static void convert(const std::string &str);
 		
@@ -35,10 +38,11 @@ class ScalarConverter
 		static bool isPseudo(const std::string &str);
 
 		//! Conversions
-		// static void toDouble(const std::string &str);
-		// static void toFloat(const std::string &str);
-		// static void toInt(const std::string &str);
-		// static void toChar(const std::string &str);
+		static void toChar(const std::string &str);
+		static void toInt(const std::string &str);
+		static void toFloat(const std::string &str);
+		static void toDouble(const std::string &str);
+		static void toPseudo(const std::string &str);
 };
 
 #endif

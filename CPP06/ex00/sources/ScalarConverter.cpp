@@ -14,7 +14,9 @@
 
 void ScalarConverter::convert(const std::string &str)
 {
-	ScalarConverter::parse(str);	
+	bool (ScalarConverter::*func)(const std::string&) = 
+	ScalarConverter::parse(str);
+
 }
 
 void ScalarConverter::parse(const std::string &str)
