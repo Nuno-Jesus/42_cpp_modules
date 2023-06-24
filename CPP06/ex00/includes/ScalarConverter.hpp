@@ -14,6 +14,7 @@
 # define SCALAR_CONVERTER_HPP
 
 # include <iostream>
+# include <iomanip>
 # include <string>
 # include <cstdlib>
 
@@ -22,14 +23,20 @@
 class ScalarConverter
 {
 	//Typedef a pointer for a member function that returns a bool
-	typedef bool (ScalarConverter::*func)(const std::string&);
-	
+	typedef enum
+	{
+		CHAR,
+		INT,
+		FLOAT,
+		DOUBLE,
+		PSEUDO
+	}t_type;
+
 	public:
 		static void convert(const std::string &str);
+		static void convert(const std::string &str, ScalarConverter::t_type type);
 		
-	private:
-		static void parse(const std::string &str);
-		
+	private:		
 		//! Parser helpers
 		static bool isChar(const std::string &str);
 		static bool isInt(const std::string &str);
@@ -38,11 +45,11 @@ class ScalarConverter
 		static bool isPseudo(const std::string &str);
 
 		//! Conversions
-		static void toChar(const std::string &str);
-		static void toInt(const std::string &str);
-		static void toFloat(const std::string &str);
-		static void toDouble(const std::string &str);
-		static void toPseudo(const std::string &str);
+		static void convertChar(const std::string &str);
+		static void convertInt(const std::string &str);
+		static void convertFloat(const std::string &str);
+		static void convertDouble(const std::string &str);
+		static void convertPseudo(const std::string &str);
 };
 
 #endif
