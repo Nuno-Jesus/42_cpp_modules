@@ -20,24 +20,23 @@
 # include <limits>
 
 # define DIGITS "0123456789"
+typedef enum
+{
+	CHAR,
+	INT,
+	FLOAT,
+	DOUBLE,
+	PSEUDO
+}t_type;
 
 class ScalarConverter
 {
-	//Typedef a pointer for a member function that returns a bool
-	typedef enum
-	{
-		CHAR,
-		INT,
-		FLOAT,
-		DOUBLE,
-		PSEUDO
-	}t_type;
 
 	public:
 		static void convert(const std::string &str);
 		
 	private:		
-		static void convert(const std::string &str, long double number);
+		static void convertNumber(const std::string &str, long double number);
 		//! Parser helpers
 		static bool isChar(const std::string &str);
 		static bool isInt(const std::string &str);
@@ -52,7 +51,7 @@ class ScalarConverter
 		static void convertDouble(double num, const std::string &str);
 		static void convertPseudo(const std::string &str);
 
-		static bool overflows(const std::string &str, ScalarConverter::t_type type);
+		static bool overflows(const std::string &str, t_type type);
 };
 
 #endif

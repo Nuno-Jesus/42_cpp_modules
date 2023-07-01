@@ -15,35 +15,20 @@
 void ScalarConverter::convert(const std::string &str)
 {
 	if (ScalarConverter::isChar(str))
-	{
-		std::cout << str << " is char\n";
-		ScalarConverter::convert(str, str[0]);
-	}
+		ScalarConverter::convertNumber(str, str[0]);
 	else if (ScalarConverter::isInt(str))
-	{
-		std::cout << str << " is int\n";
-		ScalarConverter::convert(str, std::atoi(str.c_str()));
-	}
+		ScalarConverter::convertNumber(str, std::atoi(str.c_str()));
 	else if (ScalarConverter::isFloat(str))
-	{
-		std::cout << str << " is float\n";
-		ScalarConverter::convert(str, std::strtof(str.c_str(), NULL));
-	}
+		ScalarConverter::convertNumber(str, std::strtof(str.c_str(), NULL));
 	else if (ScalarConverter::isDouble(str))
-	{
-		std::cout << str << " is double\n";
-		ScalarConverter::convert(str, std::strtod(str.c_str(), NULL));
-	}
+		ScalarConverter::convertNumber(str, std::strtod(str.c_str(), NULL));
 	else if (ScalarConverter::isPseudo(str))
-	{
-		std::cout << str << " is pseudo\n";
 		ScalarConverter::convertPseudo(str);
-	}
 	else
 		std::cout <<"\n\t======== " << str << " is a weird type ========\n\n";
 }
 
-void ScalarConverter::convert(const std::string& input, long double number)
+void ScalarConverter::convertNumber(const std::string& input, long double number)
 {
 	ScalarConverter::convertChar(static_cast<char>(number), input);
 	ScalarConverter::convertInt(static_cast<int>(number), input);
@@ -102,27 +87,32 @@ void ScalarConverter::convertPseudo(const std::string &str)
 	}
 }
 
-bool ScalarConverter::overflows(const std::string &str, ScalarConverter::t_type type)
+bool ScalarConverter::overflows(const std::string &str, t_type type)
 {
 	long double number;
 
 	number = std::strtold(str.c_str(), NULL);
-	//Print the resulting long double for the conversion and the type
-	// std::cout << "number: " << number << "\n";
-	// std::cout << "type: " << type << "\n";
 	switch (type)
 	{
 		case CHAR:
-			return (number < std::numeric_limits<char>::min() || number > std::numeric_limits<char>::max());
+			return (number < std::numeric_limits<char>::min() \
+				|| number > std::numeric_limits<char>::max());
 		case INT:
-			return (number < std::numeric_limits<int>::min() || number > std::numeric_limits<int>::max());
+			return (number < std::numeric_limits<int>::min() \
+				|| number > std::numeric_limits<int>::max());
 		case FLOAT:
-			return (number < -std::numeric_limits<float>::max()  || number > std::numeric_limits<float>::max());
+			return (number < -std::numeric_limits<float>::max()  \
+				|| number > std::numeric_limits<float>::max());
 		case DOUBLE:
-			return (number < -std::numeric_limits<double>::max() || number > std::numeric_limits<double>::max());
+			return (number < -std::numeric_limits<double>::max() \
+				|| number > std::numeric_limits<double>::max());
 		default:
 			return (false);
 	}
+	//! Note:
+	// std::numeric_limits<float>::min() does not represent the minimum float value
+	// but the smallest floating point positive number to be represented by a float
+	// To find the lowest float value, use std::numeric_limits<float>::lowest()
 }
 
 bool ScalarConverter::isChar(const std::string &str)
@@ -168,6 +158,7 @@ bool ScalarConverter::isFloat(const std::string &str)
 	std::string decimalPart = str.substr(index, dot - index);
 	std::string fractionalPart = str.substr(dot + 1, f - dot - 1);
 
+	//The decimal and fractional part must have at least one digit
 	return (decimalPart.size() > 0 && fractionalPart.size() > 0);
 }
 
@@ -187,6 +178,7 @@ bool ScalarConverter::isDouble(const std::string &str)
 	std::string decimalPart = str.substr(index, dot - index);
 	std::string fractionalPart = str.substr(dot + 1, std::string::npos);
 
+	//The decimal and fractional part must have at least one digit
 	return (decimalPart.size() > 0 && fractionalPart.size() > 0);
 }
 
