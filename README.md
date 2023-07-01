@@ -61,7 +61,7 @@ At 42, the C projects are built following a bunch of rules that enforce good cod
 		</tr>
 		<tr>
 			<td><strong>CPP07</strong> </td>
-			<td>???</td>
+			<td>Templates</td>
 			<td>???/100</td>
 		</tr>
 		<tr>
