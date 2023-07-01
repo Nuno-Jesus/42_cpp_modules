@@ -17,22 +17,22 @@ void ScalarConverter::convert(const std::string &str)
 	if (ScalarConverter::isChar(str))
 	{
 		std::cout << str << " is char\n";
-		ScalarConverter::convertChar(str);
+		ScalarConverter::convert(str, str[0]);
 	}
 	else if (ScalarConverter::isInt(str))
 	{
 		std::cout << str << " is int\n";
-		ScalarConverter::convertInt(str);
+		ScalarConverter::convert(str, std::atoi(str.c_str()));
 	}
 	else if (ScalarConverter::isFloat(str))
 	{
 		std::cout << str << " is float\n";
-		ScalarConverter::convertFloat(str);
+		ScalarConverter::convert(str, std::strtof(str.c_str(), NULL));
 	}
 	else if (ScalarConverter::isDouble(str))
 	{
 		std::cout << str << " is double\n";
-		ScalarConverter::convertDouble(str);
+		ScalarConverter::convert(str, std::strtod(str.c_str(), NULL));
 	}
 	else if (ScalarConverter::isPseudo(str))
 	{
@@ -40,81 +40,88 @@ void ScalarConverter::convert(const std::string &str)
 		ScalarConverter::convertPseudo(str);
 	}
 	else
-		std::cout <<"\n\t======== " <<  str << " is of UNKNOWN type ========\n\n";
+		std::cout <<"\n\t======== " << str << " is a weird type ========\n\n";
 }
 
-void ScalarConverter::convertChar(const std::string &str)
+void ScalarConverter::convert(const std::string& input, long double number)
 {
-	char c = str[0];
+	ScalarConverter::convertChar(static_cast<char>(number), input);
+	ScalarConverter::convertInt(static_cast<int>(number), input);
+	ScalarConverter::convertFloat(static_cast<float>(number), input);
+	ScalarConverter::convertDouble(static_cast<double>(number), input);
+}
 
-	if (std::isprint(c))
+void ScalarConverter::convertChar(char c, const std::string &input)
+{
+	if (ScalarConverter::overflows(input, CHAR))
+		std::cout << "char: overflow\n";
+	else if (std::isprint(c))
 		std::cout << "char: '" << c << "'\n";
 	else
 		std::cout << "char: Non displayable\n";
-	std::cout << "int: " << static_cast<int>(c) << "\n";
-	std::cout << std::fixed << std::setprecision(1);
-	std::cout << "float: "  << static_cast<float>(c) << "f\n";
-	std::cout << "double: " << static_cast<double>(c) << "\n";
 }
 
-void ScalarConverter::convertInt(const std::string &str)
+void ScalarConverter::convertInt(int num, const std::string &str)
 {
-	int num = std::atoi(str.c_str());
-
-	//Attempt to cast a string to an int and print impossible if the conversion overflows
-
-
-	if (std::isprint(static_cast<char>(num)))
-		std::cout << "char: '" << static_cast<char>(num) << "'\n";
+	if (ScalarConverter::overflows(str, INT))
+		std::cout << "int: overflow\n";
 	else
-		std::cout << "char: Non displayable\n";
-	std::cout << "int: " << num << "\n";
-	std::cout << std::fixed << std::setprecision(1);
-	std::cout << "float: "  << static_cast<float>(num) << "f\n";
-	std::cout << "double: " << static_cast<double>(num) << "\n";
+		std::cout << "int: " << num << "\n";
 }
 
-void ScalarConverter::convertFloat(const std::string &str)
+void ScalarConverter::convertFloat(float num, const std::string &str)
 {
-	float num = std::strtof(str.c_str(), NULL);
-
-	if (std::isprint(static_cast<char>(num)))
-		std::cout << "char: '" << static_cast<char>(num) << "'\n";
+	if (ScalarConverter::overflows(str, FLOAT))
+		std::cout << "float: overflow\n";
 	else
-		std::cout << "char: Non displayable\n";
-	std::cout << "int: " << static_cast<int>(num) << "\n";
-	std::cout << "float: "  << num << "f\n";
-	std::cout << "double: " << static_cast<double>(num) << "\n";
+		std::cout << "float: " << std::fixed << num << "f\n";
 }
 
-void ScalarConverter::convertDouble(const std::string &str)
+void ScalarConverter::convertDouble(double num, const std::string &str)
 {
-	double num = std::strtod(str.c_str(), NULL);
-
-	if (std::isprint(static_cast<char>(num)))
-		std::cout << "char: '" << static_cast<char>(num) << "'\n";
+	if (ScalarConverter::overflows(str, DOUBLE))
+		std::cout << "double: overflow\n";
 	else
-		std::cout << "char: Non displayable\n";
-	std::cout << "int: " << static_cast<int>(num) << "\n";
-	std::cout << "float: "  << static_cast<float>(num) << "f\n";
-	std::cout << "double: " << num << "\n";
+		std::cout << "double: " << num << "\n";
 }
 
 void ScalarConverter::convertPseudo(const std::string &str)
 {
+	std::cout << "char: impossible\n";
+	std::cout << "int: impossible\n";
+	
 	if (str.find("nan") != std::string::npos)
 	{
-		std::cout << "char: impossible\n";
-		std::cout << "int: impossible\n";
 		std::cout << "float: nanf\n";
 		std::cout << "double: nan\n";
 	}
 	else
 	{
-		std::cout << "char: impossible\n";
-		std::cout << "int: impossible\n";
 		std::cout << "float: " << str << "\n";
-		std::cout << "double: " << str << "\n";
+		std::cout << "double: " << str.substr(0, str.size() - 1) << "\n";
+	}
+}
+
+bool ScalarConverter::overflows(const std::string &str, ScalarConverter::t_type type)
+{
+	long double number;
+
+	number = std::strtold(str.c_str(), NULL);
+	//Print the resulting long double for the conversion and the type
+	// std::cout << "number: " << number << "\n";
+	// std::cout << "type: " << type << "\n";
+	switch (type)
+	{
+		case CHAR:
+			return (number < std::numeric_limits<char>::min() || number > std::numeric_limits<char>::max());
+		case INT:
+			return (number < std::numeric_limits<int>::min() || number > std::numeric_limits<int>::max());
+		case FLOAT:
+			return (number < -std::numeric_limits<float>::max()  || number > std::numeric_limits<float>::max());
+		case DOUBLE:
+			return (number < -std::numeric_limits<double>::max() || number > std::numeric_limits<double>::max());
+		default:
+			return (false);
 	}
 }
 
@@ -136,7 +143,7 @@ bool ScalarConverter::isInt(const std::string &str)
 	if (signal == 0)
 		index = 1;
 
-	// Check if any of the chars is not a digit
+	// If any of the characters is not a digit, the number is not an int
 	if (str.find_first_not_of(DIGITS, index) != std::string::npos)
 		return (false);
 	
@@ -151,6 +158,7 @@ bool ScalarConverter::isFloat(const std::string &str)
 	size_t dot = str.find('.');
 	size_t signal = str.find('-');
 
+	//If either the dot or the f is not found, the number is not a float
 	if (dot == std::string::npos || f == std::string::npos)
 		return (false);
 	if (signal != std::string::npos)
@@ -160,9 +168,7 @@ bool ScalarConverter::isFloat(const std::string &str)
 	std::string decimalPart = str.substr(index, dot - index);
 	std::string fractionalPart = str.substr(dot + 1, f - dot - 1);
 
-	if (!decimalPart.size() || !fractionalPart.size())
-		return (false);
-	return (true);
+	return (decimalPart.size() > 0 && fractionalPart.size() > 0);
 }
 
 bool ScalarConverter::isDouble(const std::string &str)
@@ -171,6 +177,7 @@ bool ScalarConverter::isDouble(const std::string &str)
 	size_t dot = str.find('.');
 	size_t signal = str.find('-');
 
+	//If the dot is missing, the number is not a double
 	if (dot == std::string::npos)
 		return (false);
 	if (signal != std::string::npos)
@@ -180,9 +187,7 @@ bool ScalarConverter::isDouble(const std::string &str)
 	std::string decimalPart = str.substr(index, dot - index);
 	std::string fractionalPart = str.substr(dot + 1, std::string::npos);
 
-	if (!decimalPart.size() || !fractionalPart.size())
-		return (false);
-	return (true);
+	return (decimalPart.size() > 0 && fractionalPart.size() > 0);
 }
 
 bool ScalarConverter::isPseudo(const std::string &str)
