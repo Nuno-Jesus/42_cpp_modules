@@ -12,6 +12,28 @@
 
 # include "ScalarConverter.hpp"
 
+ScalarConverter::ScalarConverter()
+{
+	
+}
+
+ScalarConverter::ScalarConverter(const ScalarConverter& copy)
+{
+	*this = copy;
+}
+
+ScalarConverter::~ScalarConverter()
+{
+	
+}
+
+ScalarConverter& ScalarConverter::operator=(const ScalarConverter& right)
+{
+	if (this == &right)
+		return (*this);
+	return (*this);
+}
+
 void ScalarConverter::convert(const std::string &str)
 {
 	if (ScalarConverter::isChar(str))
