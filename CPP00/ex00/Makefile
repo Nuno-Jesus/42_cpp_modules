@@ -10,7 +10,7 @@ CYAN 	= \033[1;36m
 WHITE 	= \033[1;37m
 
 #_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_ COMMANDS _/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_
-CC = c++
+CXX = c++
 RM = rm -f
 AR = ar -rcs
 
@@ -33,13 +33,13 @@ all: $(NAME)
 
 $(NAME): $(TARGET)
 	echo "[$(CYAN) Linking $(RESET)] $(GREEN)*$(RESET)"
-	$(CC) $(CFLAGS) $(TARGET) -o $(NAME) -I $(DEPS)
+	$(CXX) $(CFLAGS) $(TARGET) -o $(NAME) -I $(DEPS)
 	
 	echo "$(GREEN)Done.$(RESET)"
 	
 %.o : %.cpp 
 	echo "[$(CYAN)Compiling$(RESET)] $(CFLAGS) $(GREEN)$<$(RESET)"
-	$(CC) $(CFLAGS) -c $< -o $@ -I $(DEPS)
+	$(CXX) $(CFLAGS) -c $< -o $@ -I $(DEPS)
 
 clean:
 	echo "[$(RED) Deleted $(RESET)] $(GREEN)*/*.o$(RESET)"
