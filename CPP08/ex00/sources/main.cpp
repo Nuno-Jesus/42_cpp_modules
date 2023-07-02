@@ -12,77 +12,35 @@
 
 #include "easyfind.hpp"
 
-void test_vectors(void)
-{
-	std::cout << "\n\t======= TESTING VECTORS =======\n\n";
+#define LOG(x) std::cout << "\n\t======= TESTING " << x << " =======\n\n"
 
-	std::vector<int> vec;
+template <typename T>
+void test_container(T& container, const std::string& name, int tofind)
+{	
 	int	pos;
-	int tofind;
 
-	vec.push_back(91);
-	vec.push_back(42);
-	vec.push_back(32768);
-	vec.push_back(INT_MAX);
-	vec.push_back(-3);
+	LOG(name);
+	container.push_back(91);
+	container.push_back(42);
+	container.push_back(32768);
+	container.push_back(INT_MAX);
+	container.push_back(-3);
 
-	tofind = 42;
-	pos = easyfind(vec, tofind);
+	pos = easyfind(container, tofind);
 	if (pos == -1)
-		std::cout << "Couldn't find " << tofind << " in vector\n";
+		std::cout << "Couldn't find " << tofind << " in " << name << "\n";
 	else
-		std::cout << "Found " << tofind << " in vector[" << pos << "]\n";
+		std::cout << "Found " << tofind << " in " << name + "[" << pos << "]\n";
 }
-
-void test_lists(void)
-{
-	std::cout << "\n\t======= TESTING LISTS =======\n\n";
-	
-	std::list<int> list;
-	int	pos;
-	int tofind;
-
-	list.push_back(91);
-	list.push_back(42);
-	list.push_back(32768);
-	list.push_back(INT_MAX);
-	list.push_back(-3);
-
-	tofind = INT_MAX;
-	pos = easyfind(list, tofind);
-	if (pos == -1)
-		std::cout << "Couldn't find " << tofind << " in list\n";
-	else
-		std::cout << "Found " << tofind << " in list[" << pos << "]\n";
-}
-
-void test_deques(void)
-{
-	std::cout << "\n\t======= TESTING DEQUES =======\n\n";
-	
-	std::deque<int> deque;
-	int	pos;
-	int tofind;
-
-	deque.push_back(91);
-	deque.push_back(42);
-	deque.push_back(32768);
-	deque.push_back(INT_MAX);
-	deque.push_back(-3);
-
-	tofind = -4;
-	pos = easyfind(deque, tofind);
-	if (pos == -1)
-		std::cout << "Couldn't find " << tofind << " in deque\n";
-	else
-		std::cout << "Found " << tofind << " in deque[" << pos << "]\n";
-}
-
 
 int main(void)
 {
-	test_vectors();
-	test_lists();
-	test_deques();
+	std::vector<int> vector;
+	std::list<int> list;
+	std::deque<int> deque;
+
+	test_container(vector, "vector", 91);
+	test_container(list, "list", 31);
+	test_container(deque, "deque", -3);
 	return (0);
 }
