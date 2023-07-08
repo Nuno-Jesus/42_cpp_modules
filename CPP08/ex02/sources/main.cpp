@@ -24,24 +24,25 @@ void test_mutant_stack(void)
 	std::cout << "Stack top: " << mstack.top() << std::endl;
 
 	mstack.pop();
+	mstack.pop();
 	std::cout << "Stack size: " << mstack.size() << std::endl;
 
-	mstack.push(3);
-	mstack.push(5);
-	mstack.push(737);
-	mstack.push(0);
+	mstack.push(-1);
+	mstack.push(42);
+	mstack.push(24);
+	mstack.push(1);
 
-	MutantStack<int>::iterator it = mstack.begin();
-	MutantStack<int>::iterator ite = mstack.end();
+	MutantStack<int>::iterator begin = mstack.begin();
+	MutantStack<int>::iterator end = mstack.end();
 
-	++it;
-	--it;
+	++begin;
+	--begin;
 
 	std::cout << "Stack contents:" << std::endl;
-	while (it != ite)
+	while (begin != end)
 	{
-		std::cout << *it << std::endl;
-		++it;
+		std::cout << *begin << std::endl;
+		++begin;
 	}
 
 	std::stack<int> s(mstack);
@@ -50,34 +51,35 @@ void test_mutant_stack(void)
 void	test_lists(void)
 {
 	LOG("Lists");
-	std::list<int> mstack;
+	std::list<int> list;
 
-	mstack.push_back(5);
-	mstack.push_back(17);
-	std::cout << "Stack top: " << mstack.back() << std::endl;
+	list.push_back(5);
+	list.push_back(17);
+	std::cout << "Stack top: " << list.back() << std::endl;
 
-	mstack.pop_back();
-	std::cout << "Stack size: " << mstack.size() << std::endl;
+	list.pop_back();
+	list.pop_back();
+	std::cout << "Stack size: " << list.size() << std::endl;
 
-	mstack.push_back(3);
-	mstack.push_back(5);
-	mstack.push_back(737);
-	mstack.push_back(0);
+	list.push_back(-1);
+	list.push_back(42);
+	list.push_back(24);
+	list.push_back(1);
 
-	std::list<int>::iterator it = mstack.begin();
-	std::list<int>::iterator ite = mstack.end();
+	std::list<int>::iterator begin = list.begin();
+	std::list<int>::iterator end = list.end();
 
-	++it;
-	--it;
+	++begin;
+	--begin;
 
 	std::cout << "Stack contents:" << std::endl;
-	while (it != ite)
+	while (begin != end)
 	{
-		std::cout << *it << std::endl;
-		++it;
+		std::cout << *begin << std::endl;
+		++begin;
 	}
 
-	std::list<int> s(mstack);
+	std::list<int> s(list);
 }
 
 int main()
