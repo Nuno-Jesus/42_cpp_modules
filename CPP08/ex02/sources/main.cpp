@@ -10,118 +10,79 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Span.hpp"
+#include "MutantStack.hpp"
 
-#define LOG(title) std::cout << GREEN "\n\t===== Testing " << title << " =====\n\n" RESET;
+#define LOG(x) std::cout << "\n\t======= TESTING " << x << " =======\n\n"
 
-void test_shortest_span(void)
+void test_mutant_stack(void)	
 {
-	Span span(10);
+	LOG("Mutant Stack");
+	MutantStack<int> mstack;
 
-	LOG("Shortest Span");
-	span.fill();
-	std::cout << span;
-	std::cout << "Shortest span: " << span.shortestSpan() << "\n";
+	mstack.push(5);
+	mstack.push(17);
+	std::cout << "Stack top: " << mstack.top() << std::endl;
+
+	mstack.pop();
+	std::cout << "Stack size: " << mstack.size() << std::endl;
+
+	mstack.push(3);
+	mstack.push(5);
+	mstack.push(737);
+	mstack.push(0);
+
+	MutantStack<int>::iterator it = mstack.begin();
+	MutantStack<int>::iterator ite = mstack.end();
+
+	++it;
+	--it;
+
+	std::cout << "Stack contents:" << std::endl;
+	while (it != ite)
+	{
+		std::cout << *it << std::endl;
+		++it;
+	}
+
+	std::stack<int> s(mstack);
 }
 
-void test_longest_span(void)
+void	test_lists(void)
 {
-	Span span(10);
+	LOG("Lists");
+	std::list<int> mstack;
 
-	LOG("Longest Span");
-	span.fill();
-	std::cout << span;
-	std::cout << "Longest span: " << span.longestSpan() << "\n";
+	mstack.push_back(5);
+	mstack.push_back(17);
+	std::cout << "Stack top: " << mstack.back() << std::endl;
+
+	mstack.pop_back();
+	std::cout << "Stack size: " << mstack.size() << std::endl;
+
+	mstack.push_back(3);
+	mstack.push_back(5);
+	mstack.push_back(737);
+	mstack.push_back(0);
+
+	std::list<int>::iterator it = mstack.begin();
+	std::list<int>::iterator ite = mstack.end();
+
+	++it;
+	--it;
+
+	std::cout << "Stack contents:" << std::endl;
+	while (it != ite)
+	{
+		std::cout << *it << std::endl;
+		++it;
+	}
+
+	std::list<int> s(mstack);
 }
 
-void test_add_number(void)
+int main()
 {
-	LOG("Add Number");
-
-	try
-	{
-		Span fullSpan(10);
-
-		fullSpan.addNumber(42);
-		fullSpan.addNumber(24);
-		fullSpan.addNumber(-1);
-		fullSpan.addNumber(1);
-		std::cout << fullSpan;
-
-		std::cout << "Filling span until N=10...\n"; 
-		fullSpan.fill();
-
-		std::cout << "Trying to add an 11th number...\n"; 
-		fullSpan.addNumber(333333);
-	}
-	catch(std::exception &e)
-	{
-		std::cout << e.what() << "\n";
-	}
-}
-
-void test_no_span(void)
-{
-	LOG("Empty Span");
-	try
-	{
-		Span emptySpan;
-		emptySpan.shortestSpan();
-	}
-	catch(std::exception &e)
-	{
-		std::cout << e.what() << "\n";
-	}
-}
-
-void test_large_set(void)
-{
-	LOG("Large Span Set");
-	try
-	{
-		Span largeSpan(15000);
-
-		largeSpan.fill();
-		std::cout << largeSpan;
-		std::cout << "Shortest span: " << largeSpan.shortestSpan() << "\n";
-		std::cout << "Longest span: " << largeSpan.longestSpan() << "\n";
-	}
-	catch(std::exception &e)
-	{
-		std::cout << e.what() << "\n";
-	}
-}
-
-
-void usage(char *command)
-{
-	std::cout << "Usage: " << command << " test\n";
-	std::exit(1);
-}
-
-int main(int argc, char **argv)
-{
-	if (argc < 2)
-		usage(argv[0]);
-
-	std::srand(std::time(NULL));
-	switch(std::atoi(argv[1]))
-	{
-		case 0: 
-			test_shortest_span(); 
-			break;
-		case 1: 
-			test_longest_span(); 
-			break;
-		case 2: 
-			test_add_number(); 
-			break;
-		case 3: 
-			test_no_span(); 
-			break;
-		case 4: 
-			test_large_set(); 
-			break;
-	}
-	return (0);
+	test_lists();
+	test_mutant_stack();
+	return 0;
 }

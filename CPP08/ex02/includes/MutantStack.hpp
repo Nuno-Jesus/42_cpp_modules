@@ -16,42 +16,32 @@
 # include <iostream>
 # include <iomanip>
 # include <stack>
+# include <vector>
+# include <list>
+# include <deque>
+# include <algorithm>
 
-template <typename T>
-class MutantStack : public std::stack
+template <typename T, typename Container = std::deque<T> >
+class MutantStack : public std::stack<T, Container>
 {
-	private:
-
 	public:
 		//! Constructors and destructor
-		MutantStack();
-		MutantStack(const MutantStack& copy);
-		~MutantStack();
+		MutantStack() {}
+		MutantStack(const MutantStack& copy) { *this = copy; }
+		~MutantStack() {}
 
 		//! Operator overloading
-		MutantStack& operator=(const MutantStack& right);
+		MutantStack& operator=(const MutantStack& right) 
+		{
+			std::stack<T, Container>::operator=(this, right);
+			return (*this);
+		}
 
-	class iterator : public std::stack<T>::iterator
-	{
+		//! Member functions
+		typedef typename Container::iterator iterator;
 
-	};
-
-	class const_iterator : public std::stack<T>::const_iterator
-	{
-
-	};
-
-	class reverse_iterator : public std::stack<T>::reverse_iterator
-	{
-
-	};
-
-	class const_reverse_iterator : public std::stack<T>::const_reverse_iterator
-	{
-
-	};
-
-	class 
+		iterator begin(void) { return (this->c.begin()); }
+		iterator end(void) { return (this->c.end()); }
 };
 
 #endif
