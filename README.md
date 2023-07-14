@@ -66,12 +66,12 @@ At 42, the C projects are built following a bunch of rules that enforce good cod
 		</tr>
 		<tr>
 			<td><strong>CPP08</strong> </td>
-			<td>???</td>
+			<td>Templated containers, iterators and algorithms</td>
 			<td>???/100</td>
 		</tr>
 		<tr>
 			<td><strong>CPP09</strong> </td>
-			<td>???</td>
+			<td>STL containers</td>
 			<td>???/100</td>
 		</tr>
 	</tbody>
