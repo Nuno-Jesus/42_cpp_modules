@@ -6,7 +6,7 @@
 /*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 12:27:31 by crypto            #+#    #+#             */
-/*   Updated: 2023/05/25 09:33:42 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/07/14 11:50:19 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,13 @@
 
 HumanB::HumanB()
 {
-	
+	this->weapon = NULL;
 }
 
 HumanB::HumanB(std::string name)
 {
 	this->name = name;
+	this->weapon = NULL;
 }
 
 void HumanB::attack(void)
