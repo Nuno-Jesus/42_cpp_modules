@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crypto <crypto@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 18:20:55 by crypto            #+#    #+#             */
-/*   Updated: 2023/09/05 19:07:00 by crypto           ###   ########.fr       */
+/*   Updated: 2023/09/10 17:30:03 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,35 +14,44 @@
 # define BITCOIN_EXCHANGE_HPP
 
 # include <iostream>
-# include <iomanip>
 # include <fstream>
 # include <sstream>
+# include <string>
+# include <cstdlib>
+# include <ctime>
 # include <map>
 
 # define RED	"\033[1;31m"
 # define GREEN	"\033[1;32m"
 # define RESET	"\033[0m"
 
-class BitcoinExchange
+# define ERROR(str)			std::cout << str << "\n"
+# define ERROR_BAD_INPUT(x)	ERROR("Error: missing fields => '" + x + "'")
+# define ERROR_BAD_DATE(x)	ERROR("Error: weird date => '" + x + "'")
+# define ERROR_NOT_INT (x)	ERROR("Error: ammount must be an integer => '" + x + "'")
+
+class BTC
 {
 	private:
-		std::map<std::string, double> stock;
-		std::map<std::string, double> input;
+		std::map<std::string, float> conversions;
 
 	public:
 		//! Constructors and destructor
-		BitcoinExchange();
-		BitcoinExchange(const BitcoinExchange& copy);
-		~BitcoinExchange();
+		BTC();
+		BTC(const BTC& copy);
+		~BTC();
 
 		//! Operator overloading
-		BitcoinExchange& operator=(const BitcoinExchange& right);
+		BTC& operator=(const BTC& right);
 
 		//! Member functions
-		void readStockDatabase(void);
+		void readExchangeRates(void);
+		void convert(const char *filename);
+		void dump(void);
 	
 	private:
-		void updateMap(const std::string &str);
+		bool extract(const std::string &line, std::string &date, double &ammount);
+		bool isValidDate(const std::string &date);
 
 	class MissingFileException : public std::exception
 	{
