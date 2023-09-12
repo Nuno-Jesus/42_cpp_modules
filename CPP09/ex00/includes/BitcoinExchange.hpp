@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: crypto <crypto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 18:20:55 by crypto            #+#    #+#             */
-/*   Updated: 2023/09/10 17:30:03 by marvin           ###   ########.fr       */
+/*   Updated: 2023/09/12 18:55:37 by crypto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <fstream>
 # include <sstream>
 # include <string>
+# include <cstring>
 # include <cstdlib>
 # include <ctime>
 # include <map>
@@ -24,6 +25,7 @@
 # define RED	"\033[1;31m"
 # define GREEN	"\033[1;32m"
 # define RESET	"\033[0m"
+// # define DEBUG
 
 # define ERROR(str)			std::cout << str << "\n"
 # define ERROR_BAD_INPUT(x)	ERROR("Error: missing fields => '" + x + "'")

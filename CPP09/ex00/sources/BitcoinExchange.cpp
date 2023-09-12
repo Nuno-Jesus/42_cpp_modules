@@ -69,6 +69,7 @@ bool BTC::isValidDate(const std::string &date)
 	std::string 		tmp(date);
 	std::stringstream	stream;
 	struct tm 			t;
+	struct tm 			norm;
 
 	end = tmp.find('-');
 	while (end != -1)
@@ -81,16 +82,22 @@ bool BTC::isValidDate(const std::string &date)
 	if (!(stream >> t.tm_year >> t.tm_mon >> t.tm_mday))
 		return (false);
 	
-	t.tm_year -= 1900;
+	t.tm_sec = 0;
+	t.tm_min = 0;
+	t.tm_hour = 0;
 	t.tm_mon -= 1;
+	t.tm_year -= 1900;
+	t.tm_wday = 0;
+	t.tm_yday = 0;
+	t.tm_isdst = -1;
 
-	time_t x = mktime(&t);
-	const struct tm *norm = localtime(&x);
+	norm = t;
 
-	if (norm->tm_year == t.tm_year && norm->tm_mon == t.tm_mon && norm->tm_mday == t.tm_mday)
+	if (norm.tm_year == t.tm_year && norm.tm_mon == t.tm_mon && norm.tm_mday == t.tm_mday)
 		std::cout << date << " is a valid date" << std::endl;
 	else
 		std::cout << date << " is an invalid date" << std::endl;
+	std::cout << "====================\n";
 	return (true);
 }
 
