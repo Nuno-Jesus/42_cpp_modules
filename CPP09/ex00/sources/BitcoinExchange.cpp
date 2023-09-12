@@ -58,8 +58,7 @@ bool BTC::extract(const std::string &line, std::string &date, double &ammount)
 	if (!(stream >> date >> delimiter >> ammount))
 		return (ERROR_BAD_INPUT(line), false);
 	if (!isValidDate(date))
-		return (false);
-	// return (false);
+		return (ERROR_BAD_DATE(line),false);
 	return (true);
 }
 
@@ -68,8 +67,7 @@ bool BTC::isValidDate(const std::string &date)
 	int					end;
 	std::string 		tmp(date);
 	std::stringstream	stream;
-	struct tm 			t;
-	struct tm 			norm;
+	struct tm 			t, norm;
 
 	end = tmp.find('-');
 	while (end != -1)
@@ -92,13 +90,12 @@ bool BTC::isValidDate(const std::string &date)
 	t.tm_isdst = -1;
 
 	norm = t;
+	
+	mktime(&norm);
 
-	if (norm.tm_year == t.tm_year && norm.tm_mon == t.tm_mon && norm.tm_mday == t.tm_mday)
-		std::cout << date << " is a valid date" << std::endl;
-	else
-		std::cout << date << " is an invalid date" << std::endl;
-	std::cout << "====================\n";
-	return (true);
+	return (norm.tm_year == t.tm_year \
+			&& norm.tm_mon == t.tm_mon \
+			&& norm.tm_mday == t.tm_mday);
 }
 
 void BTC::convert(const char *filename)
