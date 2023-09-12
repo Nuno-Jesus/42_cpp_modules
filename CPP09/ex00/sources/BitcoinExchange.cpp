@@ -102,11 +102,35 @@ bool BTC::isValidDate(const std::string &date)
 			&& norm.tm_mday == t.tm_mday);
 }
 
+double BTC::findClosestDate(const std::string &date)
+{
+	std::map<std::string, float>::iterator it;
+
+	// If the date is older than the database
+	if (date < conversions.begin()->first)
+		return (conversions.begin()->second);
+
+	// If the date is newer than the database
+	if (date > conversions.rbegin()->first)
+		return (conversions.rbegin()->second);
+
+	for (it = conversions.begin(); it != conversions.end(); it++)
+		if (date > it->first)
+		{
+			std::cout << it->first << " is less than " << date << std::endl;
+			return (it->second);
+		}
+		else
+			std::cout << "Skipped \'" + it->first + "\'" << std::endl;
+	return (-1);
+}
+
+
 void BTC::convert(const char *filename)
 {
 	std::ifstream	infile;
 	std::string		line, date;
-	double			value;
+	double			ammount, worth;
 
 	// Attempts to open the file
 	infile.open(filename, std::ios::in);
@@ -118,8 +142,19 @@ void BTC::convert(const char *filename)
 	while (!infile.eof())
 	{
 		std::getline(infile, line);
-		if (!extract(line, date, value))
+		if (!extract(line, date, ammount))
 			continue;
+		if (conversions.find(date) == conversions.end())
+		{
+			std::cout << "Didn't find " << date << std::endl;
+			worth = findClosestDate(date);
+		}
+		else
+		{
+			worth = conversions[date];
+			std::cout << "Worth = " << conversions[date] << std::endl;	
+		}
+		std::cout << date << " => " << ammount << " = " << ammount * worth << std::endl;
 	}
 	infile.close();
 }

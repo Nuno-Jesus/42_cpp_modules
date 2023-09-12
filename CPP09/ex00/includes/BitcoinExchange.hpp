@@ -6,7 +6,7 @@
 /*   By: crypto <crypto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 18:20:55 by crypto            #+#    #+#             */
-/*   Updated: 2023/09/12 19:07:16 by crypto           ###   ########.fr       */
+/*   Updated: 2023/09/12 19:42:50 by crypto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ class BTC
 	private:
 		bool extract(const std::string &line, std::string &date, double &ammount);
 		bool isValidDate(const std::string &date);
+		double findClosestDate(const std::string &date);
 
 	class MissingFileException : public std::exception
 	{

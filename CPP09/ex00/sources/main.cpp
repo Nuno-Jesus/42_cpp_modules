@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: crypto <crypto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 18:14:30 by crypto            #+#    #+#             */
-/*   Updated: 2023/09/10 17:03:33 by marvin           ###   ########.fr       */
+/*   Updated: 2023/09/12 19:30:48 by crypto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int main(int argc, char **argv)
 	if (argc < 2)
 		return (-1);
 	currency.readExchangeRates();
-	// currency.dump();
 	currency.convert(argv[1]);
 	return (0);
 }

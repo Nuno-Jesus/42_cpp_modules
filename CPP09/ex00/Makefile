@@ -35,6 +35,10 @@ ifdef DEBUG
 	CPPFLAGS += -g
 endif
 
+ifdef SAN
+	CPPFLAGS += -fsanitize=address
+endif
+
 #_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_ RULES _/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_
 all: $(NAME)
 
