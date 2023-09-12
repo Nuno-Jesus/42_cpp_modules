@@ -58,7 +58,9 @@ bool BTC::extract(const std::string &line, std::string &date, double &ammount)
 	if (!(stream >> date >> delimiter >> ammount))
 		return (ERROR_BAD_INPUT(line), false);
 	if (!isValidDate(date))
-		return (ERROR_BAD_DATE(line),false);
+		return (ERROR_BAD_DATE(line), false);
+	if (ammount < 0 || ammount > std::numeric_limits<int>::max())
+		return (ERROR_NOT_INT(line), false);
 	return (true);
 }
 
@@ -73,6 +75,8 @@ bool BTC::isValidDate(const std::string &date)
 	while (end != -1)
 	{
 		stream << tmp.substr(0, end) + " ";
+		if (tmp.substr(0, end) == "")
+			return (false);
 		tmp.erase(0, end + 1);
 		end = tmp.find('-');
 	}

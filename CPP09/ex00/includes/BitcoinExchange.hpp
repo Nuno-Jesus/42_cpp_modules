@@ -6,7 +6,7 @@
 /*   By: crypto <crypto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 18:20:55 by crypto            #+#    #+#             */
-/*   Updated: 2023/09/12 18:55:37 by crypto           ###   ########.fr       */
+/*   Updated: 2023/09/12 19:07:16 by crypto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <iostream>
 # include <fstream>
+# include <limits>
 # include <sstream>
 # include <string>
 # include <cstring>
@@ -30,7 +31,7 @@
 # define ERROR(str)			std::cout << str << "\n"
 # define ERROR_BAD_INPUT(x)	ERROR("Error: missing fields => '" + x + "'")
 # define ERROR_BAD_DATE(x)	ERROR("Error: weird date => '" + x + "'")
-# define ERROR_NOT_INT (x)	ERROR("Error: ammount must be an integer => '" + x + "'")
+# define ERROR_NOT_INT(x)	ERROR("Error: ammount must be an integer => '" + x + "'")
 
 class BTC
 {
