@@ -41,10 +41,14 @@ void BTC::readExchangeRates(void)
 
 	// Ignores the first line of the database
 	std::getline(infile, key);
-	while (!infile.eof())
+	while (1)
 	{
 		std::getline(infile, key, ',');
 		std::getline(infile, value);
+		if (infile.eof())
+			break;
+		//Debug key and value between quotes each
+		std::cout << "Key = \"" + key + "\" Value = \"" + value + "\"" << std::endl;
 		conversions[key] = std::atof(value.c_str());
 	}
 	infile.close();
@@ -115,6 +119,7 @@ double BTC::findClosestDate(const std::string &date)
 		return (conversions.rbegin()->second);
 
 	for (it = conversions.begin(); it != conversions.end(); it++)
+	{
 		if (date > it->first)
 		{
 			std::cout << it->first << " is less than " << date << std::endl;
@@ -122,6 +127,7 @@ double BTC::findClosestDate(const std::string &date)
 		}
 		else
 			std::cout << "Skipped \'" + it->first + "\'" << std::endl;
+	}
 	return (-1);
 }
 
@@ -146,7 +152,6 @@ void BTC::convert(const char *filename)
 			continue;
 		if (conversions.find(date) == conversions.end())
 		{
-			std::cout << "Didn't find " << date << std::endl;
 			worth = findClosestDate(date);
 		}
 		else
