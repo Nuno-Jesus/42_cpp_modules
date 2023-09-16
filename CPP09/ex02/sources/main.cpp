@@ -6,7 +6,7 @@
 /*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 17:22:07 by ncarvalh          #+#    #+#             */
-/*   Updated: 2023/09/16 18:11:11 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/09/16 18:34:28 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ bool parse(char **argv, std::vector<int> &vec, std::list<int> &list)
 	total = std::string(argv[0]);	
 	for (int i = 1; argv[i]; i++)
 		total += " " + std::string(argv[i]);	
-		
-	std::cout << total << "\n";
 	stream << total;
 	while (!stream.eof())
 	{
@@ -41,7 +39,23 @@ void print(T &container)
 	typename T::iterator it;
 
 	for (it = container.begin(); it != container.end(); it++)
-		std::cout << *it << "\n";
+		std::cout << *it << " ";
+	std::cout << std::endl;
+}
+
+
+void mergeInsertionSortVector(int n, std::vector<int> &nums)
+{
+	std::vector<std::vector<int>> vec(n / 2, std::vector<int>(2));
+
+	std::cout << "Before: ";
+	print(nums);
+
+	std::cout << "After: ";
+	// print(vec);
+	
+	// for (int i = 0; i < n; i++)
+	
 }
 
 int main(int argc, char **argv)
@@ -53,9 +67,6 @@ int main(int argc, char **argv)
 		return (-1);
 	if (!parse(argv + 1, vec, list))	
 		std::cout << "Error\n";
-	std::cout << "\n\tVECTOR\n";
-	print(vec);
-	std::cout << "\n\tLIST\n";
-	print(list);
+	mergeInsertionSortVector(std::ceil(argc / 2), vec);
 	return (0);
 }

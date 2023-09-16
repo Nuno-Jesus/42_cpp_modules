@@ -6,7 +6,7 @@
 /*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 17:23:30 by ncarvalh          #+#    #+#             */
-/*   Updated: 2023/09/16 18:00:30 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/09/16 18:25:09 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <iostream>
 # include <sstream>
 # include <limits>
+# include <chrono>
+# include <cmath>
 # include <vector>
 # include <list>
 
