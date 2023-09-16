@@ -47,8 +47,6 @@ void BTC::readExchangeRates(void)
 		std::getline(infile, value);
 		if (infile.eof())
 			break;
-		//Debug key and value between quotes each
-		std::cout << "Key = \"" + key + "\" Value = \"" + value + "\"" << std::endl;
 		conversions[key] = std::atof(value.c_str());
 	}
 	infile.close();
@@ -63,7 +61,9 @@ bool BTC::extract(const std::string &line, std::string &date, double &ammount)
 		return (ERROR_BAD_INPUT(line), false);
 	if (!isValidDate(date))
 		return (ERROR_BAD_DATE(line), false);
-	if (ammount < 0 || ammount > std::numeric_limits<int>::max())
+	if (ammount < 0)
+		return (ERROR_BAD_NUM(line), false);
+	if (ammount > std::numeric_limits<int>::max())
 		return (ERROR_NOT_INT(line), false);
 	return (true);
 }
@@ -74,6 +74,10 @@ bool BTC::isValidDate(const std::string &date)
 	std::string 		tmp(date);
 	std::stringstream	stream;
 	struct tm 			t, norm;
+
+	// Dates must have yyyy-mm-dd format to begin with
+	if (date.size() != 10)
+		return (false);
 
 	end = tmp.find('-');
 	while (end != -1)
@@ -109,24 +113,25 @@ bool BTC::isValidDate(const std::string &date)
 double BTC::findClosestDate(const std::string &date)
 {
 	std::map<std::string, float>::iterator it;
+	std::map<std::string, float>::iterator prev;
 
 	// If the date is older than the database
 	if (date < conversions.begin()->first)
-		return (conversions.begin()->second);
+		return (0);
 
 	// If the date is newer than the database
 	if (date > conversions.rbegin()->first)
 		return (conversions.rbegin()->second);
 
-	for (it = conversions.begin(); it != conversions.end(); it++)
+	prev = conversions.begin();
+	it = conversions.begin();
+	it++;
+	while (it != conversions.end())
 	{
-		if (date > it->first)
-		{
-			std::cout << it->first << " is less than " << date << std::endl;
-			return (it->second);
-		}
-		else
-			std::cout << "Skipped \'" + it->first + "\'" << std::endl;
+		if (it->first > date)
+			return (prev->second);
+		prev = it;
+		++it;
 	}
 	return (-1);
 }
@@ -148,17 +153,12 @@ void BTC::convert(const char *filename)
 	while (!infile.eof())
 	{
 		std::getline(infile, line);
-		if (!extract(line, date, ammount))
+		if (line == "" || !extract(line, date, ammount))
 			continue;
 		if (conversions.find(date) == conversions.end())
-		{
 			worth = findClosestDate(date);
-		}
 		else
-		{
 			worth = conversions[date];
-			std::cout << "Worth = " << conversions[date] << std::endl;	
-		}
 		std::cout << date << " => " << ammount << " = " << ammount * worth << std::endl;
 	}
 	infile.close();

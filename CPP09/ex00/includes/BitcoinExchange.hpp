@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crypto <crypto@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 18:20:55 by crypto            #+#    #+#             */
-/*   Updated: 2023/09/12 19:42:50 by crypto           ###   ########.fr       */
+/*   Updated: 2023/09/16 11:33:39 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,10 @@
 // # define DEBUG
 
 # define ERROR(str)			std::cout << str << "\n"
-# define ERROR_BAD_INPUT(x)	ERROR("Error: missing fields => '" + x + "'")
+# define ERROR_BAD_INPUT(x)	ERROR("Error: bad input => '" + x + "'")
 # define ERROR_BAD_DATE(x)	ERROR("Error: weird date => '" + x + "'")
-# define ERROR_NOT_INT(x)	ERROR("Error: ammount must be an integer => '" + x + "'")
+# define ERROR_NOT_INT(x)	ERROR("Error: too large a number => '" + x + "'")
+# define ERROR_BAD_NUM(x)	ERROR("Error: not a positive number => '" + x + "'")
 
 class BTC
 {
