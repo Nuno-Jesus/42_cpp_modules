@@ -96,7 +96,7 @@ bool BTC::extract(const std::string &line, std::string &date, double &ammount)
 		return (ERROR_BAD_DATE(line), false);
 	if (ammount < 0)
 		return (ERROR_BAD_NUM(line), false);
-	if (ammount > std::numeric_limits<int>::max())
+	if (ammount > 1000)
 		return (ERROR_NOT_INT(line), false);
 	return (true);
 }
