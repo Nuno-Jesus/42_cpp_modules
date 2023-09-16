@@ -6,7 +6,7 @@
 /*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 18:20:55 by crypto            #+#    #+#             */
-/*   Updated: 2023/09/16 11:33:39 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/09/16 12:16:38 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,18 @@
 # define RESET	"\033[0m"
 // # define DEBUG
 
-# define ERROR(str)			std::cout << str << "\n"
-# define ERROR_BAD_INPUT(x)	ERROR("Error: bad input => '" + x + "'")
-# define ERROR_BAD_DATE(x)	ERROR("Error: weird date => '" + x + "'")
-# define ERROR_NOT_INT(x)	ERROR("Error: too large a number => '" + x + "'")
-# define ERROR_BAD_NUM(x)	ERROR("Error: not a positive number => '" + x + "'")
+# define ERROR(str)			std::cout << RED << str << RESET "\n"
+# define ERROR_BAD_FILE(x)	ERROR("ERROR: couldn't open '" << x << "'")
+# define ERROR_BAD_INPUT(x)	ERROR("ERROR: bad input => '" << x << "'")
+# define ERROR_BAD_DATE(x)	ERROR("ERROR: weird date => '" << x << "'")
+# define ERROR_NOT_INT(x)	ERROR("ERROR: too large a number => '" << x << "'")
+# define ERROR_BAD_NUM(x)	ERROR("ERROR: not a positive number => '" << x << "'")
+# define ERROR_USAGE		ERROR("ERROR: ./btc filename")
 
 class BTC
 {
 	private:
-		std::map<std::string, float> conversions;
+		std::map<std::string, float> database;
 
 	public:
 		//! Constructors and destructor
@@ -49,20 +51,14 @@ class BTC
 		BTC& operator=(const BTC& right);
 
 		//! Member functions
-		void readExchangeRates(void);
-		void convert(const char *filename);
+		bool convert(const char *filename);
 		void dump(void);
 	
 	private:
+		bool readExchangeRates(void);
 		bool extract(const std::string &line, std::string &date, double &ammount);
 		bool isValidDate(const std::string &date);
 		double findClosestDate(const std::string &date);
-
-	class MissingFileException : public std::exception
-	{
-		public:
-			virtual const char *what() const throw();
-	};
 };
 
 #endif
