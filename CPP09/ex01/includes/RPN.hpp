@@ -6,7 +6,7 @@
 /*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 15:52:14 by ncarvalh          #+#    #+#             */
-/*   Updated: 2023/09/16 15:54:04 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/09/16 16:56:48 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,26 @@
 # define RPN_HPP
 
 # include <iostream>
-# include <iomanip>
+# include <sstream>
+# include <stack>
 
-class RPN
-{
-	//! _______________________ PRIVATE FIELDS _______________________
-	private:
+# define RED	"\033[1;31m"
+# define GREEN	"\033[1;32m"
+# define RESET	"\033[0m"
+// # define DEBUG
 
-	public:
-	//! ________________________ CONSTRUCTORS ________________________
-		RPN();
-		RPN(const RPN& copy);
-		~RPN();
+# define ERROR(str)				std::cout << RED << str << RESET "\n"
+# define ERROR_WEIRD_SYMBOL(x)	ERROR("ERROR: unknown operation '" << x << "'")
+# define ERROR_FEW_ARGS(x)		ERROR("ERROR: not enough args in stack to perform '" << x << "'")
+# define ERROR_LEFTOVER			ERROR("ERROR: not all numbers were used")
+# define ERROR_USAGE			ERROR("ERROR: ./RPN expression")
 
-	//! ____________________ OPERATOR OVERLOADING ____________________
-		RPN& operator=(const RPN& right);
-	//! __________________________ SETTERS ___________________________
+bool isOperation(char c);
 
-	//! __________________________ GETTERS ___________________________
+bool isValidSymbol(char c);
 
-	//! _________________ PRIVATE MEMBER FUNCTIONS ___________________
-	private:
-};
+void calculate(std::stack<int> &stack, char symbol);
+
+bool parse(std::string expression);
 
 #endif
