@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: crypto <crypto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 17:23:30 by ncarvalh          #+#    #+#             */
-/*   Updated: 2023/09/16 18:25:09 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/09/18 13:52:01 by crypto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,7 @@
 # include <cmath>
 # include <vector>
 # include <list>
+
+# define UNUSED -1
 
 #endif

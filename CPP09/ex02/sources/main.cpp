@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: crypto <crypto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 17:22:07 by ncarvalh          #+#    #+#             */
-/*   Updated: 2023/09/16 18:34:28 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/09/18 14:11:30 by crypto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,19 +43,58 @@ void print(T &container)
 	std::cout << std::endl;
 }
 
-
-void mergeInsertionSortVector(int n, std::vector<int> &nums)
+void swap(int &a, int &b)
 {
-	std::vector<std::vector<int>> vec(n / 2, std::vector<int>(2));
+	int aux = a;
+	a = b;
+	b = aux;
+}
 
-	std::cout << "Before: ";
-	print(nums);
+void merge(std::vector<std::vector<int>> &pairs, int start, int mid, int end)
+{
+	return ;
+}
 
-	std::cout << "After: ";
-	// print(vec);
+void mergesort(std::vector<std::vector<int>> &pairs, int start, int end)
+{
+	int mid;
+
+	if (start > end)
+		return ;
+	mid = start + (start + end) / 2; 
+	mergesort(pairs, start, mid);
+	mergesort(pairs, mid + 1, end);
+	merge(pairs, start, mid, end);
+}
+
+// Sort the vector of pairs in ascending order using merge sort and comparing the a value
+// Use binay search to insert the b values in the chain of S
+
+void mergeInsertionSort(std::vector<int> &nums)
+{
+	std::vector<std::vector<int>> pairs(std::ceil(nums.size() / 2.0), std::vector<int>(2, UNUSED));
 	
-	// for (int i = 0; i < n; i++)
+	// Split the vector in pairs of ints
+	for (size_t i = 0; i < pairs.size(); i++)
+	{
+		if ((2 * i + 1) < nums.size())
+		{
+			pairs[i][0] = nums[2 * i];
+			pairs[i][1] = nums[2 * i + 1];			
+		}
+		else
+			pairs[i][1] = nums[2 * i];
+			
+		// Sort each pair of ints in ascending order (a, b)
+		if (pairs[i][1] < pairs[i][0])
+			swap(pairs[i][1], pairs[i][0]);
+	}
 	
+	for (size_t i = 0; i < pairs.size(); i++)
+	{
+		std::cout << "PAIR (A B) [" << i << "]\n";
+		print(pairs.at(i));
+	}
 }
 
 int main(int argc, char **argv)
@@ -65,8 +104,8 @@ int main(int argc, char **argv)
 	
 	if (argc < 2)
 		return (-1);
-	if (!parse(argv + 1, vec, list))	
-		std::cout << "Error\n";
-	mergeInsertionSortVector(std::ceil(argc / 2), vec);
+	if (!parse(argv + 1, vec, list))
+		return (std::cout << "Error\n", 1);
+	mergeInsertionSort(vec);
 	return (0);
 }
