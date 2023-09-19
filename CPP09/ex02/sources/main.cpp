@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crypto <crypto@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 17:22:07 by ncarvalh          #+#    #+#             */
-/*   Updated: 2023/09/18 14:11:30 by crypto           ###   ########.fr       */
+/*   Updated: 2023/09/19 12:57:19 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,28 @@ void swap(int &a, int &b)
 
 void merge(std::vector<std::vector<int>> &pairs, int start, int mid, int end)
 {
-	return ;
+	(void) pairs;
+	(void) start;
+	(void) mid;
+	(void) end;
+	std::vector<std::vector<int>> left;
+	std::vector<std::vector<int>> right;
+	std::vector<std::vector<int>> result;
+	
+
+	for (size_t i = start; i <= mid; i++)
+		left.push_back(pairs.at(i));
+	for (size_t i = mid + 1; i <= end; i++)
+		left.push_back(pairs.at(i));
 }
 
 void mergesort(std::vector<std::vector<int>> &pairs, int start, int end)
 {
 	int mid;
 
-	if (start > end)
+	if (start >= end)
 		return ;
-	mid = start + (start + end) / 2; 
+	mid = start + (start - end) / 2; 
 	mergesort(pairs, start, mid);
 	mergesort(pairs, mid + 1, end);
 	merge(pairs, start, mid, end);
@@ -90,11 +102,7 @@ void mergeInsertionSort(std::vector<int> &nums)
 			swap(pairs[i][1], pairs[i][0]);
 	}
 	
-	for (size_t i = 0; i < pairs.size(); i++)
-	{
-		std::cout << "PAIR (A B) [" << i << "]\n";
-		print(pairs.at(i));
-	}
+	
 }
 
 int main(int argc, char **argv)
