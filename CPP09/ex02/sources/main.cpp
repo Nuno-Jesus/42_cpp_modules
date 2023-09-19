@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: crypto <crypto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 17:22:07 by ncarvalh          #+#    #+#             */
-/*   Updated: 2023/09/19 14:18:53 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/09/19 18:07:41 by crypto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,19 +56,13 @@ void swap(int &a, int &b)
 	b = aux;
 }
 
-void merge(std::vector<std::vector<int>> &pairs, size_t start, size_t mid, size_t end)
+std::vector<std::vector<int>> merge(std::vector<std::vector<int>> &left, std::vector<std::vector<int>> &right)
 {
-	(void) pairs;
-	(void) start;
-	(void) mid;
-	(void) end;
-	std::vector<std::vector<int>> left(pairs.begin(), pairs.begin() + pairs.size() / 2);
-	std::vector<std::vector<int>> right(pairs.begin() + pairs.size() / 2, pairs.end());
 	std::vector<std::vector<int>> result;
 
-	std::cout << "\n\tLEFT\n" << std::endl;
+	std::cout << "\tLEFT" << std::endl;
 	print(left);
-	std::cout << "\n\tRIGHT\n" << std::endl;
+	std::cout << "\tRIGHT" << std::endl;
 	print(right);
 
 	// Find out the minimum values between left and right vectors
@@ -77,11 +71,13 @@ void merge(std::vector<std::vector<int>> &pairs, size_t start, size_t mid, size_
 	{
 		if (left[0][0] < right[0][0] || right[0][0] == UNUSED)
 		{
+			std::cout << "L" << std::endl;
 			result.push_back(left[0]);
 			left.erase(left.begin());
 		}
 		else
 		{
+			std::cout << "R" << std::endl;
 			result.push_back(right[0]);
 			right.erase(right.begin());
 		}
@@ -101,24 +97,25 @@ void merge(std::vector<std::vector<int>> &pairs, size_t start, size_t mid, size_
 		right.erase(right.begin());
 	}
 
-	std::cout << "Result array" << std::endl;
-	print(result);
+	// std::cout << "\tAFTER MERGING" << std::endl;
+	// print(result);
+	std::cout << "\n\t==============\n" << std::endl;
+	return(result);
 }
 
-void mergesort(std::vector<std::vector<int>> &pairs, size_t start, size_t end)
+std::vector<std::vector<int>> mergesort(std::vector<std::vector<int>> &pairs)
 {
-	int mid;
+	std::vector<std::vector<int>> left(pairs.begin(), pairs.begin() + pairs.size() / 2);
+	std::vector<std::vector<int>> right(pairs.begin() + pairs.size() / 2, pairs.end());
 
-	if (start >= end)
-		return ;
-	mid = start + (start - end) / 2; 
-	mergesort(pairs, start, mid);
-	mergesort(pairs, mid + 1, end);
-	merge(pairs, start, mid, end);
+	if (pairs.size() == 1)
+		return (pairs);
+	left = mergesort(left);
+	right = mergesort(right);
+	return (merge(left, right));
 }
 
 // Use binay search to insert the b values in the chain of S
-
 void mergeInsertionSort(std::vector<int> &nums)
 {
 	std::vector<std::vector<int>> pairs(std::ceil(nums.size() / 2.0), std::vector<int>(2, UNUSED));
@@ -138,11 +135,14 @@ void mergeInsertionSort(std::vector<int> &nums)
 		if (pairs[i][1] < pairs[i][0])
 			swap(pairs[i][1], pairs[i][0]);
 	}
-	std::cout << "Pairs vector after step 1" << std::endl;
+	std::cout << "Grouping integers into sorted (a, b) pairs" << std::endl;
 	print(pairs);
 	// Sort the vector of pairs in ascending order using merge sort and comparing the a value
-	// mergesort(pairs, 0, pairs.size() - 1);	
-	merge(pairs, 0, (pairs.size() - 1) / 2, pairs.size() - 1);
+	pairs = mergesort(pairs);	
+	std::cout << "FINAL RESULT" << std::endl;
+	print(pairs);
+
+	// merge(pairs, 0, (pairs.size() - 1) / 2, pairs.size() - 1);
 }
 
 int main(int argc, char **argv)
