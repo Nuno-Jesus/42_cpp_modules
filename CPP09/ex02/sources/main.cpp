@@ -6,7 +6,7 @@
 /*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 17:22:07 by ncarvalh          #+#    #+#             */
-/*   Updated: 2023/09/19 12:57:19 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/09/19 14:18:53 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,12 @@ void print(T &container)
 	std::cout << std::endl;
 }
 
+void print(std::vector<std::vector<int>> &pairs)
+{
+	for (size_t i = 0; i < pairs.size(); i++)
+		print(pairs[i]);
+}
+
 void swap(int &a, int &b)
 {
 	int aux = a;
@@ -50,24 +56,56 @@ void swap(int &a, int &b)
 	b = aux;
 }
 
-void merge(std::vector<std::vector<int>> &pairs, int start, int mid, int end)
+void merge(std::vector<std::vector<int>> &pairs, size_t start, size_t mid, size_t end)
 {
 	(void) pairs;
 	(void) start;
 	(void) mid;
 	(void) end;
-	std::vector<std::vector<int>> left;
-	std::vector<std::vector<int>> right;
+	std::vector<std::vector<int>> left(pairs.begin(), pairs.begin() + pairs.size() / 2);
+	std::vector<std::vector<int>> right(pairs.begin() + pairs.size() / 2, pairs.end());
 	std::vector<std::vector<int>> result;
-	
 
-	for (size_t i = start; i <= mid; i++)
-		left.push_back(pairs.at(i));
-	for (size_t i = mid + 1; i <= end; i++)
-		left.push_back(pairs.at(i));
+	std::cout << "\n\tLEFT\n" << std::endl;
+	print(left);
+	std::cout << "\n\tRIGHT\n" << std::endl;
+	print(right);
+
+	// Find out the minimum values between left and right vectors
+	// The loop ends when one of the vectors is emptied out
+	while (!left.empty() && !right.empty())
+	{
+		if (left[0][0] < right[0][0] || right[0][0] == UNUSED)
+		{
+			result.push_back(left[0]);
+			left.erase(left.begin());
+		}
+		else
+		{
+			result.push_back(right[0]);
+			right.erase(right.begin());
+		}
+	}
+	
+	// Empty out left vector, if the right vector had the lowest values
+	while (!left.empty())
+	{
+		result.push_back(left[0]);
+		left.erase(left.begin());
+	}
+	
+	// Empty out right vector, if the left vector had the lowest values
+	while (!right.empty())
+	{
+		result.push_back(right[0]);
+		right.erase(right.begin());
+	}
+
+	std::cout << "Result array" << std::endl;
+	print(result);
 }
 
-void mergesort(std::vector<std::vector<int>> &pairs, int start, int end)
+void mergesort(std::vector<std::vector<int>> &pairs, size_t start, size_t end)
 {
 	int mid;
 
@@ -79,7 +117,6 @@ void mergesort(std::vector<std::vector<int>> &pairs, int start, int end)
 	merge(pairs, start, mid, end);
 }
 
-// Sort the vector of pairs in ascending order using merge sort and comparing the a value
 // Use binay search to insert the b values in the chain of S
 
 void mergeInsertionSort(std::vector<int> &nums)
@@ -101,8 +138,11 @@ void mergeInsertionSort(std::vector<int> &nums)
 		if (pairs[i][1] < pairs[i][0])
 			swap(pairs[i][1], pairs[i][0]);
 	}
-	
-	
+	std::cout << "Pairs vector after step 1" << std::endl;
+	print(pairs);
+	// Sort the vector of pairs in ascending order using merge sort and comparing the a value
+	// mergesort(pairs, 0, pairs.size() - 1);	
+	merge(pairs, 0, (pairs.size() - 1) / 2, pairs.size() - 1);
 }
 
 int main(int argc, char **argv)
