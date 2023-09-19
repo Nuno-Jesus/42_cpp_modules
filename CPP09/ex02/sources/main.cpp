@@ -6,7 +6,7 @@
 /*   By: crypto <crypto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 17:22:07 by ncarvalh          #+#    #+#             */
-/*   Updated: 2023/09/19 18:07:41 by crypto           ###   ########.fr       */
+/*   Updated: 2023/09/19 18:55:18 by crypto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,24 +103,23 @@ std::vector<std::vector<int>> merge(std::vector<std::vector<int>> &left, std::ve
 	return(result);
 }
 
-std::vector<std::vector<int>> mergesort(std::vector<std::vector<int>> &pairs)
+std::vector<std::vector<int>> mergeSort(std::vector<std::vector<int>> &pairs)
 {
 	std::vector<std::vector<int>> left(pairs.begin(), pairs.begin() + pairs.size() / 2);
 	std::vector<std::vector<int>> right(pairs.begin() + pairs.size() / 2, pairs.end());
 
 	if (pairs.size() == 1)
 		return (pairs);
-	left = mergesort(left);
-	right = mergesort(right);
+	left = mergeSort(left);
+	right = mergeSort(right);
 	return (merge(left, right));
 }
 
-// Use binay search to insert the b values in the chain of S
-void mergeInsertionSort(std::vector<int> &nums)
+std::vector<std::vector<int>> matrify(const std::vector<int> &nums)
 {
-	std::vector<std::vector<int>> pairs(std::ceil(nums.size() / 2.0), std::vector<int>(2, UNUSED));
-	
-	// Split the vector in pairs of ints
+	size_t							numPairs = std::ceil(nums.size() / 2.0);
+	std::vector<std::vector<int>>	pairs(numPairs, std::vector<int>(2, UNUSED));
+
 	for (size_t i = 0; i < pairs.size(); i++)
 	{
 		if ((2 * i + 1) < nums.size())
@@ -135,14 +134,42 @@ void mergeInsertionSort(std::vector<int> &nums)
 		if (pairs[i][1] < pairs[i][0])
 			swap(pairs[i][1], pairs[i][0]);
 	}
-	std::cout << "Grouping integers into sorted (a, b) pairs" << std::endl;
-	print(pairs);
+	return (pairs);
+}
+
+size_t jacobsthal(int n)
+{
+	return (pow(2, n) - pow(-1, n) / 3);
+}
+
+// void insertionSort(std::vector<int> &S, const std::vector<std::vector<int>> &pairs)
+// {
+	
+// }
+
+
+void mergeInsertionSort(const std::vector<int> &nums)
+{
+	std::vector<std::vector<int>>	pairs;
+	std::vector<int> 				S;
+	
+	// Split the vector in pairs of ints
+	pairs = matrify(nums);
 	// Sort the vector of pairs in ascending order using merge sort and comparing the a value
-	pairs = mergesort(pairs);	
+	pairs = mergeSort(pairs);	
+	
 	std::cout << "FINAL RESULT" << std::endl;
 	print(pairs);
 
-	// merge(pairs, 0, (pairs.size() - 1) / 2, pairs.size() - 1);
+	for (size_t i = 0; i < pairs.size(); i++)
+		if (pairs[i][0] != UNUSED)
+			S.push_back(pairs[i][0]);
+
+	std::cout << "\tS" << std::endl;
+	print(S);
+	
+	// Use binary search to insert the b values in the chain of S
+	// S = insertionSort(S, pairs);
 }
 
 int main(int argc, char **argv)
@@ -155,5 +182,7 @@ int main(int argc, char **argv)
 	if (!parse(argv + 1, vec, list))
 		return (std::cout << "Error\n", 1);
 	mergeInsertionSort(vec);
+	for (int i = 1; i < 20; i++)
+		std::cout << jacobsthal(i) << " " << std::endl;
 	return (0);
 }
