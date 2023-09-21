@@ -84,8 +84,23 @@ void test_form_creation(void)
 	}
 }
 
-int main(void)
+int main(int argc, char **argv)
 {
-	test_form_creation();
-	test_form_sign();
+	int					testno;
+	std::stringstream	stream;
+
+	if (argc < 2)
+		return (ERROR_USAGE, 1);
+	stream << argv[1];
+	if (!(stream >> testno))
+		return (ERROR_NOT_INT, 1);
+	if (testno == 0)
+		test_form_creation();
+	else if (testno == 1)
+		test_form_sign();
+	// else if (testno == 2)
+	// 	test_constructors();
+	else
+		return (ERROR_TESTNO, 1);
+	return (0);
 }

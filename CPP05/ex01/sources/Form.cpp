@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: crypto <crypto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 01:02:19 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/11 20:02:16 by marvin           ###   ########.fr       */
+/*   Updated: 2023/09/21 16:44:48 by crypto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,10 +86,10 @@ std::ostream& operator<<(std::ostream& out, const Form& form)
 
 const char *Form::GradeTooHighException::what() const throw()
 {
-	return ("\n\tForm Exception: using grades above 1\n");
+	return ("\n\tForm Exception: grade is too hight\n");
 }
 
 const char *Form::GradeTooLowException::what() const throw()
 {
-	return ("\n\tForm Exception: using low grades\n");
+	return ("\n\tForm Exception: grade is too low\n");
 }
