@@ -6,7 +6,7 @@
 /*   By: crypto <crypto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 01:02:19 by marvin            #+#    #+#             */
-/*   Updated: 2023/09/21 16:44:48 by crypto           ###   ########.fr       */
+/*   Updated: 2023/09/21 20:52:54 by crypto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ Form::Form(const std::string& name, int signGrade, int execGrade) : name(name), 
 	else if (signGrade > Form::MIN_GRADE || execGrade > Form::MIN_GRADE)
 		throw Form::GradeTooLowException();
 	this->isSigned = false;
-	std::cout << this->name << " was created." << std::endl;
+	std::cout << this->name << "Form was created." << std::endl;
 }
 
 Form::~Form(void)
@@ -78,15 +78,17 @@ std::ostream& operator<<(std::ostream& out, const Form& form)
 {
 	std::string sign = form.hasBeenSigned() ? " ✅ " : " ❌ ";
 	
-	out << "Form: " + form.getName() + ", signed:" + sign + ", sign. grade: ";
-	out << form.getSignGrade() << ", exec. grade: " << form.getExecutionGrade();
+	out << "Form: " + form.getName() + "\n";
+	out << "\tSigned? " + sign + "\n";
+	out << "\tSigning Grade: " << form.getSignGrade() << "\n";
+	out << "\tExecution Grade: " << form.getExecutionGrade() << "\n";
 	out << std::endl;
 	return (out);
 }
 
 const char *Form::GradeTooHighException::what() const throw()
 {
-	return ("\n\tForm Exception: grade is too hight\n");
+	return ("\n\tForm Exception: grade is too high\n");
 }
 
 const char *Form::GradeTooLowException::what() const throw()

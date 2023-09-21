@@ -6,7 +6,7 @@
 /*   By: crypto <crypto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 21:44:22 by marvin            #+#    #+#             */
-/*   Updated: 2023/09/21 16:43:12 by crypto           ###   ########.fr       */
+/*   Updated: 2023/09/21 20:55:36 by crypto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define ERROR(x) 		std::cout << x << std::endl
 # define ERROR_USAGE	ERROR("Usage: ./ex00 test_number")
 # define ERROR_NOT_INT	ERROR("Error: test number must be a number")
-# define ERROR_TESTNO	ERROR("Error: test number must be bounded between 0 and 2")
+# define ERROR_TESTNO	ERROR("Error: test number must be bounded between 0 and 1")
 
 
 class Form;
