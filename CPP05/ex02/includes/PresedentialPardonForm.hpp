@@ -34,7 +34,7 @@ class PresedentialPardonForm : public AForm
 		PresedentialPardonForm& operator=(const PresedentialPardonForm& right);
 
 		//! Others
-		void executeHelper(void) const;
+		void execute(void) const;
 
 };
 

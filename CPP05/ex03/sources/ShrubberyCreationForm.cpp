@@ -43,7 +43,7 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 	return (*this);
 }
 
-void ShrubberyCreationForm::executeHelper(void) const
+void ShrubberyCreationForm::execute(void) const
 {
 	std::ofstream outfile;
 

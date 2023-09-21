@@ -35,7 +35,7 @@ class ShrubberyCreationForm : public AForm
 		ShrubberyCreationForm& operator=(const ShrubberyCreationForm& right);
 
 		//! Others
-		void executeHelper(void) const;
+		void execute(void) const;
 
 };
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: crypto <crypto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 01:02:18 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/09 23:19:29 by marvin           ###   ########.fr       */
+/*   Updated: 2023/09/21 21:29:33 by crypto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ class AForm
 		//! Others
 		void beSigned(const Bureaucrat& b);
 		void execute(Bureaucrat const& executor) const;
-		virtual void executeHelper(void) const = 0;
+		virtual void execute(void) const = 0;
 
 		//! Getters
 		std::string getName(void) const;

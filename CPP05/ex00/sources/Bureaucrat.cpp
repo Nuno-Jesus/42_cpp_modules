@@ -6,7 +6,7 @@
 /*   By: crypto <crypto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 21:44:25 by marvin            #+#    #+#             */
-/*   Updated: 2023/09/21 14:09:07 by crypto           ###   ########.fr       */
+/*   Updated: 2023/09/21 21:05:55 by crypto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 Bureaucrat::Bureaucrat() : name("default"), grade(150)
 {
+	
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& copy)
@@ -32,6 +33,7 @@ Bureaucrat::Bureaucrat(const std::string &name, int grade) : name(name)
 
 Bureaucrat::~Bureaucrat()
 {
+	
 }
 
 std::string Bureaucrat::getName(void) const
@@ -77,9 +79,9 @@ std::ostream& operator<<(std::ostream& out, const Bureaucrat& b)
 
 const char *Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return ("\n\tThe grade cannot go higher than 1.\n");
+	return ("\n\tThe grade is too high.\n");
 }
 const char *Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return ("\n\tThe grade cannot go lower than 150.\n");
+	return ("\n\tThe grade is too low.\n");
 }

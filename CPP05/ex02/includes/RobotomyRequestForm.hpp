@@ -35,7 +35,7 @@ class RobotomyRequestForm : public AForm
 		RobotomyRequestForm& operator=(const RobotomyRequestForm& right);
 
 		//! Others
-		void executeHelper(void) const;
+		void execute(void) const;
 };
 
 #endif

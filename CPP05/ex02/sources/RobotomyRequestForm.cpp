@@ -43,7 +43,7 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& r
 	return (*this);
 }
 
-void RobotomyRequestForm::executeHelper(void) const
+void RobotomyRequestForm::execute(void) const
 {
 	std::string message;
 
