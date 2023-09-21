@@ -6,7 +6,7 @@
 /*   By: crypto <crypto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 01:02:18 by marvin            #+#    #+#             */
-/*   Updated: 2023/09/21 16:39:04 by crypto           ###   ########.fr       */
+/*   Updated: 2023/09/21 22:15:46 by crypto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,6 @@
 
 # include <iostream>
 # include "Bureaucrat.hpp"
-
-# define RED	"\033[1;31m"
-# define GREEN	"\033[1;32m"
-# define RESET	"\033[0m"
 
 class Bureaucrat;
 

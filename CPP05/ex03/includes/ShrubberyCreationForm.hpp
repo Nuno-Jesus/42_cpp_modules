@@ -14,7 +14,6 @@
 # define SHRUBBERY_CREATION_FORM_HPP
 
 # include <iostream>
-# include <iomanip>
 # include <fstream>
 
 # include "AForm.hpp"
