@@ -21,7 +21,7 @@ void test_edge_cases(void)
 		b.incrementGrade();
 		std::cout << b;
 	}
-	catch (const Bureaucrat::GradeTooHighException &e)
+	catch (std::exception &e)
 	{
 		std::cout << RED << e.what() << RESET << "\n";
 	}
@@ -33,13 +33,13 @@ void test_edge_cases(void)
 		b.decrementGrade();
 		std::cout << b;
 	}
-	catch (const Bureaucrat::GradeTooLowException &e)
+	catch (std::exception &e)
 	{
 		std::cout << RED << e.what() << RESET << "\n";
 	}
 }
 
-void test_increments(void)
+void test_base_cases(void)
 {
 	try
 	{
@@ -48,7 +48,7 @@ void test_increments(void)
 		b.incrementGrade();
 		std::cout << b;
 	}
-	catch (const Bureaucrat::GradeTooHighException &e)
+	catch (std::exception &e)
 	{
 		std::cout << RED << e.what() << RESET << "\n";
 	}
@@ -60,14 +60,52 @@ void test_increments(void)
 		b.decrementGrade();
 		std::cout << b;
 	}
-	catch (const Bureaucrat::GradeTooLowException &e)
+	catch (std::exception &e)
 	{
 		std::cout << RED << e.what() << RESET << "\n";
 	}
 }
 
-int main(void)
+void test_constructors(void)
 {
-	test_edge_cases();
-	test_increments();
+	try
+	{
+		Bureaucrat b("0 Grade Someone", 0);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << RED << e.what() << RESET << "\n";
+	}
+	
+	try
+	{
+		Bureaucrat b("151 Grade Someone", 151);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << RED << e.what() << RESET << "\n";
+	}
+}
+
+
+
+int main(int argc, char **argv)
+{
+	int					testno;
+	std::stringstream	stream;
+
+	if (argc < 2)
+		return (ERROR_USAGE, 1);
+	stream << argv[1];
+	if (!(stream >> testno))
+		return (ERROR_NOT_INT, 1);
+	if (testno == 0)
+		test_edge_cases();
+	else if (testno == 1)
+		test_base_cases();
+	else if (testno == 2)
+		test_constructors();
+	else
+		return (ERROR_TESTNO, 1);
+	return (0);
 }
