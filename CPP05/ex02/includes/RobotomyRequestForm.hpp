@@ -14,7 +14,7 @@
 # define ROBOTOMY_REQUEST_FORM_HPP
 
 # include <iostream>
-# include <iomanip>
+
 # include <fstream>
 
 # include "AForm.hpp"
@@ -35,7 +35,7 @@ class RobotomyRequestForm : public AForm
 		RobotomyRequestForm& operator=(const RobotomyRequestForm& right);
 
 		//! Others
-		void executeHelper(void) const;
+		void execute(void) const;
 };
 
 #endif

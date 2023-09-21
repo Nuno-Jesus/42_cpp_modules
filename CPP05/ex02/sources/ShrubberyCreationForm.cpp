@@ -13,7 +13,7 @@
 #include "ShrubberyCreationForm.hpp"
 
 ShrubberyCreationForm::ShrubberyCreationForm() : \
-	AForm("Shrubbery Creation Form", 145, 137), target("Someone")
+	AForm("Shrubbery Creation Form", 145, 137), target("default_name")
 {
 	
 }
@@ -43,7 +43,7 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 	return (*this);
 }
 
-void ShrubberyCreationForm::executeHelper(void) const
+void ShrubberyCreationForm::execute(void) const
 {
 	std::ofstream outfile;
 
@@ -79,4 +79,5 @@ void ShrubberyCreationForm::executeHelper(void) const
 	outfile << "                   ;%@@@@%%:;;;.                   " << "\n";
 	outfile << "               ...;%@@@@@%%:;;;;,..                " << "\n";
 	outfile << "\n";
+	outfile.close();
 }

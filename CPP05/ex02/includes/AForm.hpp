@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: crypto <crypto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 01:02:18 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/09 23:19:16 by marvin           ###   ########.fr       */
+/*   Updated: 2023/09/21 21:43:11 by crypto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,19 @@
 # define AFORM_HPP
 
 # include <iostream>
+# include <sstream>
 # include "Bureaucrat.hpp"
 
 # define RED	"\033[1;31m"
 # define GREEN	"\033[1;32m"
 # define RESET	"\033[0m"
 
-class Bureaucrat;
+# define ERROR(x) 		std::cout << x << std::endl
+# define ERROR_USAGE	ERROR("Usage: ./ex00 test_number")
+# define ERROR_NOT_INT	ERROR("Error: test number must be a number")
+# define ERROR_TESTNO	ERROR("Error: test number must be bounded between 0 and 4")
 
+class Bureaucrat;
 class AForm
 {
 	private:
@@ -43,7 +48,7 @@ class AForm
 		//! Others
 		void beSigned(const Bureaucrat& b);
 		void execute(Bureaucrat const& executor) const;
-		virtual void executeHelper(void) const = 0;
+		virtual void execute(void) const = 0;
 
 		//! Getters
 		std::string getName(void) const;
@@ -58,7 +63,6 @@ class AForm
 	{
 		public:
 			virtual const char *what() const throw();
-
 	};
 	class GradeTooLowException : public std::exception
 	{

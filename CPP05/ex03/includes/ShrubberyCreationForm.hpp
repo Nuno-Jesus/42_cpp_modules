@@ -14,7 +14,6 @@
 # define SHRUBBERY_CREATION_FORM_HPP
 
 # include <iostream>
-# include <iomanip>
 # include <fstream>
 
 # include "AForm.hpp"
@@ -35,7 +34,7 @@ class ShrubberyCreationForm : public AForm
 		ShrubberyCreationForm& operator=(const ShrubberyCreationForm& right);
 
 		//! Others
-		void executeHelper(void) const;
+		void execute(void) const;
 
 };
 

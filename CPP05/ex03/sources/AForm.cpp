@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: crypto <crypto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 01:02:19 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/09 15:38:48 by marvin           ###   ########.fr       */
+/*   Updated: 2023/09/21 22:19:02 by crypto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void AForm::execute(Bureaucrat const& executor) const
 		throw AForm::BureaucratGradeTooLow();
 	
 	std::cout << executor.getName() << " executed " << this->name << std::endl;
-	this->executeHelper();
+	this->execute();
 }
 
 std::string AForm::getName(void) const
@@ -94,8 +94,10 @@ std::ostream& operator<<(std::ostream& out, const AForm& form)
 {
 	std::string sign = form.hasBeenSigned() ? " ✅ " : " ❌ ";
 	
-	out << "AForm: " + form.getName() + ", signed:" + sign + ", sign. grade: ";
-	out << form.getSignGrade() << ", exec. grade: " << form.getExecutionGrade();
+	out << "Form: " + form.getName() + "\n";
+	out << "\tSigned? " + sign + "\n";
+	out << "\tSigning Grade: " << form.getSignGrade() << "\n";
+	out << "\tExecution Grade: " << form.getExecutionGrade() << "\n";
 	out << std::endl;
 	return (out);
 }

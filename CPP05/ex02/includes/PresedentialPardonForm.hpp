@@ -14,7 +14,7 @@
 # define PRESEDENTIAL_PARDON_FORM_HPP
 
 # include <iostream>
-# include <iomanip>
+
 
 # include "AForm.hpp"
 
@@ -34,7 +34,7 @@ class PresedentialPardonForm : public AForm
 		PresedentialPardonForm& operator=(const PresedentialPardonForm& right);
 
 		//! Others
-		void executeHelper(void) const;
+		void execute(void) const;
 
 };
 

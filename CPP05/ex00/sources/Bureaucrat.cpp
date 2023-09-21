@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: crypto <crypto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 21:44:25 by marvin            #+#    #+#             */
-/*   Updated: 2023/07/08 20:02:33 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/09/21 22:23:08 by crypto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,16 @@
 
 Bureaucrat::Bureaucrat() : name("default"), grade(150)
 {
-	LOG("Bureaucrat default constructor called.");
+	
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& copy)
 {
-	LOG("Bureaucrat copy constructor called.");
     *this = copy;
 }
 
 Bureaucrat::Bureaucrat(const std::string &name, int grade) : name(name)
 {
-	LOG("Bureaucrat overloaded constructor called.");
-	
 	if (grade < Bureaucrat::MAX_GRADE)
 		throw Bureaucrat::GradeTooHighException();
 	else if (grade > Bureaucrat::MIN_GRADE)
@@ -36,7 +33,7 @@ Bureaucrat::Bureaucrat(const std::string &name, int grade) : name(name)
 
 Bureaucrat::~Bureaucrat()
 {
-	LOG("Bureaucrat died.");
+	
 }
 
 std::string Bureaucrat::getName(void) const
@@ -67,7 +64,6 @@ void Bureaucrat::decrementGrade(void)
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& right)
 {
-	LOG("Bureaucrat assignment operator called.");
 	if (this == &right)
 		return (*this);
 	this->grade = grade;
@@ -83,9 +79,9 @@ std::ostream& operator<<(std::ostream& out, const Bureaucrat& b)
 
 const char *Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return ("\n\tThe grade cannot go higher than 1.\n");
+	return ("\n\tThe grade is too high.\n");
 }
 const char *Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return ("\n\tThe grade cannot go lower than 150.\n");
+	return ("\n\tThe grade is too low.\n");
 }

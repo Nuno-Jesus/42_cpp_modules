@@ -13,16 +13,31 @@
 #include "../includes/Bureaucrat.hpp"
 #include "Intern.hpp"
 
-int main(void)
+void testMakingInvalidForm(void)
 {
-	std::srand(time(NULL));
 	try
 	{
 		AForm* rrf;
 		Intern someRandomIntern;
-		Bureaucrat b("God", 1);
 		
-		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+		rrf = someRandomIntern.makeForm("presedential form", "Bender");
+		std::cout << *rrf << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << RED << e.what() << RESET << '\n';
+	}
+}
+
+void testMakingValidForm(const std::string &name, const std::string &target)
+{
+	try
+	{
+		AForm* rrf;
+		Intern someRandomIntern;
+		Bureaucrat b("Joe Biden", 1);
+		
+		rrf = someRandomIntern.makeForm(name, target);
 		std::cout << *rrf << std::endl;
 
 		b.signForm(*rrf);
@@ -34,5 +49,28 @@ int main(void)
 	{
 		std::cout << RED << e.what() << RESET << '\n';
 	}
-	
+}
+
+int main(int argc, char **argv)
+{
+	int					testno;
+	std::stringstream	stream;
+
+	std::srand(time(NULL));
+	if (argc < 2)
+		return (ERROR_USAGE, 1);
+	stream << argv[1];
+	if (!(stream >> testno))
+		return (ERROR_NOT_INT, 1);
+	if (testno < 0 || testno > 3)
+		return (ERROR_TESTNO, 1);
+	if (testno == 0)
+		testMakingValidForm("presedential pardon", "Bender");
+	else if (testno == 1)
+		testMakingValidForm("robotomy request", "Brain");
+	else if (testno == 2)
+		testMakingValidForm("shrubbery creation", "tree");
+	else
+		testMakingInvalidForm();
+	return (0);
 }

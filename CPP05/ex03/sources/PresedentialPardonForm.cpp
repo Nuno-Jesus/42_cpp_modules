@@ -43,7 +43,7 @@ PresedentialPardonForm& PresedentialPardonForm::operator=(const PresedentialPard
 	return (*this);
 }
 
-void PresedentialPardonForm::executeHelper(void) const
+void PresedentialPardonForm::execute(void) const
 {
 	std::cout << this->target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }
