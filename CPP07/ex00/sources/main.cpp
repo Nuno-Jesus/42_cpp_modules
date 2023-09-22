@@ -6,7 +6,7 @@
 /*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 17:03:13 by ncarvalh          #+#    #+#             */
-/*   Updated: 2023/07/01 17:29:09 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/09/22 18:04:00 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int main(void)
 	std::cout << "After: a = " << a << ", b = " << b << std::endl;
 	std::cout << "min( a, b ) = " << ::min( a, b ) << std::endl;
 	std::cout << "max( a, b ) = " << ::max( a, b ) << std::endl;
+
 	std::string c = "chaine1";
 	std::string d = "chaine2";
-
 	std::cout << "Before: c = " << c << ", d = " << d << std::endl;
 	::swap(c, d);
 	std::cout << "After: c = " << c << ", d = " << d << std::endl;
