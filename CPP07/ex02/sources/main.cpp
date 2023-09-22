@@ -1,54 +1,84 @@
-#include <iostream>
-#include <cstdlib>
-#include <Array.hpp>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/22 21:10:10 by ncarvalh          #+#    #+#             */
+/*   Updated: 2023/09/22 21:21:37 by ncarvalh         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#define MAX_VAL 750
-int main(int, char**)
+#include "Array.hpp"
+
+void testDefaultConstructor(void)
 {
-    Array<int> numbers(MAX_VAL);
-    int* mirror = new int[MAX_VAL];
-    std::srand(time(NULL));
-    for (int i = 0; i < MAX_VAL; i++)
-    {
-        const int value = std::rand();
-        numbers[i] = value;
-        mirror[i] = value;
-    }
-    //SCOPE
-    {
-        Array<int> tmp = numbers;
-        Array<int> test(tmp);
-    }
+	std::cout << GREEN << "\n\t ======= Testing Array Default Constructor =======\n\n" << RESET;
+	
+	Array<int> numbers(10);
 
-    for (int i = 0; i < MAX_VAL; i++)
-    {
-        if (mirror[i] != numbers[i])
-        {
-            std::cerr << "didn't save the same value!!" << std::endl;
-            return 1;
-        }
-    }
-    try
-    {
-        numbers[-2] = 0;
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-    try
-    {
-        numbers[MAX_VAL] = 0;
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
+	for (size_t i = 0; i < numbers.size(); i++)
+		std::cout << "numbers[" << i << "] = " << numbers[i] << std::endl;
+}
 
-    for (int i = 0; i < MAX_VAL; i++)
-    {
-        numbers[i] = std::rand();
-    }
-    delete [] mirror;//
-    return 0;
+void testCopyConstructor(void)
+{
+	std::cout << GREEN << "\n\t ======= Testing Array Copy Constructor =======\n\n" << RESET;
+	
+	Array<int> numbers(10);
+	Array<int> copy(5);
+
+	for (size_t i = 0; i < numbers.size(); i++)
+		numbers[i] = 42;
+
+	copy = numbers;
+	numbers[0] = 21;
+	for (size_t i = 0; i < copy.size(); i++)
+		std::cout << "copy[" << i << "] = " << copy[i] << std::endl;
+}
+
+void testOutOfBoundsIndexes(void)
+{
+	std::cout << GREEN << "\n\t ======= Testing Array Invalid Index =======\n\n" << RESET;
+	Array<int> numbers(10);
+	
+	try
+	{
+		numbers[-1] = 0;
+	}
+	catch (const std::exception &e)
+	{
+		std::cout << RED << e.what() << RESET << '\n';
+	}
+	
+	try
+	{
+		numbers[10] = 0;
+	}
+	catch (const std::exception &e)
+	{
+		std::cout << RED << e.what() << RESET << '\n';
+	}
+}
+
+int main(int argc, char **argv)
+{
+	int					testno;
+	std::stringstream	stream;
+
+	if (argc < 2)
+		return (ERROR_USAGE(argv[0]), 1);
+	stream << argv[1];
+	if (!(stream >> testno))
+		return (ERROR_NOT_INT, 1);
+	if (testno < 0 || testno > 2)
+		return (ERROR_TESTNO, 1);
+	if (testno == 0)
+		testDefaultConstructor();
+	else if (testno == 1)
+		testCopyConstructor();
+	else
+		testOutOfBoundsIndexes();
+	return 0;
 }
