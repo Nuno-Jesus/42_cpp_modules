@@ -38,13 +38,13 @@ AForm *Intern::makeForm(const std::string& name, const std::string& target)
 {
 	AForm *(Intern::*factory[3])(const std::string&) =
 	{
-		&Intern::makePresedentialForm,
+		&Intern::makePresidentialForm,
 		&Intern::makeRobotomyForm,
 		&Intern::makeShrubberyForm
 	};
 	std::string names[3] =
 	{
-		"presedential pardon",
+		"presidential pardon",
 		"robotomy request",
 		"shrubbery creation"
 	};
@@ -55,9 +55,9 @@ AForm *Intern::makeForm(const std::string& name, const std::string& target)
 	throw FormNotFoundException();
 }
 
-AForm *Intern::makePresedentialForm(const std::string &target)
+AForm *Intern::makePresidentialForm(const std::string &target)
 {
-	return (new PresedentialPardonForm(target));
+	return (new PresidentialPardonForm(target));
 }
 
 AForm *Intern::makeRobotomyForm(const std::string &target)

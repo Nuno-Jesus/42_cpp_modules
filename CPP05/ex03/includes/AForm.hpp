@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crypto <crypto@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 01:02:18 by marvin            #+#    #+#             */
-/*   Updated: 2023/09/21 22:19:43 by crypto           ###   ########.fr       */
+/*   Updated: 2023/09/22 17:25:54 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define RESET	"\033[0m"
 
 # define ERROR(x) 		std::cout << x << std::endl
-# define ERROR_USAGE	ERROR("Usage: ./ex00 test_number")
+# define ERROR_USAGE(e)	ERROR("Usage: " << e << " test_number")
 # define ERROR_NOT_INT	ERROR("Error: test number must be a number")
 # define ERROR_TESTNO	ERROR("Error: test number must be bounded between 0 and 3")
 

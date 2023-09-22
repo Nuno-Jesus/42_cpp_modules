@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../includes/Bureaucrat.hpp"
-#include "PresedentialPardonForm.hpp"
+#include "PresidentialPardonForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 
@@ -27,10 +27,10 @@ void testForm(AForm& form, Bureaucrat &bureaucrat)
 	}
 }
 
-void testPresedentialPardonForm(void)
+void testPresidentialPardonForm(void)
 {
-	std::cout << GREEN << "\n\tTesting Presedential Pardon Form\n\n" << RESET;
-	PresedentialPardonForm form("Donald Trump");
+	std::cout << GREEN << "\n\tTesting Presidential Pardon Form\n\n" << RESET;
+	PresidentialPardonForm form("Donald Trump");
 	Bureaucrat b("Zaphod Beeblebrox", 1);
 	b.signForm(form);
 	testForm(form, b);
@@ -65,7 +65,7 @@ void testExecutingUnsignedForm(void)
 void testExecutingWithLowGrade(void)
 {
 	std::cout << GREEN << "\n\tTesting bureaucrat without grade to execute\n\n" << RESET;
-	PresedentialPardonForm form("Prisoner");
+	PresidentialPardonForm form("Prisoner");
 	Bureaucrat b("Judicial Court", 5);
 	Bureaucrat b2("Junky", 150);
 	b.signForm(form);
@@ -78,7 +78,7 @@ int main(int argc, char **argv)
 	std::stringstream	stream;
 	void (*testers[])() = 
 	{
-		testPresedentialPardonForm,
+		testPresidentialPardonForm,
 		testRobotomyRequestForm,
 		testShrubberyCreationForm,
 		testExecutingUnsignedForm,
@@ -87,7 +87,7 @@ int main(int argc, char **argv)
 
 	std::srand(time(NULL));
 	if (argc < 2)
-		return (ERROR_USAGE, 1);
+		return (ERROR_USAGE(argv[0]), 1);
 	stream << argv[1];
 	if (!(stream >> testno))
 		return (ERROR_NOT_INT, 1);

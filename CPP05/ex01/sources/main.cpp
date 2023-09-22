@@ -90,7 +90,7 @@ int main(int argc, char **argv)
 	std::stringstream	stream;
 
 	if (argc < 2)
-		return (ERROR_USAGE, 1);
+		return (ERROR_USAGE(argv[0]), 1);
 	stream << argv[1];
 	if (!(stream >> testno))
 		return (ERROR_NOT_INT, 1);

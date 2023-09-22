@@ -27,7 +27,7 @@ BINS			= bin
 
 #_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_ FILES _/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_
 NAME			= ex03
-_FILES			= main AForm Bureaucrat Intern PresedentialPardonForm RobotomyRequestForm ShrubberyCreationForm
+_FILES			= main AForm Bureaucrat Intern PresidentialPardonForm RobotomyRequestForm ShrubberyCreationForm
 OBJS			= $(_FILES:%=%.o)
 TARGET			= $(addprefix $(BINS)/, $(OBJS))
 
