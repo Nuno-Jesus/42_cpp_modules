@@ -6,7 +6,7 @@
 /*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 16:01:37 by ncarvalh          #+#    #+#             */
-/*   Updated: 2023/07/01 16:10:05 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/09/22 17:13:35 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define C_HPP
 
 # include <iostream>
-# include <iomanip>
 # include "Base.hpp"
 
 class C : public Base
