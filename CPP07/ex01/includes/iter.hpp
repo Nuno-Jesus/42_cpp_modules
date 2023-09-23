@@ -6,12 +6,16 @@
 /*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 16:54:36 by ncarvalh          #+#    #+#             */
-/*   Updated: 2023/09/22 18:13:45 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/09/23 11:21:44 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <sstream>
+
+#ifndef ITER_HPP
+# define ITER_HPP
+
+# include <iostream>
+# include <sstream>
 
 # define RED	"\033[1;31m"
 # define GREEN	"\033[1;32m"
@@ -28,3 +32,6 @@ void iter(T *array, int len, void (*f)(T&))
 	for (int i = 0; i < len; i++)
 		(*f)(array[i]);	
 }
+
+#endif
+
