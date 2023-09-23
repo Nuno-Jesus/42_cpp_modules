@@ -52,26 +52,26 @@ At 42, the C projects are built following a bunch of rules that enforce good cod
 		<tr>
 			<td><strong>CPP05</strong> </td>
 			<td>Exceptions</td>
-			<td>???/100</td>
+			<td>✅ 100/100</td>
 		</tr>
 		<tr>
 			<td><strong>CPP06</strong> </td>
 			<td>C++ casts</td>
-			<td>???/100</td>
+			<td>✅ 100/100</td>
 		</tr>
 		<tr>
 			<td><strong>CPP07</strong> </td>
 			<td>Templates</td>
-			<td>???/100</td>
+			<td>✅ 100/100</td>
 		</tr>
 		<tr>
 			<td><strong>CPP08</strong> </td>
-			<td>???</td>
+			<td>Templated Classes and STL Containers</td>
 			<td>???/100</td>
 		</tr>
 		<tr>
 			<td><strong>CPP09</strong> </td>
-			<td>???</td>
+			<td>STL Containers</td>
 			<td>???/100</td>
 		</tr>
 	</tbody>
