@@ -25,54 +25,54 @@ At 42, the C projects are built following a bunch of rules that enforce good cod
 	</thead>
 	<tbody>
 		<tr>
-			<td><strong>CPP00</strong> </td>
+			<td><strong><a href="/CPP00">CPP00</strong> </td>
 			<td>The principles of OOP, static and const modifiers</td>
 			<td>✅ 100/100</td>
 		</tr>
 		<tr>
-			<td><strong>CPP01</strong> </td>
+			<td><strong><a href="/CPP01">CPP01</strong> </td>
 			<td>Dynamic allocation, member function pointers and switch statement</td>
 			<td>✅ 100/100</td>
 		</tr>
 		<tr>
-			<td><strong>CPP02</strong> </td>
+			<td><strong><a href="/CPP02">CPP02</strong> </td>
 			<td>Operator overloading and Orthodox Canonical Form</td>
 			<td>✅ 100/100</td>
 		</tr>
 		<tr>
-			<td><strong>CPP03</strong> </td>
+			<td><strong><a href="/CPP03">CPP03</strong> </td>
 			<td>OOP: Inheritance</td>
 			<td>✅ 100/100</td>
 		</tr>
 		<tr>
-			<td><strong>CPP04</strong> </td>
+			<td><strong><a href="/CPP04">CPP04</strong> </td>
 			<td>OOP: Polymorphism, Abstract Classes and Interfaces</td>
 			<td>✅ 100/100</td>
 		</tr>
 		<tr>
-			<td><strong>CPP05</strong> </td>
+			<td><strong><a href="/CPP05">CPP05</strong> </td>
 			<td>Exceptions</td>
 			<td>✅ 100/100</td>
 		</tr>
 		<tr>
-			<td><strong>CPP06</strong> </td>
+			<td><strong><a href="/CPP06">CPP06</strong> </td>
 			<td>C++ casts</td>
 			<td>✅ 100/100</td>
 		</tr>
 		<tr>
-			<td><strong>CPP07</strong> </td>
+			<td><strong><a href="/CPP07">CPP07</strong> </td>
 			<td>Templates</td>
 			<td>✅ 100/100</td>
 		</tr>
 		<tr>
-			<td><strong>CPP08</strong> </td>
+			<td><strong><a href="/CPP08">CPP08</strong> </td>
 			<td>Templated STL containers and algorithms</td>
 			<td>✅ 100/100</td>
 		</tr>
 		<tr>
-			<td><strong>CPP09</strong> </td>
+			<td><strong><a href="/CPP09">CPP09</strong> </td>
 			<td>STL containers</td>
-			<td>???/100</td>
+			<td>✅ 100/100</td>
 		</tr>
 	</tbody>
 </table>
