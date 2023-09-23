@@ -115,7 +115,7 @@ std::ostream& operator <<(std::ostream& out, const Span& span)
 
 	vec = span.getStorage();
 	for (unsigned int i = 0; i < span.size(); i++)
-		out << "vector[" << i << "] = " << vec[i] << "\n";
+		out << "storage[" << i << "] = " << vec[i] << "\n";
 	out << std::endl;
 	return (out);
 }

@@ -14,7 +14,7 @@
 
 #define LOG(title) std::cout << GREEN "\n\t===== Testing " << title << " =====\n\n" RESET;
 
-void test_shortest_span(void)
+void testShortestSpan(void)
 {
 	Span span(10);
 
@@ -24,7 +24,7 @@ void test_shortest_span(void)
 	std::cout << "Shortest span: " << span.shortestSpan() << "\n";
 }
 
-void test_longest_span(void)
+void testLongestSpan(void)
 {
 	Span span(10);
 
@@ -34,7 +34,7 @@ void test_longest_span(void)
 	std::cout << "Longest span: " << span.longestSpan() << "\n";
 }
 
-void test_add_number(void)
+void testAddNumber(void)
 {
 	LOG("Add Number");
 
@@ -60,7 +60,7 @@ void test_add_number(void)
 	}
 }
 
-void test_no_span(void)
+void testNoSpan(void)
 {
 	LOG("Empty Span");
 	try
@@ -74,7 +74,7 @@ void test_no_span(void)
 	}
 }
 
-void test_large_set(void)
+void testLargeSet(void)
 {
 	LOG("Large Span Set");
 	try
@@ -108,20 +108,38 @@ int main(int argc, char **argv)
 	switch(std::atoi(argv[1]))
 	{
 		case 0: 
-			test_shortest_span(); 
+			testShortestSpan(); 
 			break;
 		case 1: 
-			test_longest_span(); 
+			testLongestSpan(); 
 			break;
 		case 2: 
-			test_add_number(); 
+			testAddNumber(); 
 			break;
 		case 3: 
-			test_no_span(); 
+			testNoSpan(); 
 			break;
 		case 4: 
-			test_large_set(); 
+			testLargeSet(); 
 			break;
 	}
+
+	// int					testno;
+	// std::stringstream	stream;
+
+	// if (argc < 2)
+	// 	return (ERROR_USAGE(argv[0]), 1);
+	// stream << argv[1];
+	// if (!(stream >> testno))
+	// 	return (ERROR_NOT_INT, 1);
+	// if (testno < 0 || testno > 2)
+	// 	return (ERROR_TESTNO, 1);
+	// if (testno == 0)
+	// 	testDefaultConstructor();
+	// else if (testno == 1)
+	// 	testCopyConstructor();
+	// else
+	// 	testOutOfBoundsIndexes();
+	// return 0;
 	return (0);
 }
