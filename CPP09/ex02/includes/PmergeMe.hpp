@@ -6,7 +6,7 @@
 /*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 17:23:30 by ncarvalh          #+#    #+#             */
-/*   Updated: 2023/09/23 19:26:29 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/09/23 19:34:51 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <chrono>
 # include <cmath>
 # include <vector>
-# include <list>
+# include <deque>
 # include <algorithm>
 
 # define UNUSED -1
@@ -31,27 +31,25 @@
 
 class PmergeMe
 {
-	//! _______________________ PRIVATE FIELDS _______________________
 	private:
 		const std::string type;
 		std::chrono::high_resolution_clock::time_point start, end;
 		std::chrono::duration<double> elapsedTime;
 		
 	public:
-	//! ________________________ CONSTRUCTORS ________________________
 		PmergeMe();
 		PmergeMe(const PmergeMe& copy);
 		~PmergeMe();
 
-	//! ____________________ OPERATOR OVERLOADING ____________________
 		PmergeMe& operator=(const PmergeMe& right);
 		
-	//! __________________ PUBLIC MEMBER FUNCTIONS ___________________
-	double mergeInsertionSort(std::vector<int> &nums);
-	bool parse(char **argv, std::vector<int> &vec, std::list<int> &list);
+		double mergeInsertionSort(std::vector<int> &nums);
+		double mergeInsertionSort(std::deque<int> &nums);
+		bool parse(char **argv, std::vector<int> &vec, std::deque<int> &deque);
 
-	//! _________________ PRIVATE MEMBER FUNCTIONS ___________________
 	private:
+		//! _____________________ VECTOR OPERATIONS _____________________
+		
 		void createPairs(const std::vector<int> &nums, std::vector<std::vector<int>> &pairs);
 		void mergeSort(std::vector<std::vector<int>> &pairs);
 		void merge(std::vector<std::vector<int>> &left, std::vector<std::vector<int>> &right, \
@@ -59,6 +57,16 @@ class PmergeMe
 		void generateJacobsthalSequence(std::vector<size_t> &vec);
 		void insertionSort(std::vector<int> &S, size_t n, const std::vector<std::vector<int>> &pairs);
 		void binarySearch(std::vector<int> &S, int number);
+
+		//! ______________________ DEQUE OPERATIONS _____________________
+
+		void generateJacobsthalSequence(std::deque<size_t> &vec);
+		void mergeSort(std::deque<std::deque<int>> &pairs);
+		void merge(std::deque<std::deque<int>> &left, std::deque<std::deque<int>> &right, \
+			std::deque<std::deque<int>> &result);
+		void createPairs(const std::deque<int> &nums, std::deque<std::deque<int>> &pairs);
+		void insertionSort(std::deque<int> &S, size_t n, const std::deque<std::deque<int>> &pairs);
+		void binarySearch(std::deque<int> &S, int number);
 };
 
 #endif
