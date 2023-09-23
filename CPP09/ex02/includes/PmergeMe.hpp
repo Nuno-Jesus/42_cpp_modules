@@ -6,7 +6,7 @@
 /*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 17:23:30 by ncarvalh          #+#    #+#             */
-/*   Updated: 2023/09/23 19:03:46 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/09/23 19:26:29 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,10 @@ class PmergeMe
 
 	//! _________________ PRIVATE MEMBER FUNCTIONS ___________________
 	private:
-		std::vector<std::vector<int>> createPairs(const std::vector<int> &nums);
-		std::vector<std::vector<int>> mergeSort(std::vector<std::vector<int>> &pairs);
-		std::vector<std::vector<int>> merge(std::vector<std::vector<int>> &left, std::vector<std::vector<int>> &right);
+		void createPairs(const std::vector<int> &nums, std::vector<std::vector<int>> &pairs);
+		void mergeSort(std::vector<std::vector<int>> &pairs);
+		void merge(std::vector<std::vector<int>> &left, std::vector<std::vector<int>> &right, \
+			std::vector<std::vector<int>> &result);
 		void generateJacobsthalSequence(std::vector<size_t> &vec);
 		void insertionSort(std::vector<int> &S, size_t n, const std::vector<std::vector<int>> &pairs);
 		void binarySearch(std::vector<int> &S, int number);

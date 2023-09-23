@@ -6,7 +6,7 @@
 /*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 18:11:32 by ncarvalh          #+#    #+#             */
-/*   Updated: 2023/09/23 19:04:13 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/09/23 19:26:34 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ PmergeMe& PmergeMe::operator=(const PmergeMe& right)
 	return (*this);
 }
 
+//! _____________________ VECTORS OPERATIONS ____________________
+
 bool PmergeMe::parse(char **argv, std::vector<int> &vec, std::list<int> &list)
 {
 	int					number;
@@ -63,10 +65,10 @@ bool PmergeMe::parse(char **argv, std::vector<int> &vec, std::list<int> &list)
 	return (true);
 }
 
-std::vector<std::vector<int>> PmergeMe::merge(std::vector<std::vector<int>> &left, std::vector<std::vector<int>> &right)
+void PmergeMe::merge(std::vector<std::vector<int>> &left, std::vector<std::vector<int>> &right, \
+	std::vector<std::vector<int>> &result)
 {
-	std::vector<std::vector<int>> result;
-
+	result.clear();
 	while (!left.empty() && !right.empty())
 	{
 		if (left[0][A] < right[0][A] || right[0][A] == UNUSED)
@@ -90,26 +92,26 @@ std::vector<std::vector<int>> PmergeMe::merge(std::vector<std::vector<int>> &lef
 		result.push_back(right.front());
 		right.erase(right.begin());
 	}
-	return(result);
 }
 
-std::vector<std::vector<int>> PmergeMe::mergeSort(std::vector<std::vector<int>> &pairs)
+void PmergeMe::mergeSort(std::vector<std::vector<int>> &pairs)
 {
 	std::vector<std::vector<int>> left(pairs.begin(), pairs.begin() + pairs.size() / 2);
 	std::vector<std::vector<int>> right(pairs.begin() + pairs.size() / 2, pairs.end());
 
 	if (pairs.size() == 1)
-		return (pairs);
-	left = mergeSort(left);
-	right = mergeSort(right);
-	return (merge(left, right));
+		return ;
+	mergeSort(left);
+	mergeSort(right);
+	merge(left, right, pairs);
 }
 
-std::vector<std::vector<int>> PmergeMe::createPairs(const std::vector<int> &nums)
+void PmergeMe::createPairs(const std::vector<int> &nums, std::vector<std::vector<int>> &pairs)
 {
 	size_t							numPairs = std::ceil(nums.size() / 2.0);
-	std::vector<std::vector<int>>	pairs(numPairs, std::vector<int>(2));
 
+	pairs.resize(numPairs);
+	pairs.assign(numPairs, std::vector<int>(2));
 	for (size_t i = 0; i < pairs.size(); i++)
 	{
 		if ((2 * i + 1) == nums.size())
@@ -123,7 +125,6 @@ std::vector<std::vector<int>> PmergeMe::createPairs(const std::vector<int> &nums
 			pairs[i][B] = MAX(nums[2 * i], nums[2 * i + 1]);			
 		}
 	}
-	return (pairs);
 }
 
 void PmergeMe::generateJacobsthalSequence(std::vector<size_t> &vec)
@@ -175,8 +176,8 @@ double PmergeMe::mergeInsertionSort(std::vector<int> &nums)
 	std::vector<int>				S;
 	
 	start = std::chrono::high_resolution_clock::now();
-	pairs = createPairs(nums);
-	pairs = mergeSort(pairs);	
+	createPairs(nums, pairs);
+	mergeSort(pairs);	
 	for (size_t i = 0 ; i < pairs.size() && pairs[i][A] != UNUSED; i++)
 		S.push_back(pairs[i][A]);
 	insertionSort(S, nums.size(), pairs);
@@ -185,3 +186,5 @@ double PmergeMe::mergeInsertionSort(std::vector<int> &nums)
 	nums = S;
 	return (elapsedTime.count());
 }
+
+//! ______________________ LISTS OPERATIONS _____________________
