@@ -6,7 +6,7 @@
 /*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 17:22:07 by ncarvalh          #+#    #+#             */
-/*   Updated: 2023/09/23 16:48:27 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/09/23 17:00:54 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,23 +146,25 @@ void generateJacobsthalSequence(std::vector<size_t> &vec)
 		vec[i] = (pow(2, i + 2) - pow(-1, i + 2)) / 3;
 }
 
-void qq(void)
+void binaryInsertionSort(std::vector<int> &S, int number)
 {
-	/* 		int k = jacobSequence[i];
-		int start = 0;
-		int end = pairs.size() - 1;
-		int middle;
-		while (end - start > 1)
-		{
-			middle = start + (end - start) / 2;
-			if (pairs[k][B] > S[middle])
-				start = middle;
-			else if (pairs[k][1] < S[middle])		
-				end = middle;
-			if (end - start == 1)
-				S.insert(S.begin() + end, pairs[k][B]);
-		}
- */
+	int start = 0;
+	int end = S.size() - 1;
+	int middle;
+	
+	std::cout << "S before binary inserting " << number << " = ";
+	print(S);
+	while (start <= end)
+	{
+		middle = start + (end - start) / 2;
+		if (number > S[middle])
+			start = middle + 1;
+		else if (number < S[middle])		
+			end = middle - 1;
+	}
+	S.insert(S.begin() + start, number);
+	std::cout << "S after binary inserting " << number << " = ";
+	print(S);
 }
 
 void binaryInsertionSort(std::vector<int> &S, size_t n, const std::vector<std::vector<int>> &pairs)
@@ -172,17 +174,17 @@ void binaryInsertionSort(std::vector<int> &S, size_t n, const std::vector<std::v
 
 	generateJacobsthalSequence(jacobSequence);
 	print(jacobSequence);
-	S.push_back(pairs[0][B]);
-	S.push_back(pairs[1][B]);
+	binaryInsertionSort(S, pairs[0][B]);
+	binaryInsertionSort(S, pairs[1][B]);
 	for (size_t i = 1; i < jacobSequence.size(); i++)
 	{
 		for (size_t k = jacobSequence[i]; k > jacobSequence[i - 1]; k--)
 		{
-			std::cout << "k = " << k << std::endl;
+			// std::cout << "k = " << k << std::endl;
 			if (k >= pairs.size())
 				continue ;
-			S.push_back(pairs[k][B]);
-			std::cout << S.size() << std::endl;
+			// S.push_back(pairs[k][B]);
+			binaryInsertionSort(S, pairs[k][B]);
 			if (S.size() == n)
 				return ;
 		}
@@ -207,12 +209,12 @@ void mergeInsertionSort(const std::vector<int> &nums)
 		S.push_back(pairs[i][A]);
 	std::cout << "Size of nums: " << nums.size() << std::endl;
 
-	std::cout << "S = ";
+	std::cout << "S with only As = ";
 	print(S);
 	
 	// Use binary search to insert the b values in the chain of S
 	binaryInsertionSort(S, nums.size(), pairs);
-	std::cout << "S = ";
+	std::cout << "S with As and Bs = ";
 	print(S);
 	
 }
