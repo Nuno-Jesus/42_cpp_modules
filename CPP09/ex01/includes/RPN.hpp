@@ -6,7 +6,7 @@
 /*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 15:52:14 by ncarvalh          #+#    #+#             */
-/*   Updated: 2023/09/16 16:56:48 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/09/23 19:55:25 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # define RED	"\033[1;31m"
 # define GREEN	"\033[1;32m"
 # define RESET	"\033[0m"
-// # define DEBUG
 
 # define ERROR(str)				std::cout << RED << str << RESET "\n"
 # define ERROR_WEIRD_SYMBOL(x)	ERROR("ERROR: unknown operation '" << x << "'")

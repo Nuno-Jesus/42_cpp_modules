@@ -2,24 +2,24 @@
 
 //! ________________________ CONSTRUCTORS ________________________
 
-BTC::BTC()
+BitcoinExchange::BitcoinExchange()
 {
 	
 }
 
-BTC::BTC(const BTC& copy)
+BitcoinExchange::BitcoinExchange(const BitcoinExchange& copy)
 {
 	*this = copy;
 }
 
-BTC::~BTC()
+BitcoinExchange::~BitcoinExchange()
 {
 	
 }
 
 //! ____________________ OPERATOR OVERLOADING ____________________
 
-BTC& BTC::operator=(const BTC& right)
+BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& right)
 {
 	if (this == &right)
 		return (*this);
@@ -29,22 +29,19 @@ BTC& BTC::operator=(const BTC& right)
 
 //! _____________________ MEMBER FUNCTIONS _______________________
 
-bool BTC::convert(const char *filename)
+bool BitcoinExchange::convert(const char *filename)
 {
 	std::ifstream	infile;
 	std::string		line, date;
 	double			ammount, worth;
 
-	// Attemps to open and read the database file
 	if (!this->readExchangeRates())
 		return (false);
 
-	// Attempts to open the file
 	infile.open(filename, std::ios::in);
 	if (infile.fail())
 		return (false);
 
-	// Ignores the first line of the input file
 	std::getline(infile, date);
 	while (!infile.eof())
 	{
@@ -61,17 +58,15 @@ bool BTC::convert(const char *filename)
 	return (true);
 }
 
-bool BTC::readExchangeRates(void)
+bool BitcoinExchange::readExchangeRates(void)
 {
 	std::ifstream		infile;
 	std::string			key, value;
 
-	// Attempts to open the file
 	infile.open("data.csv", std::ios::in);
 	if (infile.fail())
 		return (ERROR_BAD_FILE("data.csv"), false);
 
-	// Ignores the first line of the database
 	std::getline(infile, key);
 	while (1)
 	{
@@ -85,7 +80,7 @@ bool BTC::readExchangeRates(void)
 	return (true);
 }
 
-bool BTC::extract(const std::string &line, std::string &date, double &ammount)
+bool BitcoinExchange::extract(const std::string &line, std::string &date, double &ammount)
 {
 	std::istringstream	stream(line);
 	char				delimiter;
@@ -101,17 +96,15 @@ bool BTC::extract(const std::string &line, std::string &date, double &ammount)
 	return (true);
 }
 
-bool BTC::isValidDate(const std::string &date)
+bool BitcoinExchange::isValidDate(const std::string &date)
 {
 	char 				hifen;
 	std::stringstream	stream(date);
 	struct tm 			old = {}, normalized = {};
 
-	// Prevents something like '2001-09-3'
 	if (date.size() != 10)
 		return (false);
 
-	// Assess if the string format is 'num-num-num'
 	if (!(stream >> old.tm_year >> hifen >> old.tm_mon >> hifen >> old.tm_mday))
 		return (false);
 
@@ -125,20 +118,16 @@ bool BTC::isValidDate(const std::string &date)
 			&& normalized.tm_mday == old.tm_mday);
 }
 
-double BTC::findClosestDate(const std::string &date)
+double BitcoinExchange::findClosestDate(const std::string &date)
 {
 	std::map<std::string, float>::iterator current;
 	std::map<std::string, float>::iterator previous;
 
-	// If the date is older than the database
 	if (date < database.begin()->first)
 		return (0);
-
-	// If the date is newer than the database
 	if (date > database.rbegin()->first)
 		return (database.rbegin()->second);
 
-	// Find the closest lower date by stopping at a bigger date 
 	previous = database.begin();
 	current = database.begin();
 	current++;
@@ -150,13 +139,4 @@ double BTC::findClosestDate(const std::string &date)
 		++current;
 	}
 	return (0);	
-}
-
-void BTC::dump(void)
-{
-	std::map<std::string, float>::iterator it;
-
-	for (it = database.begin(); it != database.end(); it++)
-		std::cout << "Key = " + it->first + " Value = " << it->second << "\n";
-	std::cout << std::endl;
 }

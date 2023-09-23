@@ -6,7 +6,7 @@
 /*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 18:14:30 by crypto            #+#    #+#             */
-/*   Updated: 2023/09/16 14:56:47 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/09/23 19:51:26 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int main(int argc, char **argv)
 {
-	BTC	currency;
+	BitcoinExchange	currency;
 
 	if (argc < 2)
 		return (ERROR_USAGE, 1);
