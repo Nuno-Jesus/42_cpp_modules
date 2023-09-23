@@ -6,7 +6,7 @@
 /*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 17:03:13 by ncarvalh          #+#    #+#             */
-/*   Updated: 2023/09/22 21:00:58 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/09/23 11:18:52 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int main(int argc, char **argv)
 	stream << argv[1];
 	if (!(stream >> testno))
 		return (ERROR_NOT_INT, 1);
-	if (testno < 0 || testno > 1)
+	if (testno < 0 || testno > 2)
 		return (ERROR_TESTNO, 1);
 	if (testno == 0)
 		testIntegerArray();
