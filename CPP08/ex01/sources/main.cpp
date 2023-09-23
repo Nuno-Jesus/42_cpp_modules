@@ -14,27 +14,29 @@
 
 #define LOG(title) std::cout << GREEN "\n\t===== Testing " << title << " =====\n\n" RESET;
 
-void test_shortest_span(void)
+void testShortestSpan(void)
 {
-	Span span(10);
+	Span span(3);
 
 	LOG("Shortest Span");
+	std::cout << "Filling span until N=3...\n"; 
 	span.fill();
 	std::cout << span;
 	std::cout << "Shortest span: " << span.shortestSpan() << "\n";
 }
 
-void test_longest_span(void)
+void testLongestSpan(void)
 {
 	Span span(10);
 
 	LOG("Longest Span");
+	std::cout << "Filling span until N=10...\n"; 
 	span.fill();
 	std::cout << span;
 	std::cout << "Longest span: " << span.longestSpan() << "\n";
 }
 
-void test_add_number(void)
+void testAddNumber(void)
 {
 	LOG("Add Number");
 
@@ -42,14 +44,9 @@ void test_add_number(void)
 	{
 		Span fullSpan(10);
 
-		fullSpan.addNumber(42);
-		fullSpan.addNumber(24);
-		fullSpan.addNumber(-1);
-		fullSpan.addNumber(1);
-		std::cout << fullSpan;
-
 		std::cout << "Filling span until N=10...\n"; 
 		fullSpan.fill();
+		std::cout << fullSpan;
 
 		std::cout << "Trying to add an 11th number...\n"; 
 		fullSpan.addNumber(333333);
@@ -60,7 +57,7 @@ void test_add_number(void)
 	}
 }
 
-void test_no_span(void)
+void testNoSpan(void)
 {
 	LOG("Empty Span");
 	try
@@ -74,7 +71,7 @@ void test_no_span(void)
 	}
 }
 
-void test_large_set(void)
+void testLargeSet(void)
 {
 	LOG("Large Span Set");
 	try
@@ -93,35 +90,27 @@ void test_large_set(void)
 }
 
 
-void usage(char *command)
-{
-	std::cout << "Usage: " << command << " test\n";
-	std::exit(1);
-}
-
 int main(int argc, char **argv)
 {
-	if (argc < 2)
-		usage(argv[0]);
+	int					testno;
+	std::stringstream	stream;
+	void (*testers[])() = 
+	{
+		&testShortestSpan,
+		&testLongestSpan,
+		&testAddNumber,
+		&testLargeSet,
+		&testNoSpan,
+	};
 
 	std::srand(std::time(NULL));
-	switch(std::atoi(argv[1]))
-	{
-		case 0: 
-			test_shortest_span(); 
-			break;
-		case 1: 
-			test_longest_span(); 
-			break;
-		case 2: 
-			test_add_number(); 
-			break;
-		case 3: 
-			test_no_span(); 
-			break;
-		case 4: 
-			test_large_set(); 
-			break;
-	}
+	if (argc < 2)
+		return (ERROR_USAGE(argv[0]), 1);
+	stream << argv[1];
+	if (!(stream >> testno))
+		return (ERROR_NOT_INT, 1);
+	if (testno < 0 || testno > 4)
+		return (ERROR_TESTNO, 1);
+	testers[testno]();
 	return (0);
 }

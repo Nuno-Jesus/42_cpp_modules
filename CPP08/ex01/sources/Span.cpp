@@ -24,7 +24,7 @@ Span::Span(const Span& copy)
 
 Span::Span(unsigned int N) : N(N)
 {
-	
+
 }
 
 Span::~Span()
@@ -79,7 +79,7 @@ int Span::longestSpan(void)
 
 int fillHelper(void)
 {
-	return (rand() % 50000); 
+	return (rand() % 100); 
 }
 
 void Span::fill(void)
@@ -101,12 +101,12 @@ std::vector<int> Span::getStorage(void) const
 
 const char *Span::FullSpanException::what() const throw()
 {
-	return (RED "Can't add numbers to a full span." RESET);
+	return (RED "Span Exception: can't add numbers to a full span." RESET);
 }
 
 const char *Span::NoSpanException::what() const throw()
 {
-	return (RED "Can't find spans with less than 2 integers." RESET);
+	return (RED "Span Exception: can't find spans with less than 2 integers." RESET);
 }
 
 std::ostream& operator <<(std::ostream& out, const Span& span)
@@ -115,7 +115,7 @@ std::ostream& operator <<(std::ostream& out, const Span& span)
 
 	vec = span.getStorage();
 	for (unsigned int i = 0; i < span.size(); i++)
-		out << "vector[" << i << "] = " << vec[i] << "\n";
+		out << "storage[" << i << "] = " << vec[i] << "\n";
 	out << std::endl;
 	return (out);
 }

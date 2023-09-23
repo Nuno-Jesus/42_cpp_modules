@@ -12,25 +12,27 @@
 
 #include "easyfind.hpp"
 
-#define LOG(x) std::cout << "\n\t======= TESTING " << x << " =======\n\n"
-
 template <typename T>
 void test_container(T& container, const std::string& name, int tofind)
 {	
-	int	pos;
+	try
+	{
+		std::cout << GREEN << "\n\t======= TESTING " + name + " =======\n\n" << RESET;
 
-	LOG(name);
-	container.push_back(91);
-	container.push_back(42);
-	container.push_back(32768);
-	container.push_back(INT_MAX);
-	container.push_back(-3);
+		container.push_back(91);
+		container.push_back(42);
+		container.push_back(32768);
+		container.push_back(std::numeric_limits<int>::max());
+		container.push_back(-3);
 
-	pos = easyfind(container, tofind);
-	if (pos == -1)
-		std::cout << "Couldn't find " << tofind << " in " << name << "\n";
-	else
+		int pos = easyfind(container, tofind);		
 		std::cout << "Found " << tofind << " in " << name + "[" << pos << "]\n";
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << RED << "Couldn't find " << tofind << " in " << name << "\n" << RESET;
+	}
+	
 }
 
 int main(void)

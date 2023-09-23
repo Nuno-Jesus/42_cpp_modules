@@ -17,6 +17,6 @@ int easyfind(T container, int tofind)
 
 	pos = std::find(container.begin(), container.end(), tofind);
 	if (pos == container.end())
-		return (-1);
+		throw std::exception();
 	return (std::distance(container.begin(), pos));
 }

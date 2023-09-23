@@ -21,8 +21,12 @@
 # include <deque>
 # include <algorithm>
 
-template <typename T, typename Container = std::deque<T>>
-class MutantStack : public std::stack<T, Container>
+# define RED	"\033[1;31m"
+# define GREEN	"\033[1;32m"
+# define RESET	"\033[0m"
+
+template <typename T, typename C = std::deque<T> >
+class MutantStack : public std::stack<T, C>
 {
 	public:
 		//! Constructors and destructor
@@ -33,12 +37,14 @@ class MutantStack : public std::stack<T, Container>
 		//! Operator overloading
 		MutantStack& operator=(const MutantStack& right) 
 		{
-			std::stack<T, Container>::operator=(this, right);
+			if (*this == right)
+				return (*this);
+			std::stack<T, C>::operator=(this, right);
 			return (*this);
 		}
 
 		//! Member functions
-		typedef typename Container::iterator iterator;
+		typedef typename C::iterator iterator;
 
 		iterator begin(void) { return (this->c.begin()); }
 		iterator end(void) { return (this->c.end()); }

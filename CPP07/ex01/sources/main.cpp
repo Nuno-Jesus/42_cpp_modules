@@ -6,33 +6,11 @@
 /*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 17:03:13 by ncarvalh          #+#    #+#             */
-/*   Updated: 2023/09/22 21:00:58 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/09/23 11:24:42 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "iter.hpp"
-
-/* ________________________ CALLBACKS ________________________ */
-
-void print_integer(int &number)
-{
-	std::cout << "Number: " << number << "\n";
-}
-
-void change_integer(int &number)
-{
-	number = 42;
-}
-
-void print_string(std::string &str)
-{
-	std::cout << "String: " << str << "\n";
-}
-
-void print_alpha(char &c)
-{
-	std::cout << (char)std::tolower(c);
-}
 
 /* ________________________ TESTS ________________________ */
 
@@ -41,8 +19,7 @@ void testIntegerArray(void)
 	std::cout << GREEN << "\n\t =============== TEST INTEGERS ===============\n\n" << RESET;
 	
 	int array[] = {1, 2, 3, 4, 5, 42, -1, 0};
-	// iter(array, sizeof(array)/sizeof(int), &change_integer);	
-	iter(array, sizeof(array)/sizeof(int), &print_integer);	
+	iter(array, sizeof(array)/sizeof(int), &print);	
 }
 
 void testStringArray(void)
@@ -56,7 +33,7 @@ void testStringArray(void)
 		"Carvalho",
 		"Jesus",
 	};
-	iter(array, sizeof(array)/sizeof(std::string), &print_string);	
+	iter(array, sizeof(array)/sizeof(std::string), &print);	
 }
 
 void testAlphabet(void)
@@ -64,7 +41,7 @@ void testAlphabet(void)
 	std::cout << GREEN << "\n\t =============== TEST ALPHABET ===============\n\n" << RESET;
 	
 	char alphabet[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	iter(alphabet, sizeof(alphabet), &print_alpha);
+	iter(alphabet, sizeof(alphabet), &print);
 }
 
 int main(int argc, char **argv)
@@ -77,7 +54,7 @@ int main(int argc, char **argv)
 	stream << argv[1];
 	if (!(stream >> testno))
 		return (ERROR_NOT_INT, 1);
-	if (testno < 0 || testno > 1)
+	if (testno < 0 || testno > 2)
 		return (ERROR_TESTNO, 1);
 	if (testno == 0)
 		testIntegerArray();
