@@ -6,15 +6,15 @@
 /*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 16:07:17 by ncarvalh          #+#    #+#             */
-/*   Updated: 2023/07/01 16:44:48 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/09/22 17:22:29 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Base.hpp"
 
-void test_bad_identify(void)
+void testBadIdentify(void)
 {
-	std::cout << "\n\t======== Testing bad identify ========\n\n";
+	std::cout << GREEN << "\n\t======== Testing bad identify ========\n\n" << RESET;
 	
 	Base *pointer = NULL;
 	Base reference;
@@ -23,25 +23,34 @@ void test_bad_identify(void)
 	identify(reference);
 }
 
-
-void test_cool_identify(void)
+void testCoolIdentify(void)
 {
-	std::cout << "\n\t======== Testing cool identify ========\n\n";
+	std::cout << GREEN << "\n\t======== Testing cool identify ========\n\n" << RESET;
 
 	Base *random;
 	random = generate();
 
-	std::cout << "Address of random: " << random << std::endl;
 	identify(random);
 	identify(*random);
-	
 	delete random;
 }
 
-int main(void)
+int main(int argc, char **argv)
 {
+	int					testno;
+	std::stringstream	stream;
+
 	std::srand(time(NULL));
-	test_cool_identify();
-	test_bad_identify();
+	if (argc < 2)
+		return (ERROR_USAGE(argv[0]), 1);
+	stream << argv[1];
+	if (!(stream >> testno))
+		return (ERROR_NOT_INT, 1);
+	if (testno < 0 || testno > 1)
+		return (ERROR_TESTNO, 1);
+	if (testno == 0)
+		testCoolIdentify();
+	else
+		testBadIdentify();
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crypto <crypto@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 21:44:25 by marvin            #+#    #+#             */
-/*   Updated: 2023/09/21 22:23:08 by crypto           ###   ########.fr       */
+/*   Updated: 2023/09/23 08:54:26 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& right)
 {
 	if (this == &right)
 		return (*this);
-	this->grade = grade;
+	this->grade = right.grade;
 	return (*this);
 }
 

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PresedentialPardonForm.hpp                         :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,28 +10,28 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRESEDENTIAL_PARDON_FORM_HPP
-# define PRESEDENTIAL_PARDON_FORM_HPP
+#ifndef PRESIDENTIAL_PARDON_FORM_HPP
+# define PRESIDENTIAL_PARDON_FORM_HPP
 
 # include <iostream>
 
 
 # include "AForm.hpp"
 
-class PresedentialPardonForm : public AForm
+class PresidentialPardonForm : public AForm
 {
 	private:
 		const std::string target;
 
 	public:
 		//! Constructors and destructor
-		PresedentialPardonForm();
-		PresedentialPardonForm(const std::string& target);
-		PresedentialPardonForm(const PresedentialPardonForm& copy);
-		~PresedentialPardonForm();
+		PresidentialPardonForm();
+		PresidentialPardonForm(const std::string& target);
+		PresidentialPardonForm(const PresidentialPardonForm& copy);
+		~PresidentialPardonForm();
 
 		//! Operator overloading
-		PresedentialPardonForm& operator=(const PresedentialPardonForm& right);
+		PresidentialPardonForm& operator=(const PresidentialPardonForm& right);
 
 		//! Others
 		void execute(void) const;

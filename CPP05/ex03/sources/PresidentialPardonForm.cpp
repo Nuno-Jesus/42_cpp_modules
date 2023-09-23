@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PresedentialPardonForm.cpp                         :+:      :+:    :+:   */
+/*   PresidentialPardonForm.cpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,32 +10,32 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PresedentialPardonForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
-PresedentialPardonForm::PresedentialPardonForm() : \
-	AForm("Presedential Pardon Form", 25, 5), target("Someone")
+PresidentialPardonForm::PresidentialPardonForm() : \
+	AForm("Presidential Pardon Form", 25, 5), target("Someone")
 {
 	
 }
 
-PresedentialPardonForm::PresedentialPardonForm(const std::string& target) : \
-	AForm("Presedential Pardon Form", 25, 5), target(target)
+PresidentialPardonForm::PresidentialPardonForm(const std::string& target) : \
+	AForm("Presidential Pardon Form", 25, 5), target(target)
 {
 
 }
 
-PresedentialPardonForm::PresedentialPardonForm(const PresedentialPardonForm& copy) : \
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& copy) : \
 	AForm(copy), target(copy.target)
 {
 
 }
 
-PresedentialPardonForm::~PresedentialPardonForm()
+PresidentialPardonForm::~PresidentialPardonForm()
 {
 	
 }
 
-PresedentialPardonForm& PresedentialPardonForm::operator=(const PresedentialPardonForm& right)
+PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm& right)
 {
 	if (this == &right)
 		return (*this);
@@ -43,7 +43,7 @@ PresedentialPardonForm& PresedentialPardonForm::operator=(const PresedentialPard
 	return (*this);
 }
 
-void PresedentialPardonForm::execute(void) const
+void PresidentialPardonForm::execute(void) const
 {
 	std::cout << this->target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 15:45:32 by ncarvalh          #+#    #+#             */
-/*   Updated: 2023/07/01 15:58:14 by ncarvalh         ###   ########.fr       */
+/*   Updated: 2023/09/22 17:22:55 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define SERIALIZER_HPP
 
 # include <iostream>
-//Include the necessary library to use uintptr_t
 # include <stdint.h>
 # include "Data.hpp"
 

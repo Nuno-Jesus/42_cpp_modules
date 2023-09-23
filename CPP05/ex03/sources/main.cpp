@@ -20,7 +20,7 @@ void testMakingInvalidForm(void)
 		AForm* rrf;
 		Intern someRandomIntern;
 		
-		rrf = someRandomIntern.makeForm("presedential form", "Bender");
+		rrf = someRandomIntern.makeForm("presidential form", "Bender");
 		std::cout << *rrf << std::endl;
 	}
 	catch(const std::exception& e)
@@ -58,14 +58,14 @@ int main(int argc, char **argv)
 
 	std::srand(time(NULL));
 	if (argc < 2)
-		return (ERROR_USAGE, 1);
+		return (ERROR_USAGE(argv[0]), 1);
 	stream << argv[1];
 	if (!(stream >> testno))
 		return (ERROR_NOT_INT, 1);
 	if (testno < 0 || testno > 3)
 		return (ERROR_TESTNO, 1);
 	if (testno == 0)
-		testMakingValidForm("presedential pardon", "Bender");
+		testMakingValidForm("presidential pardon", "Bender");
 	else if (testno == 1)
 		testMakingValidForm("robotomy request", "Brain");
 	else if (testno == 2)

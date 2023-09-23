@@ -16,7 +16,7 @@
 # include <iostream>
 # include <sstream>
 
-# include "PresedentialPardonForm.hpp"
+# include "PresidentialPardonForm.hpp"
 # include "ShrubberyCreationForm.hpp"
 # include "RobotomyRequestForm.hpp"
 
@@ -33,7 +33,7 @@ class Intern
 
 		//! Others
 		AForm *makeForm(const std::string& name, const std::string& target);
-		AForm *makePresedentialForm(const std::string &target);
+		AForm *makePresidentialForm(const std::string &target);
 		AForm *makeRobotomyForm(const std::string &target);
 		AForm *makeShrubberyForm(const std::string &target);
 
