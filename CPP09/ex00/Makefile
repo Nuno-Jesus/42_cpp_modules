@@ -44,7 +44,7 @@ _SUBFOLDERS	= .
 #_                                                                                           _
 #_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_
 
-CXXFLAGS	= -Wall -Wextra -Werror -O3
+CXXFLAGS	= -Wall -Wextra -Werror -O3 -pedantic -std=c++98
 CPPFLAGS	= -I $(INC_FOLDER)
 MAKEFLAGS	= --no-print-directory
 LDFLAGS		=
