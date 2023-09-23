@@ -1,5 +1,4 @@
 # **CPP Modules**
-> Still in development
 
 ## 📒 **About**
 This repository contains all the C++ piscine-like projects of rank 04 and rank 05. The goal of these projects is to learn the basics of C++ and Object Oriented Programming (OOP).
