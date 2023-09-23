@@ -16,9 +16,10 @@
 
 void testShortestSpan(void)
 {
-	Span span(10);
+	Span span(3);
 
 	LOG("Shortest Span");
+	std::cout << "Filling span until N=3...\n"; 
 	span.fill();
 	std::cout << span;
 	std::cout << "Shortest span: " << span.shortestSpan() << "\n";
@@ -29,6 +30,7 @@ void testLongestSpan(void)
 	Span span(10);
 
 	LOG("Longest Span");
+	std::cout << "Filling span until N=10...\n"; 
 	span.fill();
 	std::cout << span;
 	std::cout << "Longest span: " << span.longestSpan() << "\n";
@@ -42,14 +44,9 @@ void testAddNumber(void)
 	{
 		Span fullSpan(10);
 
-		fullSpan.addNumber(42);
-		fullSpan.addNumber(24);
-		fullSpan.addNumber(-1);
-		fullSpan.addNumber(1);
-		std::cout << fullSpan;
-
 		std::cout << "Filling span until N=10...\n"; 
 		fullSpan.fill();
+		std::cout << fullSpan;
 
 		std::cout << "Trying to add an 11th number...\n"; 
 		fullSpan.addNumber(333333);
@@ -93,53 +90,27 @@ void testLargeSet(void)
 }
 
 
-void usage(char *command)
-{
-	std::cout << "Usage: " << command << " test\n";
-	std::exit(1);
-}
-
 int main(int argc, char **argv)
 {
-	if (argc < 2)
-		usage(argv[0]);
+	int					testno;
+	std::stringstream	stream;
+	void (*testers[])() = 
+	{
+		&testShortestSpan,
+		&testLongestSpan,
+		&testAddNumber,
+		&testLargeSet,
+		&testNoSpan,
+	};
 
 	std::srand(std::time(NULL));
-	switch(std::atoi(argv[1]))
-	{
-		case 0: 
-			testShortestSpan(); 
-			break;
-		case 1: 
-			testLongestSpan(); 
-			break;
-		case 2: 
-			testAddNumber(); 
-			break;
-		case 3: 
-			testNoSpan(); 
-			break;
-		case 4: 
-			testLargeSet(); 
-			break;
-	}
-
-	// int					testno;
-	// std::stringstream	stream;
-
-	// if (argc < 2)
-	// 	return (ERROR_USAGE(argv[0]), 1);
-	// stream << argv[1];
-	// if (!(stream >> testno))
-	// 	return (ERROR_NOT_INT, 1);
-	// if (testno < 0 || testno > 2)
-	// 	return (ERROR_TESTNO, 1);
-	// if (testno == 0)
-	// 	testDefaultConstructor();
-	// else if (testno == 1)
-	// 	testCopyConstructor();
-	// else
-	// 	testOutOfBoundsIndexes();
-	// return 0;
+	if (argc < 2)
+		return (ERROR_USAGE(argv[0]), 1);
+	stream << argv[1];
+	if (!(stream >> testno))
+		return (ERROR_NOT_INT, 1);
+	if (testno < 0 || testno > 4)
+		return (ERROR_TESTNO, 1);
+	testers[testno]();
 	return (0);
 }
