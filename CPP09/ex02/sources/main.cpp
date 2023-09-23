@@ -3,14 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crypto <crypto@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ncarvalh <ncarvalh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 17:22:07 by ncarvalh          #+#    #+#             */
-/*   Updated: 2023/09/19 18:55:18 by crypto           ###   ########.fr       */
+/*   Updated: 2023/09/23 16:48:27 by ncarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
+
+# define A 0
+# define B 1
 
 bool parse(char **argv, std::vector<int> &vec, std::list<int> &list)
 {
@@ -69,16 +72,16 @@ std::vector<std::vector<int>> merge(std::vector<std::vector<int>> &left, std::ve
 	// The loop ends when one of the vectors is emptied out
 	while (!left.empty() && !right.empty())
 	{
-		if (left[0][0] < right[0][0] || right[0][0] == UNUSED)
+		if (left[0][A] < right[0][A] || right[0][A] == UNUSED)
 		{
 			std::cout << "L" << std::endl;
-			result.push_back(left[0]);
+			result.push_back(left.front());
 			left.erase(left.begin());
 		}
 		else
 		{
 			std::cout << "R" << std::endl;
-			result.push_back(right[0]);
+			result.push_back(right.front());
 			right.erase(right.begin());
 		}
 	}
@@ -86,14 +89,14 @@ std::vector<std::vector<int>> merge(std::vector<std::vector<int>> &left, std::ve
 	// Empty out left vector, if the right vector had the lowest values
 	while (!left.empty())
 	{
-		result.push_back(left[0]);
+		result.push_back(left.front());
 		left.erase(left.begin());
 	}
 	
 	// Empty out right vector, if the left vector had the lowest values
 	while (!right.empty())
 	{
-		result.push_back(right[0]);
+		result.push_back(right.front());
 		right.erase(right.begin());
 	}
 
@@ -124,28 +127,67 @@ std::vector<std::vector<int>> matrify(const std::vector<int> &nums)
 	{
 		if ((2 * i + 1) < nums.size())
 		{
-			pairs[i][0] = nums[2 * i];
-			pairs[i][1] = nums[2 * i + 1];			
+			pairs[i][A] = nums[2 * i];
+			pairs[i][B] = nums[2 * i + 1];			
 		}
 		else
-			pairs[i][1] = nums[2 * i];
+			pairs[i][B] = nums[2 * i];
 			
 		// Sort each pair of ints in ascending order (a, b)
-		if (pairs[i][1] < pairs[i][0])
-			swap(pairs[i][1], pairs[i][0]);
+		if (pairs[i][B] < pairs[i][A])
+			swap(pairs[i][B], pairs[i][A]);
 	}
 	return (pairs);
 }
 
-size_t jacobsthal(int n)
+void generateJacobsthalSequence(std::vector<size_t> &vec)
 {
-	return (pow(2, n) - pow(-1, n) / 3);
+	for (size_t i = 0; i < vec.size(); i++)
+		vec[i] = (pow(2, i + 2) - pow(-1, i + 2)) / 3;
 }
 
-// void insertionSort(std::vector<int> &S, const std::vector<std::vector<int>> &pairs)
-// {
-	
-// }
+void qq(void)
+{
+	/* 		int k = jacobSequence[i];
+		int start = 0;
+		int end = pairs.size() - 1;
+		int middle;
+		while (end - start > 1)
+		{
+			middle = start + (end - start) / 2;
+			if (pairs[k][B] > S[middle])
+				start = middle;
+			else if (pairs[k][1] < S[middle])		
+				end = middle;
+			if (end - start == 1)
+				S.insert(S.begin() + end, pairs[k][B]);
+		}
+ */
+}
+
+void binaryInsertionSort(std::vector<int> &S, size_t n, const std::vector<std::vector<int>> &pairs)
+{
+	(void)S;
+	std::vector<size_t>	jacobSequence(pairs.size());
+
+	generateJacobsthalSequence(jacobSequence);
+	print(jacobSequence);
+	S.push_back(pairs[0][B]);
+	S.push_back(pairs[1][B]);
+	for (size_t i = 1; i < jacobSequence.size(); i++)
+	{
+		for (size_t k = jacobSequence[i]; k > jacobSequence[i - 1]; k--)
+		{
+			std::cout << "k = " << k << std::endl;
+			if (k >= pairs.size())
+				continue ;
+			S.push_back(pairs[k][B]);
+			std::cout << S.size() << std::endl;
+			if (S.size() == n)
+				return ;
+		}
+	}
+}
 
 
 void mergeInsertionSort(const std::vector<int> &nums)
@@ -161,15 +203,18 @@ void mergeInsertionSort(const std::vector<int> &nums)
 	std::cout << "FINAL RESULT" << std::endl;
 	print(pairs);
 
-	for (size_t i = 0; i < pairs.size(); i++)
-		if (pairs[i][0] != UNUSED)
-			S.push_back(pairs[i][0]);
+	for (size_t i = 0 ; i < pairs.size() && pairs[i][A] != UNUSED; i++)
+		S.push_back(pairs[i][A]);
+	std::cout << "Size of nums: " << nums.size() << std::endl;
 
-	std::cout << "\tS" << std::endl;
+	std::cout << "S = ";
 	print(S);
 	
 	// Use binary search to insert the b values in the chain of S
-	// S = insertionSort(S, pairs);
+	binaryInsertionSort(S, nums.size(), pairs);
+	std::cout << "S = ";
+	print(S);
+	
 }
 
 int main(int argc, char **argv)
@@ -182,7 +227,5 @@ int main(int argc, char **argv)
 	if (!parse(argv + 1, vec, list))
 		return (std::cout << "Error\n", 1);
 	mergeInsertionSort(vec);
-	for (int i = 1; i < 20; i++)
-		std::cout << jacobsthal(i) << " " << std::endl;
 	return (0);
 }
